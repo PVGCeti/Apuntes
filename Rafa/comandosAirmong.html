@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <title>Indices apuntes rafa</title>
+</head>
+
+<body>
+    <marquee><h1>Apuntes por: Pez Ejecutivo <img src="../img/pezEjecutivo.png" alt="" width="200" height="200"  ></h1></marquee>
+    <h2>Comandos Airmong-NG</h2>
+    <p><a href="./">Volver al indice</a></p>
+
+    <p><b>airmon-ng start wlan0</b>   -> Pone la interfaz en modo monitor/promiscuo<br>
+        El modo promiscuo, recibe todo los paquetes que se envían en la red<br><br>
+        
+        <b>airodump-ng wlan0mon -w . --manufacturer --wps --band abg</b> -> Escanea todas las redes<br>
+        <b>airodump-ng wlan0mon -w . --manufacturer --wps -c11</b> -> Escanea todas las redes<br>
+        
+        <b>iwconfig wlan0mon channel11</b> -> Pone la interfaz en dicha red <br><br>
+        
+        <b>mdk4 wlan0mon p -t MAC -f ~/rockyoumodificado.txt</b> -> Ataque de fuerza bruta <br><br>
+
+        <b>wpa_supplicant -Dnl80211 -iwlan1 -c free.conf</b> -> Conectarse a la wifi <br><br>
+        
+        <b>dhclient wlan1 -v</b> -> Pide una IP en dicha wifi <br><br>
+        
+        <b>systemctl stop network-manager</b> -> apagar el servicio de red <br><br>
+        
+        <b>ip link set wlan2 down</b> -> apaga la red <br><br>
+        
+        <b>macchanger -m MAC wlan2</b> -> Te cambia la MAC <br><br>
+        
+        <b>ip link set wlan2 up</b> -> Enciende la red <br><br>
+        
+        <b>besside-ng -b MAC interfaz</b> -> Crackea redes WEP <br><br>
+    </p>
+    <p><a href="./">Volver al indice</a></p>
+    <marquee><h1>Apuntes por: Pez Ejecutivo <img src="../img/pezEjecutivo.png" alt="" width="200" height="200"  ></h1></marquee>
+
+
+</body>
+
+</html>

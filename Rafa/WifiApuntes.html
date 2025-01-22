@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <title>Indices apuntes rafa</title>
+</head>
+
+<body>
+    <marquee><h1>Apuntes por: Pez Ejecutivo <img src="../img/pezEjecutivo.png" alt="" width="200" height="200"  ></h1></marquee>
+    <h2>Apuntes Wifi</h2>
+    <p><a href="./">Volver al indice</a></p>
+
+    <p>Cifrado de información wifi: Sin cifrar, WEP, WPA1/2/3 <br>
+        Sin cifrar: No usa contraseña<br>
+        WEP: Usa la misma contraseña para cifrar que para conectarse<br>
+        WPA1: Usa una contraseña diferente para cifrar que para conectarse<br>
+        WPA2: La contraseña era aun más larga que antes<br>
+        <br>
+
+        WPA-PSK: Todos con la misma contraseña -> Tu casa <br>
+        PROS: Es más sencillo ya que todos tienen la misma contraseña.<br>
+        CONTRAS: Si cambias la contraseña afecta a todo el mundo.<br>
+        <br>
+
+        WPA-Enterprise: Cada dispositivo una contraseña y usuario diferente<br>
+        PROS: Cada dispositivo tiene un usuario y contraseña diferentes<br>
+        CONTRAS: Usa RADIUS<br>
+        <br><br>
+        WPS: Te conectas sin necesidad de contraseña (es inseguro)<br>
+        <br>
+        Conexiones por WPS: 1.- Boton, 2.- Pin/QR, 3.- NFC, 4.- USB<br>
+
+        Canales de wifi: Diferentes frecuencias en las que operan.<br>
+
+        SSID: Nombre del Wifi -> Canal<br>
+        ESSID: Un SSID con multiples puntos de acceso<br>
+        BSSID: Un punto de acceso mediante la MAC<br>
+
+        MAC dirección fisica del dispositivo -> A1:B2:C3:D4:E5:F6<br>
+        -> Primera mitad (A1:B2:C3): Fabricante<br>
+        -> Segunda mitad (D4:E5:F6): Dispositivo<br>
+    </p>
+    <img src="./Pizarra wifi.png" alt="">
+    <hr><br>
+
+    <h3>SUITE Airmong-ng</h3>
+    <p>
+        Aircrack-ng -> Suit de herramientas para el hackeo wifi<br>
+        -> airmon-ng: Pone la interfaz red/tarjeta de red en modo monitor/promiscuo<br>
+        -> airodump-ng: Escanea/Captura todas las redes<br>
+
+    </p>
+
+    <h3> PASOS PARA CAMBIAR LA MAC</h3>
+    <p>
+        ip link set wlan0 down -> Apaga/cierra la interfaz red<br>
+        macchanger -m MAC wlan0 -> Te cambia la MAC a dicha MAC proporcionada<br>
+        ip link set wlan0 up -> Enciende/abre la interfaz red</p>
+        <p><a href="./">Volver al indice</a></p>
+        <marquee><h1>Apuntes por: Pez Ejecutivo <img src="../img/pezEjecutivo.png" alt="" width="200" height="200"  ></h1></marquee>
+
+</body>
+
+</html>

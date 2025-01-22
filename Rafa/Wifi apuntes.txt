@@ -1,0 +1,44 @@
+Cifrado de información wifi: Sin cifrar, WEP, WPA1/2/3
+Sin cifrar: No usa contraseña
+WEP: Usa la misma contraseña para cifrar que para conectarse
+WPA1: Usa una contraseña diferente para cifrar que para conectarse
+WPA2: La contraseña era aun más larga que antes
+
+WPA-PSK: Todos con la misma contraseña -> Tu casa 
+PROS: Es más sencillo ya que todos tienen la misma contraseña.
+CONTRAS: Si cambias la contraseña afecta a todo el mundo.
+
+
+WPA-Enterprise: Cada dispositivo una contraseña y usuario diferente
+PROS: Cada dispositivo tiene un usuario y contraseña diferentes
+CONTRAS: Usa RADIUS
+
+WPS: Te conectas sin necesidad de contraseña (es inseguro)
+
+Conexiones por WPS: 1.- Boton, 2.- Pin/QR, 3.- NFC, 4.- USB
+
+Canales de wifi: Diferentes frecuencias en las que operan.
+
+SSID: Nombre del Wifi -> Canal
+ESSID: Un SSID con multiples puntos de acceso
+BSSID: Un punto de acceso mediante la MAC
+
+MAC dirección fisica del dispositivo -> A1:B2:C3:D4:E5:F6
+	-> Primera mitad (A1:B2:C3): Fabricante
+	-> Segunda mitad (D4:E5:F6): Dispositivo
+
+---------------------------------------------------------------------------------------------------
+
+			SUIT AIRMONG-NG
+
+Aircrack-ng -> Suit de herramientas para el hackeo wifi
+	-> airmon-ng: Pone la interfaz red/tarjeta de red en modo monitor/promiscuo
+	-> airodump-ng: Escanea/Captura todas las redes
+
+-----------------------------------------------------------------------------------------------------
+
+			PASOS PARA CAMBIAR LA MAC
+
+ip link set wlan0 down -> Apaga/cierra la interfaz red
+macchanger -m MAC wlan0 -> Te cambia la MAC a dicha MAC proporcionada
+ip link set wlan0 up -> Enciende/abre la interfaz red
