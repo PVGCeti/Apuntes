@@ -1,0 +1,206 @@
+/* Estilos generales */
+body {
+    background-color: #121212; /* Fondo oscuro por defecto */
+    color: #e0e0e0; /* Texto claro por defecto */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la pantalla */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Modo claro */
+body.light-mode {
+    background-color: #f5f5f5; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+}
+
+/* Contenedor de la página */
+.page-container {
+    flex: 1; /* Hace que el contenedor ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabecera */
+header {
+    background-color: #1e1e1e; /* Fondo gris oscuro */
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 3px solid #64b5f6; /* Línea azul */
+    position: relative; /* Para posicionar el botón */
+}
+
+body.light-mode header {
+    background-color: #ffffff; /* Fondo blanco en modo claro */
+    border-bottom: 3px solid #42a5f5; /* Línea azul más clara */
+}
+
+header h1 {
+    color: #64b5f6; /* Tonalidad azul */
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+body.light-mode header h1 {
+    color: #42a5f5; /* Tonalidad azul más clara */
+}
+
+header p {
+    color: #b0b0b0; /* Texto gris claro */
+    font-size: 1.2rem;
+    margin: 10px 0 0;
+}
+
+body.light-mode header p {
+    color: #666; /* Texto gris oscuro en modo claro */
+}
+
+/* Botón de cambio de modo */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1); /* Efecto de escala al pasar el mouse */
+}
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1; /* Hace que el contenido principal ocupe el espacio restante */
+}
+
+/* Sección de índice */
+.index-section {
+    margin-top: 20px;
+}
+
+.index-section h2 {
+    color: #64b5f6; /* Tonalidad azul */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+body.light-mode .index-section h2 {
+    color: #42a5f5; /* Tonalidad azul más clara */
+}
+
+/* Grid de enlaces */
+.grid-links {
+    display: flex; /* Cambiamos a flexbox */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea si no caben */
+    gap: 20px; /* Espacio entre tarjetas */
+}
+
+/* Tarjetas de enlaces */
+.card {
+    background-color: #2d2d2d; /* Fondo grisáceo */
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #e0e0e0; /* Texto claro */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 250px; /* Flex-grow, flex-shrink, y flex-basis */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+body.light-mode .card {
+    background-color: #ffffff; /* Fondo blanco en modo claro */
+    color: #333; /* Texto oscuro */
+    border: 1px solid #ddd; /* Borde sutil */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    color: #64b5f6; /* Tonalidad azul */
+    margin: 0 0 10px;
+}
+
+body.light-mode .card h3 {
+    color: #42a5f5; /* Tonalidad azul más clara */
+}
+
+.card p {
+    color: #b0b0b0; /* Texto gris claro */
+    margin: 0;
+}
+
+body.light-mode .card p {
+    color: #666; /* Texto gris oscuro en modo claro */
+}
+
+/* Pie de página */
+footer {
+    background-color: #1e1e1e; /* Fondo gris oscuro */
+    padding: 15px;
+    text-align: center;
+    border-top: 2px solid #64b5f6; /* Línea azul */
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+body.light-mode footer {
+    background-color: #ffffff; /* Fondo blanco en modo claro */
+    border-top: 2px solid #42a5f5; /* Línea azul más clara */
+}
+
+footer p {
+    margin: 0;
+    color: #b0b0b0; /* Texto gris claro */
+    font-size: 0.9rem;
+}
+
+body.light-mode footer p {
+    color: #666; /* Texto gris oscuro en modo claro */
+}
+
+/* Botón para volver al índice principal */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #64b5f6; /* Color azul */
+    color: #fff; /* Texto blanco */
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #42a5f5; /* Color azul más claro al pasar el mouse */
+}
+
+/* Ajustes para el modo claro */
+body.light-mode .back-button {
+    background-color: #42a5f5; /* Color azul más claro en modo claro */
+    color: #fff; /* Texto blanco */
+}
+
+body.light-mode .back-button:hover {
+    background-color: #64b5f6; /* Color azul en modo claro al pasar el mouse */
+}
+
+/* Imágenes de la cabecera */
+.header-image {
+    height: 100px; /* Altura fija para las imágenes */
+    width: auto; /* Ancho automático para mantener la proporción */
+    border-radius: 10px; /* Bordes redondeados */
+}
