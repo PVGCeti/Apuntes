@@ -1,15 +1,47 @@
-// Selecciona el botón de cambio de modo
-const themeToggle = document.getElementById("theme-toggle");
-
-// Función para cambiar de modo
+// Función para cambiar entre modo claro y oscuro
 function toggleTheme() {
-    document.body.classList.toggle("light-mode"); // Cambia entre modos
-    const isLightMode = document.body.classList.contains("light-mode");
-    themeToggle.textContent = isLightMode ? "🌞" : "🌙"; // Cambia el icono
+    const body = document.body;
+    body.classList.toggle("light-mode");
+
+    // Guardar la preferencia en localStorage
+    if (body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+    } else {
+        localStorage.setItem("theme", "dark");
+    }
+
+    // Actualizar el ícono del botón
+    updateThemeIcon();
 }
 
-// Evento para cambiar de modo al hacer clic en el botón
-themeToggle.addEventListener("click", toggleTheme);
+// Función para actualizar el ícono del botón de cambio de tema
+function updateThemeIcon() {
+    const themeToggle = document.getElementById("theme-toggle");
+    if (document.body.classList.contains("light-mode")) {
+        themeToggle.textContent = "🌙"; // Modo claro activado, mostrar luna
+    } else {
+        themeToggle.textContent = "☀️"; // Modo oscuro activado, mostrar sol
+    }
+}
+
+// Cargar la preferencia del tema al iniciar la página
+function loadTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+    } else {
+        document.body.classList.remove("light-mode");
+    }
+
+    // Actualizar el ícono del botón
+    updateThemeIcon();
+}
+
+// Asignar el evento al botón de cambio de tema
+document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
+
+// Cargar el tema al cargar la página
+document.addEventListener("DOMContentLoaded", loadTheme);
 
 // Mostrar el disclaimer al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
