@@ -30,21 +30,50 @@
                             <h3>Configuración de una instancia en AWS para montar un SOC ELK</h3>
                         </div>
                         <div class="card-content">
-                            <p>Debido a los requisitos de este SOC ELK, necesitaremos tener al menos 2 cores lógicos, 6 GB RAM y 30 GB disco. Por lo que en nuestro caso utilizaremos una instancia de tipo <b>t3.large.</b></p>
-                            <p>Aunque va a actuar como un servicio web no vamos a activar la opción de permitir HTTP, ya que nosotros vamos a entrar a traves del puerto <b>5601</b> en vez del 80. Para conectarnos a la maquina y hacer las modificaciones correspondientes utilizaremos el protocolo SSH con llaves, para tener una mayor seguridad</p>
+                            <p>
+                                Debido a los requisitos de este SOC ELK, necesitaremos tener al menos 2 cores lógicos, 6
+                                GB RAM y 30 GB disco. Por lo que en nuestro caso utilizaremos una instancia de tipo
+                                <b>t3.large.</b>
+                            </p>
+                            <p>
+                                Aunque va a actuar como un servicio web no vamos a activar la opción de permitir HTTP,
+                                ya que nosotros vamos a entrar a traves del puerto <b>5601</b> en vez del 80. Para
+                                conectarnos a la maquina y hacer las modificaciones correspondientes utilizaremos el
+                                protocolo SSH con llaves, para tener una mayor seguridad
+                            </p>
                             <div class="image-card">
                                 <img src="../../img/InstanciaSIEM.png" alt="Resumen general de la instancia creada" />
                             </div>
-                            <p>Una vez tenemos creada la instancia, tendremos que realizar dos cosas más antes de empezar a montar el SOC, configurar el firewall (o reglas de entradas) y asignarle una IP estatica  (o IP elastica).</p>
-                            <p>Iremos al grupo de seguridad y cambiaremos las reglas de entradas, debido a que vamos a utilizar un <b>Stack ELK</b>, tendremos que crear 3 reglas de entradas para los puertos: <b>5601, 5044, 9200</b> estos puertos tendran que tener permitido la conexión desde cualquier IP, ya que puede haber más de un dispositivo el cual este enviandonos datos para la monitorización</p>
+                            <p>
+                                Una vez tenemos creada la instancia, tendremos que realizar dos cosas más antes de
+                                empezar a montar el SOC, configurar el firewall (o reglas de entradas) y asignarle una
+                                IP estatica (o IP elastica).
+                            </p>
+                            <p>
+                                Iremos al grupo de seguridad y cambiaremos las reglas de entradas, debido a que vamos a
+                                utilizar un <b>Stack ELK</b>, tendremos que crear 3 reglas de entradas para los puertos:
+                                <b>5601, 5044, 9200</b> estos puertos tendran que tener permitido la conexión desde
+                                cualquier IP, ya que puede haber más de un dispositivo el cual este enviandonos datos
+                                para la monitorización
+                            </p>
                             <div class="image-card">
                                 <img src="../../img/ReglasDeEntrada.png" alt="Reglas de entradas creadas y definidas" />
                             </div>
-                            <p>Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la asignaremos a la instancia ya creada.</p>
+                            <p>
+                                Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de
+                                una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera
+                                una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más
+                                complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y
+                                pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la
+                                asignaremos a la instancia ya creada.
+                            </p>
                             <div class="image-card">
                                 <img src="../../img/AsociarIP.png" alt="Reglas de entradas creadas y definidas" />
                             </div>
-                            <p>Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún tipo de problema.</p>
+                            <p>
+                                Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún
+                                tipo de problema.
+                            </p>
                         </div>
                     </div>
 
@@ -53,22 +82,40 @@
                             <h3>Despliegue de un SOC ELK en una instancia de AWS .</h3>
                         </div>
                         <div class="card-content">
-                            <p>Una vez ya tenemos una instancia de AWS preparada para el montaje de un SOC ELK, es decir, los requisitos de hardware correspondientes y las reglas de entradas e IP configuradas correctamente. Deberemos de entrar a la maquina a traves del protocolo <b>SSH</b> con el siguiente comando:</p>
+                            <p>
+                                Una vez ya tenemos una instancia de AWS preparada para el montaje de un SOC ELK, es
+                                decir, los requisitos de hardware correspondientes y las reglas de entradas e IP
+                                configuradas correctamente. Deberemos de entrar a la maquina a traves del protocolo
+                                <b>SSH</b> con el siguiente comando:
+                            </p>
                             <pre>ssh -i ./Key.pem ec2-user@IP</pre>
                             <p>Una vez estemos conectados veremos una paloma dibujada en ASCII</p>
                             <div class="image-card">
                                 <img src="../../img/ConexionMaquina.png" alt="Reglas de entradas creadas y definidas" />
                             </div>
-                            <p>Cuando estemos conectados a dicha maquina, deberemos de instalar <b>docker y docker compose</b> para facilitar la creación del SOC ELK, para instarlalo utilizaremos los siguientes comandos:</p>
+                            <p>
+                                Cuando estemos conectados a dicha maquina, deberemos de instalar
+                                <b>docker y docker compose</b> para facilitar la creación del SOC ELK, para instarlalo
+                                utilizaremos los siguientes comandos:
+                            </p>
                             <pre>
 sudo dnf install docker
 
 sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
-</pre>
-                            <p>Ademas de lo anterior, deberemos de habilitar docker con <b>systemctl start docker y systemctl enable docker</b> </p>
-                            <p>Una vez hemos hechos estos comandos, veremos que el resultado final debera ser algo similar a "Docker Compose version v2.32.4". Si esto ha sido correcto podremos pasar a la creación del docker compose, este docker compose sera bastante sencillo. <b>(Asegurar la correcta indentación)</b></p>
+</pre
+                            >
+                            <p>
+                                Ademas de lo anterior, deberemos de habilitar docker con
+                                <b>systemctl start docker y systemctl enable docker</b>
+                            </p>
+                            <p>
+                                Una vez hemos hechos estos comandos, veremos que el resultado final debera ser algo
+                                similar a "Docker Compose version v2.32.4". Si esto ha sido correcto podremos pasar a la
+                                creación del docker compose, este docker compose sera bastante sencillo.
+                                <b>(Asegurar la correcta indentación)</b>
+                            </p>
                             <pre>
 services:
   elk:
@@ -76,10 +123,22 @@ services:
     ports:
       - "5601:5601"
       - "9200:9200"
-      - "5044:5044"</pre>
-                            <p>Antes de crear el contenedor debereos de usar este comando <b>sysctl -w vm.max_map_count=262145</b> para aumentar la RAM que puede usar docker, ya que esto es necesario para dicho contenedor, ademas para que afecte siempre, lo tendremos que añadir a <b>/etc/sysctl.d/99-sysctl.conf</b>, pero solamente la parte final, es decir: vm.max_map_count=262145
+      - "5044:5044"</pre
+                            >
+                            <p>
+                                Antes de crear el contenedor debereos de usar este comando
+                                <b>sysctl -w vm.max_map_count=262145</b> para aumentar la RAM que puede usar docker, ya
+                                que esto es necesario para dicho contenedor, ademas para que afecte siempre, lo
+                                tendremos que añadir a <b>/etc/sysctl.d/99-sysctl.conf</b>, pero solamente la parte
+                                final, es decir: vm.max_map_count=262145
                             </p>
-                            <p>Con la configuración anteriormente creada, ya podremos desplegar el contenedor con el comando  <b>docker-compose up -d</b>, una vez hecho eso, si hacemos <b>docker ps</b> podremos ver el contenedor correctamente creado con los puertos activos, si entramos a la IP:5601 debereiamos poder ver la interefaz de Kibana  <b>(Importante que entremos por HTTP y no HTTPS)</b></p>
+                            <p>
+                                Con la configuración anteriormente creada, ya podremos desplegar el contenedor con el
+                                comando <b>docker-compose up -d</b>, una vez hecho eso, si hacemos
+                                <b>docker ps</b> podremos ver el contenedor correctamente creado con los puertos
+                                activos, si entramos a la IP:5601 debereiamos poder ver la interefaz de Kibana
+                                <b>(Importante que entremos por HTTP y no HTTPS)</b>
+                            </p>
                             <div class="image-card">
                                 <img src="../../img/TerminalFinal.png" alt="Reglas de entradas creadas y definidas" />
                             </div>
@@ -95,9 +154,52 @@ services:
                             <h3>Configuración y despliegue de una instancia con Nginx</h3>
                         </div>
                         <div class="card-content">
-                            <p>Agradecemos su espera</p>
-                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre
+                            <p>
+                                Debido a que esta instancia lo unica que va a alojar va a ser un servidor
+                                <b>nginx</b> sin ningún tipo de complemento o contenido adicional, no sera necesario la
+                                implementación de muchos recursos, por lo que utilizaremos una instancia de tipo:
+                                <b>t3.small.</b>
+                            </p>
+                            <p>
+                                Ya que esta instancia si que va a actuar como un servicio web normal y corriente al cual
+                                se accedera mediante un navegador por el puerto 80, por el protocolo de http, podremos
+                                activar el trafico http en las configuraciones de la instancia.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/InstanciaNginx.png" alt="Resumen general de la instancia creada" />
+                            </div>
+                            <p>
+                                Una vez con dicha instancia creada, debido a que funcionara como un servidor más, no
+                                necesitaremos configurarle nada más, ya que el trafico <b>HTTP</b> esta habilitado y no
+                                nos importa la IP que este tenga, por lo que nos conectaremos a ella a traves de
+                                <b>SSH</b> con nuestro par de claves, gracias al siguiente comando:
+                            </p>
+                            <pre>ssh -i ./Key.pem ubuntu@IP</pre>
+                            <p>
+                                En este caso, en vez de ver una paloma, simplemente habra texto explicandonos algunas
+                                cosas que realmente, para nuestro objetivo, no nos interesan, por lo que lo obviaremos y
+                                continuaremos con la instalación de <b>nginx</b>, la cual es bastante sencilla.
+                            </p>
+                            <p>
+                                Una vez dentro de la maquina, actualizaremos la lista/repositorio de paquetes con un
+                                <b>sudo apt update</b> y posteriormente pasaremos a la instalación y despliegue de
+                                <b>nginx</b> con los comandos siguientes comandos:
+                            </p>
+                            <pre>
+sudo apt update
+
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx</pre
                             >
+                            <p>
+                                Con esto el servidor <b>nginx</b> ya estaria desplegado y operativo, para comprobarlo
+                                solamente tendriamos que introducir la IP de la instancia en el navegador web, mostrando
+                                algo similar a esto:
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/Nginx.png" alt="Resumen general de la instancia creada" />
+                            </div>
                         </div>
                     </div>
 
@@ -107,8 +209,7 @@ services:
                         </div>
                         <div class="card-content">
                             <p>Agradecemos su espera</p>
-                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre
-                            >
+                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre>
                         </div>
                     </div>
 
@@ -118,12 +219,9 @@ services:
                         </div>
                         <div class="card-content">
                             <p>Agradecemos su espera</p>
-                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre
-                            >
+                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre>
                         </div>
                     </div>
-
-                    
 
                     <!-- Más tarjetas aquí -->
                 </section>
