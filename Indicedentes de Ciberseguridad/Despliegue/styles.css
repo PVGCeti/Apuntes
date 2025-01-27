@@ -41,7 +41,7 @@ body.light-mode header {
 
 header h1 {
     color: #64b5f6;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 6vw, 2.5rem); /* Título responsive */
     margin: 0;
 }
 
@@ -51,7 +51,7 @@ body.light-mode header h1 {
 
 header p {
     color: #b0b0b0;
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 3vw, 1.2rem); /* Subtítulo responsive */
     margin: 10px 0 0;
 }
 
@@ -108,16 +108,19 @@ body.light-mode .back-button:hover {
     max-width: 1200px;
     margin: 0 auto;
     flex: 1;
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 /* Sección de apuntes */
 .notes-section {
     margin-top: 20px;
+    width: 100%; /* Asegura que no exceda el ancho del contenedor */
 }
 
 .notes-section h2 {
     color: #64b5f6;
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 5vw, 2rem); /* Título responsive */
     margin-bottom: 20px;
 }
 
@@ -132,6 +135,8 @@ body.light-mode .notes-section h2 {
     margin-bottom: 20px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Asegura que la tarjeta no exceda el ancho del contenedor */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 body.light-mode .expandable-card {
@@ -153,6 +158,7 @@ body.light-mode .expandable-card {
 .card-header h3 {
     color: #64b5f6;
     margin: 0;
+    font-size: clamp(1rem, 4vw, 1.5rem); /* Título de tarjeta responsive */
 }
 
 body.light-mode .card-header h3 {
@@ -164,6 +170,7 @@ body.light-mode .card-header h3 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 .card-content.expanded {
@@ -174,6 +181,7 @@ body.light-mode .card-header h3 {
 .card-content p {
     margin: 0 0 10px;
     color: #b0b0b0;
+    font-size: clamp(0.9rem, 3vw, 1rem); /* Texto responsive */
 }
 
 body.light-mode .card-content p {
@@ -184,7 +192,9 @@ body.light-mode .card-content p {
     background-color: #1e1e1e;
     padding: 10px;
     border-radius: 5px;
-    overflow-x: auto;
+    overflow-x: auto; /* Permite desplazamiento horizontal en bloques de código */
+    font-size: clamp(0.8rem, 3vw, 0.9rem); /* Código responsive */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 body.light-mode .card-content pre {
@@ -314,6 +324,62 @@ body.light-mode .close-button:hover {
 }
 
 .image-card img {
-    max-width: 100%;
+    max-width: 100%; /* Imágenes responsive */
+    height: auto;
     border-radius: 10px;
+}
+
+/* Media Queries para diseño responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 10px;
+    }
+
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    #theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .card-content pre {
+        font-size: 0.8rem; /* Tamaño de fuente más pequeño para bloques de código */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 5px;
+    }
+
+    .back-button {
+        top: 5px;
+        left: 5px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    #theme-toggle {
+        top: 5px;
+        right: 5px;
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    .card-content pre {
+        font-size: 0.7rem; /* Tamaño de fuente aún más pequeño para móviles */
+    }
 }
