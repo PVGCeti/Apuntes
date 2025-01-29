@@ -337,6 +337,116 @@ seccomp:
 
                     <div class="expandable-card">
                         <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Instalación y configuración de metricbeat y heartbeat en el servidor de Nginx</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Al ser igual que filebeat las explicaciones estaran más "escuetas" ya que se ha
+                                explicado en el punto anterior. <b>Metricbeat</b> y <b></b> son herramientas de Elastic
+                                que recolecta y envía logs a Elasticsearch o Logstash. Como previamente se comento en el
+                                paso de filebeat, los pasos seran los mismo, descargar mediante el uso de
+                                <b>winget</b> el <b>paquete .deb</b> correspondiente de la version 7.16.3, al igual que
+                                todo lo anterior, y modificación del archivo de configuración.
+                            </p>
+                            <pre>
+wget https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.16.3-amd64.deb
+sudo apt install ./heartbeat-7.16.3-amd64.deb
+
+wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.16.3-amd64.deb
+sudo apt install ./metricbeat-7.16.3-amd64.deb
+                            </pre>
+                            <p>
+                                Con metricbeat y heartbeat ya instalado, tocara configurar dichos servicios para que
+                                función de manera correcta, para ello deberemos de cambiar los archivos
+                                <b>/etc/servicio/servicio.yml</b>, siendo /etc/heartbeat/heartbeat.yml el servicio de
+                                hearbt y /etc/metrcibeat/metricbeat.yml el servicio de metricbeat. Los archivos de
+                                configuración que usaremos serás los siguientes:
+                            </p>
+                            <b>heartbeat</b>
+                            <pre>
+# Este archivo es la configuración de heartbeat
+# Su ruta es: /etc/heartbeat/heartbeat.yml
+
+heartbeat.config.monitors:
+  path: ${path.config}/monitors.d/*.yml
+  reload.enabled: false
+  reload.period: 5s
+
+heartbeat.monitors:
+- type: http
+  urls: ["http://localhost:80"]
+  schedule: '@every 10s'
+
+setup.template.settings:
+  index.number_of_shards: 1
+  index.codec: best_compression
+
+output.logstash:
+  # The Logstash hosts
+  hosts: ["IP-SIEM:5044"]
+  ssl:
+    certificate_authorities:
+      - /etc/pki/tls/certs/logstash-beats.crt
+
+
+processors:
+  - add_observer_metadata:
+
+# Pequeño cambio de seguridad que he añadido
+seccomp:
+  default_action: allow</pre
+                            >
+                            <b>metricbeat</b>
+                            <pre>
+metricbeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+  index.codec: best_compression
+
+
+output.logstash:
+  hosts: ["IP-SIEM:5044"]
+  ssl:
+    enabled: true
+    certificate_authorities:
+      - /etc/pki/tls/certs/logstash-beats.crt
+
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
+
+# Pequeño cambio de seguridad que he añadido
+seccomp:
+  default_action: allow
+                            </pre>
+                            <p>
+                                Con los archivos de configuración ya configurados, lo unico que nos faltaria por hacer
+                                es reiniciar los servicios y probar su funcionalidad para ello, utilizaremos los
+                                siguientes comandos, en caso de que nos dieran algún tipo de respuesta incompleta o
+                                incorrecta tocaria mirar los logs del servicio en cuestión, aunque a priori no deberia
+                                de haber ningún problema con la configuracón que hemos usado:
+                            </p>
+                            <pre>
+sudo systemctl restart metricbeat
+sudo systemctl restart heartbeat-elastic
+
+metricbeat  test config --path.config /etc/metricbeat
+metricbeat  test output --path.config /etc/metricbeat
+
+heartbeat  test config --path.config /etc/heartbeat
+heartbeat  test output --path.config /etc/heartbeat
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
                             <h3>En progreso...</h3>
                         </div>
                         <div class="card-content">
