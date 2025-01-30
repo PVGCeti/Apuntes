@@ -451,7 +451,37 @@ heartbeat  test output --path.config /etc/heartbeat
                         </div>
                         <div class="card-content">
                             <p>Agradecemos su espera</p>
-                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre>
+                            <pre>
+ # Archivo de configuración simple de ejemplo de packetbeat
+# Guardar en: /etc/packetbeat/packetbeat.yml
+
+output.logstash:
+  hosts: ["172.31.42.30:5044"]
+  timeout: 15s
+  ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-beats.crt"]
+
+packetbeat.interfaces.device: any
+
+packetbeat.protocols:
+  dns:
+    ports: [53]
+  http:
+    ports: [80, 443]
+  mysql:
+    ports: [3306]
+  # Agrega otros protocolos según sea necesario
+
+# Configuración de los logs de Nginx
+processors:
+  - add_fields:
+      target: ''
+      fields:
+        type: nginx-access
+
+# Pequeño cambio de seguridad que he añadido
+seccomp:
+  default_action: allow
+                            </pre>
                         </div>
                     </div>
 
