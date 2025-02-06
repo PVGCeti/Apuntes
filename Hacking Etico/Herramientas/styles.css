@@ -277,3 +277,7 @@ body.light-mode .close-button {
 body.light-mode .close-button:hover {
     color: #42a5f5; /* Color azul más claro al pasar el mouse */
 }
+
+a {
+    text-decoration: none;
+}
