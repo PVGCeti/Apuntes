@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Apuntes de Wifi</title>
+        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <!-- Contenedor principal -->
+        <div class="page-container">
+            <!-- Cabecera -->
+            <header>
+                <!-- Botón para volver al índice principal -->
+                <a href="../index.html" class="back-button">← Volver al índice</a>
+                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
+                <h1>Apuntes de Docker</h1>
+                <p>Apuntes creados por Pablo Valladares González.</p>
+                <button id="theme-toggle">🌙</button>
+            </header>
+
+            <!-- Contenido principal -->
+            <main class="container">
+                <!-- Sección de apuntes -->
+                <section class="notes-section">
+                    <h2>Docker</h2>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Información basica.</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Docker es una plataforma que permite crear, enviar y ejecutar aplicaciones en
+                                contenedores, que son entornos ligeros y aislados. Esto asegura que las aplicaciones
+                                funcionen de manera consistente en diferentes entornos, facilitando la portabilidad y la
+                                gestión eficiente de recursos.
+                            </p>
+                            <p>
+                                En caso de que queramos utilizar docker en <strong>Windows</strong> tendremos que
+                                descargar Docker Engine y tenerlo abierto a la hora de utilizar docker, de otra manera,
+                                no funcionara. Cuando tengamos Docker instalado usaremos
+                                <strong>docker --version</strong> para verificar la instalación.
+                            </p>
+                            <div class="image-card">
+                                <img
+                                    src="../../img/docker version.png"
+                                    alt="Muestra el resultado del comando docker --version"
+                                />
+                            </div>
+                            <p>
+                                Otras de las maneras de asegurarnos que Docker funciona correctamente sera utilizando un
+                                comando basico de docker el cual es <strong>docker run hello-world</strong>.
+                            </p>
+                            <div class="image-card">
+                                <img
+                                    src="../../img/Docker hellow-world.png"
+                                    alt="Muestra el resultado del comando docker run hello-world"
+                                />
+                            </div>
+                            <p>
+                                Una vez hecho esto, ya tendriamos docker completamente funcional y comprobado, por lo
+                                que podemos pasar a los siguientes aspectos de docker.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Docker image.</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Una imagen de Docker es un archivo que contiene todo lo necesario para ejecutar una
+                                aplicación, incluyendo el código y sus dependencias. Es inmutable y se utiliza para
+                                crear contenedores, que son instancias en ejecución de la imagen. Las imágenes se pueden
+                                almacenar y compartir fácilmente.
+                            </p>
+                            <p>
+                                Despues de haber hecho el segundo comando de verificación antes mencionado (docker run
+                                hello-world), esto nos habra descargado una imagen de docker, aunque al principio puede
+                                parecer que no vayamos a tener muchas, esto puede llegar a complicarse, para ello
+                                tenemos el comando <strong>docker image ls</strong> para poder ver todas y cada una de
+                                las imagenes que tenemos descargadas.
+                            </p>
+                            <div class="image-card">
+                                <img
+                                    src="../../img/Docker image ls.png"
+                                    alt="Muestra el resultado del comando docker image ls"
+                                />
+                            </div>
+                            <p>
+                                Aunque podemos ejecutar un comando de run con el nombre de la imagen y esta se
+                                descargara automaticamente en caso de que no la tengamos, puede que te preguntes ?Y si
+                                no se el nombre de la imagen? Para ello se creo
+                                <a href="https://hub.docker.com/">Docker hub</a>. Una galeria de todas las imagenes
+                                validadas donde buscar la que te interese.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/Docker hub.png" alt="Muestra la pagina web de docker hub" />
+                            </div>
+                            <p>
+                                Por norma general en el propio Docker hub te mostraran el como se descarga una imagen,
+                                pero si no quieres ir hasta docker hub para buscar el comando, es tan sencillo como
+                                hacer <strong>docker pull nombre_imagen</strong>, aunque esto puede que no sea lo más
+                                optimos ya que hay imagenes que requieren de ciertas caracteristicas para funcionar
+                                adecuadamente (como el mapeo de puertos) por lo que puede ser util en algunas ocasiones.
+                            </p>
+                            <pre>docker pull nombre_imagen</pre>
+                            <div class="image-card">
+                                <img
+                                    src="../../img/Docker pull nginx.png"
+                                    alt="Muestra el resultado del comando docker"
+                                />
+                            </div>
+                            <p>
+                                Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de
+                                una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera
+                                una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más
+                                complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y
+                                pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la
+                                asignaremos a la instancia ya creada.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/AsociarIP.png" alt="Muestra del menu de asociacion de IPs en AWS" />
+                            </div>
+                            <p>
+                                Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún
+                                tipo de problema.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="notes-section">
+                    <h2>Dockerfile</h2>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Configuración de una instancia en AWS para montar un SOC ELK.</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Debido a los requisitos de este SOC ELK, necesitaremos tener al menos 2 cores lógicos, 6
+                                GB RAM y 30 GB disco. Por lo que en nuestro caso utilizaremos una instancia de tipo
+                                <b>t3.large.</b>
+                            </p>
+                            <p>
+                                Aunque va a actuar como un servicio web no vamos a activar la opción de permitir HTTP,
+                                ya que nosotros vamos a entrar a traves del puerto <b>5601</b> en vez del 80. Para
+                                conectarnos a la maquina y hacer las modificaciones correspondientes utilizaremos el
+                                protocolo SSH con llaves, para tener una mayor seguridad.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/InstanciaSIEM.png" alt="Resumen general de la instancia creada" />
+                            </div>
+                            <p>
+                                Una vez tenemos creada la instancia, tendremos que realizar dos cosas más antes de
+                                empezar a montar el SOC, configurar el firewall (o reglas de entradas) y asignarle una
+                                IP estatica (o IP elastica).
+                            </p>
+                            <p>
+                                Iremos al grupo de seguridad y cambiaremos las reglas de entradas, debido a que vamos a
+                                utilizar un <b>Stack ELK</b>, tendremos que crear 3 reglas de entradas para los puertos:
+                                <b>5601, 5044, 9200</b> estos puertos tendran que tener permitido la conexión desde
+                                cualquier IP, ya que puede haber más de un dispositivo el cual este enviandonos datos
+                                para la monitorización.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/ReglasDeEntrada.png" alt="Reglas de entradas creadas y definidas" />
+                            </div>
+                            <p>
+                                Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de
+                                una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera
+                                una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más
+                                complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y
+                                pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la
+                                asignaremos a la instancia ya creada.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/AsociarIP.png" alt="Muestra del menu de asociacion de IPs en AWS" />
+                            </div>
+                            <p>
+                                Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún
+                                tipo de problema.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="notes-section">
+                    <h2>Dockercompose</h2>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Configuración de una instancia en AWS para montar un SOC ELK.</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Debido a los requisitos de este SOC ELK, necesitaremos tener al menos 2 cores lógicos, 6
+                                GB RAM y 30 GB disco. Por lo que en nuestro caso utilizaremos una instancia de tipo
+                                <b>t3.large.</b>
+                            </p>
+                            <p>
+                                Aunque va a actuar como un servicio web no vamos a activar la opción de permitir HTTP,
+                                ya que nosotros vamos a entrar a traves del puerto <b>5601</b> en vez del 80. Para
+                                conectarnos a la maquina y hacer las modificaciones correspondientes utilizaremos el
+                                protocolo SSH con llaves, para tener una mayor seguridad.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/InstanciaSIEM.png" alt="Resumen general de la instancia creada" />
+                            </div>
+                            <p>
+                                Una vez tenemos creada la instancia, tendremos que realizar dos cosas más antes de
+                                empezar a montar el SOC, configurar el firewall (o reglas de entradas) y asignarle una
+                                IP estatica (o IP elastica).
+                            </p>
+                            <p>
+                                Iremos al grupo de seguridad y cambiaremos las reglas de entradas, debido a que vamos a
+                                utilizar un <b>Stack ELK</b>, tendremos que crear 3 reglas de entradas para los puertos:
+                                <b>5601, 5044, 9200</b> estos puertos tendran que tener permitido la conexión desde
+                                cualquier IP, ya que puede haber más de un dispositivo el cual este enviandonos datos
+                                para la monitorización.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/ReglasDeEntrada.png" alt="Reglas de entradas creadas y definidas" />
+                            </div>
+                            <p>
+                                Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de
+                                una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera
+                                una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más
+                                complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y
+                                pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la
+                                asignaremos a la instancia ya creada.
+                            </p>
+                            <div class="image-card">
+                                <img src="../../img/AsociarIP.png" alt="Muestra del menu de asociacion de IPs en AWS" />
+                            </div>
+                            <p>
+                                Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún
+                                tipo de problema.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Pie de página -->
+            <footer>
+                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+            </footer>
+        </div>
+
+        <!-- Disclaimer -->
+        <div id="disclaimer" class="disclaimer">
+            <div class="disclaimer-header">
+                <h3>Advertencia</h3>
+                <button id="close-disclaimer" class="close-button">×</button>
+            </div>
+            <div class="disclaimer-line"></div>
+            <p>
+                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+                diseñado para ser solamente educativo.
+            </p>
+        </div>
+
+        <script>
+            // Función para expandir/colapsar las tarjetas
+            function toggleCard(header) {
+                const card = header.parentElement;
+                const content = card.querySelector(".card-content");
+                content.classList.toggle("expanded");
+            }
+        </script>
+        <script src="../../script.js"></script>
+    </body>
+</html>
