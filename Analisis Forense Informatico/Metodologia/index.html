@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Apuntes de Wifi</title>
+        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <!-- Contenedor principal -->
+        <div class="page-container">
+            <!-- Cabecera -->
+            <header>
+                <!-- Botón para volver al índice principal -->
+                <a href="../index.html" class="back-button">← Volver al índice</a>
+                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
+                <h1>Metodologia del analísis forense</h1>
+                <p>Apuntes creados por Pablo Valladares González.</p>
+                <button id="theme-toggle">🌙</button>
+            </header>
+
+            <!-- Contenido principal -->
+            <main class="container">
+                <!-- Sección de apuntes -->
+                <section class="notes-section">
+                    <h2>Metodologia</h2>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Informacón general sobre la metodologia a aplicar</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                La gestión de evidencias digitales es un proceso crítico que varía según la legislación
+                                vigente en cada país. Aunque no siempre exista una obligatoriedad legal, es altamente
+                                recomendable seguir guías de buenas prácticas y estándares reconocidos en la
+                                metodología. A continuación, se presentan algunas normativas clave:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>RFC 3227</strong>: Directrices para la recolección y archivo de evidencias
+                                    (2002).
+                                </li>
+                                <li>
+                                    <strong>ISO 27037</strong>: Directrices para la identificación, recolección,
+                                    adquisición y preservación de evidencias digitales (2016).
+                                </li>
+                                <li>
+                                    <strong>NIST 800-66</strong>: Guía para integrar técnicas forenses en la respuesta a
+                                    incidentes (2008).
+                                </li>
+                            </ul>
+                            <h3>Enfoque en ISO 27037</h3>
+                            <p>
+                                Utilizaremos la <strong>ISO 27037</strong> como base para las técnicas y métodos
+                                aplicados en la gestión de evidencias respecto a la identificación, recopilación,
+                                adquisición y preservación de evidencias digitales, junto a la cadena de custodia.
+                            </p>
+                            <p>
+                                La ISO 27037 está principalmente focalizada en la realización de un Forense Pericial,
+                                donde es probable que el informe realizado sea presentado ante la corte o juzgados.
+                            </p>
+                            <p>
+                                Muchas veces, un Análisis Forense de Respuesta a Incidentes puede llegar a convertirse
+                                en un Análisis Forense Pericial, dado que el análisis forense realizado en la fase de
+                                identificación del ciclo de vida de un incidente ha identificado que se ha producido un
+                                perjuicio para la organización o compañía, y se quieren depurar responsabilidades. Es
+                                por esto que el análisis deberá conocer esta metodología y aplicar sus fases cuando
+                                correspondan.
+                            </p>
+                            <p>
+                                La ISO 27037 describe que la evidencia digital es frágil por naturaleza y puede ser
+                                alterada, manipulada o destruida a través de una gestión incorrecta. El analista forense
+                                que gestione las evidencias digitales debe ser competente para identificar y gestionar
+                                los riesgos y consecuencias de posibles procedimientos a seguir al lidiar con evidencias
+                                digitales.
+                            </p>
+                            <p>
+                                El analista forense necesita seguir procedimientos correctos para asegurar que se
+                                mantiene la integridad y la fiabilidad de la posible evidencia digital. Las reglas
+                                fundamentales en la gestión de fuentes de posibles evidencias digitales son:
+                            </p>
+                            <ul>
+                                <li>
+                                    Minimizar la gestión de la evidencia original o de la posible evidencia digital.
+                                </li>
+                                <li>
+                                    Justificar cualquier cambio y documentar las acciones realizadas (para que un
+                                    experto pueda formar una opinión sobre la fiabilidad).
+                                </li>
+                                <li>Cumplir con la regulación local en cuanto a gestión de evidencias.</li>
+                                <li>El analista forense no debe tomar decisiones más allá de su competencia.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>ISO27037 Identificación</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                <strong>Las evidencias digitales</strong> se pueden presentar de manera
+                                <strong>física</strong> y <strong>lógica</strong>. La forma física incluye la
+                                representación de datos dentro de un dispositivo tangible. La forma lógica de una
+                                evidencia digital se refiere a la representación virtual de la información dentro de un
+                                dispositivo tangible.
+                            </p>
+
+                            <p>
+                                El proceso de <strong>identificación</strong> involucra realizar un reconocimiento y
+                                documentación de posibles evidencias digitales. Este proceso debería identificar el
+                                <strong>medio de almacenamiento digital</strong> y los
+                                <strong>dispositivos de procesamiento</strong> que pueden contener posibles evidencias
+                                digitales relevantes para el incidente. Esta fase también incluye un proceso para
+                                <strong>priorizar la recopilación de evidencias</strong> basadas en su
+                                <strong>volatilidad</strong>.
+                            </p>
+
+                            <p>
+                                La volatilidad de la información debe ser identificada para asegurar el correcto orden
+                                de recopilación y adquisición, minimizando el daño en las posibles evidencias digitales.
+                                El analista forense debería ser consciente de que no todos los tipos de almacenamiento
+                                pueden ser identificados y localizados, por ejemplo, el
+                                <strong>almacenamiento en la nube</strong>.
+                            </p>
+
+                            <p>
+                                El analista forense debería llevar a cabo sistemáticamente una
+                                <strong>búsqueda exhaustiva</strong> de los elementos que puedan contener evidencias
+                                digitales, incluyendo diferentes tipos de dispositivos digitales que puedan tener
+                                posibles evidencias digitales y que pueden ser fácilmente ignorados.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>ISO27037 Recopilación</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Una vez que los <strong>dispositivos digitales</strong> que podrían contener evidencias
+                                digitales son identificados, el personal forense debe decidir si
+                                <strong>recopilar</strong> o <strong>adquirir</strong> en los siguientes pasos. Hay un
+                                número de <strong>factores de decisión</strong> para esto y está basado en las
+                                circunstancias.
+                            </p>
+
+                            <p>
+                                La <strong>recopilación</strong> es un paso en el proceso de gestión de evidencias
+                                digitales, donde los dispositivos que posiblemente contengan evidencias digitales son
+                                obtenidos. Estos dispositivos deben ser movidos de su
+                                <strong>localización original</strong> a un laboratorio o a otro entorno controlado para
+                                más tarde realizar la <strong>adquisición</strong> y el <strong>análisis</strong>. Las
+                                posibles evidencias digitales pueden existir en al menos dos posibles estados: cuando el
+                                sistema está <strong>encendido</strong> o cuando el sistema está
+                                <strong>apagado</strong>. Cada estado necesita ser tratado de una manera diferente y
+                                distintas herramientas son utilizadas, dependiendo del estado.
+                            </p>
+
+                            <h4>Equipo encendido:</h4>
+                            <ul>
+                                <li>Obtención de datos volátiles.</li>
+                                <li>
+                                    Verificación de los sistemas de cifrado (Veracrypt, BitLocker, Lukus, Filevault).
+                                </li>
+                                <li>Documentarlo siempre todo, con objeto de minimizar el impacto.</li>
+                            </ul>
+
+                            <h4>Equipo apagado:</h4>
+                            <ul>
+                                <li>
+                                    Si está encendido, nunca apagar de manera ordenada; desconectar de la alimentación.
+                                </li>
+                                <li>Adquisición física de las evidencias.</li>
+                            </ul>
+
+                            <p>
+                                El proceso de recopilación incluye la <strong>documentación</strong> del proceso
+                                completo y también el <strong>empaquetado</strong> de los dispositivos antes del
+                                transporte. Es importante para el analista forense que recopile cualquier material que
+                                podría estar relacionado con la posible evidencia digital, como, por ejemplo:
+                                <strong>contraseñas</strong>, <strong>cables de alimentación</strong>, etc. Las posibles
+                                evidencias digitales se pueden dañar si no se tienen en cuenta los cuidados necesarios
+                                para el transporte.
+                            </p>
+
+                            <p>
+                                El analista forense debe adoptar el mejor método de recopilación posible, basado en la
+                                <strong>situación</strong>, <strong>coste</strong> y <strong>tiempo</strong>; y siempre
+                                documentando la decisión tomada en caso de usar un método en particular.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>ISO27037 Adquisición</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                El proceso de <strong>adquisición</strong> produce una <strong>imagen</strong> de la
+                                fuente original (por ejemplo, de un disco duro junto con su partición y los archivos
+                                contenidos dentro de la partición), siendo necesario documentar los pasos realizados
+                                para realizar dicha imagen. El analista forense deberá adoptar un
+                                <strong>método de adquisición apropiado</strong> basado en la situación, coste y tiempo,
+                                y nuevamente debe documentar la decisión de usar un método en particular o herramienta.
+                            </p>
+
+                            <p>
+                                El método de adquisición usado debería producir una <strong>imagen copia</strong> de la
+                                fuente original o de la posible evidencia digital o del dispositivo digital. Tanto la
+                                fuente original como la imagen copia deberían ser verificadas con una
+                                <strong>función de verificación</strong> demostrada, que sea aceptable por el individuo
+                                o persona que utilice dicha evidencia. La fuente original y cada imagen copia de la
+                                fuente original deben de producir la misma función de verificación. (Si se utilizan
+                                funciones de verificación criptográficas, tales como <strong>SHA256</strong>, ambas
+                                deben producir el mismo hash).
+                            </p>
+
+                            <p>
+                                Cada imagen copia, copia forense o imagen forense, debe ser verificada como copia de la
+                                fuente original. Habrá casos donde el proceso de verificación no se pueda realizar, por
+                                ejemplo, cuando el sistema está funcionando, cuando la fuente original tenga errores,
+                                cuando la fuente original sea un disco de estado sólido con el
+                                <strong>TRIM</strong> activado o cuando haya una limitación de tiempo. Si la imagen
+                                copia no puede ser verificada, este hecho debe ser documentado y justificado. Siempre
+                                que se pueda, se debe realizar una imagen copia, donde se obtendrá el
+                                <strong>espacio libre</strong> y el <strong>espacio utilizado</strong>.
+                            </p>
+
+                            <p>
+                                Podría haber casos en los cuales no sea factible o esté permitido hacer una imagen copia
+                                de la evidencia original, como cuando esta sea muy grande. En estos casos, el analista
+                                forense puede realizar una <strong>adquisición lógica</strong> de la información
+                                específica o de directorios. Este tipo de adquisición, generalmente se realiza a nivel
+                                de <strong>sistema de archivos</strong>. Durante una adquisición lógica, solo los
+                                archivos visibles, es decir, los no borrados serán copiados. Los ficheros borrados y el
+                                espacio libre no serán copiados. Este método es muy útil para realizar sobre sistemas
+                                críticos que no pueden ser apagados. Las adquisiciones pueden ser
+                                <strong>presenciales</strong> o <strong>remotas</strong>. En función de cómo se
+                                encuentre la fuente original o dispositivo, se podrán realizar distintos tipos de
+                                adquisición.
+                            </p>
+
+                            <p>
+                                La evidencia original debe mantenerse <strong>inalterable</strong>, siempre que se pueda
+                                y el estado de la técnica lo permita. Si fuese necesario ejecutar algo sobre el sistema,
+                                para que este permita realizar la adquisición, se deberá documentar todos los pasos
+                                realizados y plasmarlos en el informe. Este tipo de conducta de ejecutar algo sobre el
+                                sistema se produce en la adquisición denominada <strong>Triaje</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>ISO27037 Preservación</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Las posibles <strong>evidencias digitales</strong> deben ser
+                                <strong>preservadas</strong> para asegurar su utilidad en la investigación. Es
+                                importante proteger la <strong>integridad</strong> de la evidencia. El proceso de
+                                preservación, como dice el propio nombre, debe preservar las posibles evidencias
+                                digitales y los dispositivos que las contengan, de posibles manipulaciones o
+                                modificaciones.
+                            </p>
+
+                            <p>
+                                El proceso de preservación debe ser iniciado y mantenido a lo largo de la gestión de las
+                                evidencias, empezando desde la fase de <strong>identificación</strong>. Se podrán
+                                utilizar <strong>funciones resumen criptográficas</strong> para verificar su no
+                                alterabilidad. También se debe tener en cuenta el <strong>espacio</strong> a utilizar,
+                                donde debiese tener las <strong>medidas de seguridad necesarias</strong>, así como un
+                                <strong>control de acceso</strong> al mismo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>ISO27037 Cadena de custodia</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                El <strong>registro de cadena de custodia</strong> es un documento que identifica la
+                                <strong>cronología</strong> de localización y gestión de la posible evidencia digital.
+                                Para cumplimentar este registro, típicamente, traza la historia del dispositivo en
+                                tiempo, por la persona que lo recibe, la persona que lo entrega, y el motivo de la
+                                entrega. Esta fase empieza cuando se recibe el sistema para analizar.
+                            </p>
+
+                            <p>
+                                El registro de cadena de custodia es un documento o documentos que detallan quién es el
+                                responsable de la gestión de dicha evidencia en un periodo de tiempo determinado. El
+                                propósito de mantener la cadena de custodia es saber en un tiempo concreto, dónde estaba
+                                y quién lo gestionaba. El registro de cadena de custodia debería llevar la siguiente
+                                información como mínimo:
+                            </p>
+
+                            <ul>
+                                <li><strong>Identificador único</strong> de la evidencia.</li>
+                                <li>
+                                    Quién accedió a la evidencia detallando <strong>tiempo</strong> y
+                                    <strong>sitio</strong> donde se accedió.
+                                </li>
+                                <li>
+                                    Quién chequeó si la evidencia estaba fuera o dentro de las instalaciones de
+                                    preservación y qué ocurrió.
+                                </li>
+                                <li>
+                                    El motivo de que la evidencia saliese (caso y propósito) y la
+                                    <strong>autoridad</strong> si fuese.
+                                </li>
+                            </ul>
+
+                            <p>
+                                La cadena de custodia debe ser mantenida a lo largo de la vida de la evidencia y
+                                preservada durante cierto periodo de tiempo después de finalizar el caso. Este periodo
+                                puede ser establecido en concordancia con las <strong>leyes locales</strong> y debe ser
+                                establecido desde el momento de la adquisición. Un método para verificar si la cadena de
+                                custodia se mantiene es mediante los <strong>hashes de adquisición</strong>.
+                            </p>
+
+                            <p>
+                                Podemos tener dos cadenas de custodia: una para la evidencia y otra para la
+                                <strong>copia/imagen forense</strong>.
+                            </p>
+
+                            <p>
+                                El procedimiento natural para este tipo de custodia es realizar una
+                                <strong>adquisición</strong> de la evidencia original y que genere dos copias forenses.
+                                La evidencia original se custodia y no se trabaja con ella. La primera imagen forense es
+                                la utilizada para trabajar con ella y la segunda se almacena como
+                                <strong>backup</strong> por si fallase la primera.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Pie de página -->
+            <footer>
+                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+            </footer>
+        </div>
+
+        <!-- Disclaimer -->
+        <div id="disclaimer" class="disclaimer">
+            <div class="disclaimer-header">
+                <h3>Advertencia</h3>
+                <button id="close-disclaimer" class="close-button">×</button>
+            </div>
+            <div class="disclaimer-line"></div>
+            <p>
+                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+                diseñado para ser solamente educativo.
+            </p>
+        </div>
+
+        <script>
+            // Función para expandir/colapsar las tarjetas
+            function toggleCard(header) {
+                const card = header.parentElement;
+                const content = card.querySelector(".card-content");
+                content.classList.toggle("expanded");
+            }
+        </script>
+        <script src="../../script.js"></script>
+    </body>
+</html>

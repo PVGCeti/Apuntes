@@ -48,19 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const disclaimer = document.getElementById("disclaimer");
     const closeButton = document.getElementById("close-disclaimer");
 
-    // Mostrar el disclaimer
-    setTimeout(() => {
-        disclaimer.classList.add("show");
-    }, 100); // Pequeño retraso para asegurar que el DOM esté listo
+    // Verificar si el usuario ya cerró el disclaimer
+    const disclaimerClosed = localStorage.getItem("disclaimerClosed");
 
-    // Ocultar el disclaimer después de 10 segundos
-    const hideTimeout = setTimeout(() => {
-        disclaimer.classList.remove("show");
-    }, 10000); // 10000 milisegundos = 10 segundos
+    if (!disclaimerClosed) {
+        // Mostrar el disclaimer solo si no se ha cerrado antes
+        setTimeout(() => {
+            disclaimer.classList.add("show");
+        }, 100); // Pequeño retraso para asegurar que el DOM esté listo
 
-    // Cerrar el disclaimer manualmente
-    closeButton.addEventListener("click", () => {
-        disclaimer.classList.remove("show");
-        clearTimeout(hideTimeout); // Cancelar el timeout si se cierra manualmente
-    });
+        // Ocultar el disclaimer después de 10 segundos
+        const hideTimeout = setTimeout(() => {
+            disclaimer.classList.remove("show");
+        }, 10000); // 10000 milisegundos = 10 segundos
+
+        // Cerrar el disclaimer manualmente
+        closeButton.addEventListener("click", () => {
+            disclaimer.classList.remove("show");
+            clearTimeout(hideTimeout); // Cancelar el timeout si se cierra manualmente
+
+            // Guardar en localStorage que el disclaimer fue cerrado
+            localStorage.setItem("disclaimerClosed", "true");
+        });
+    }
 });
