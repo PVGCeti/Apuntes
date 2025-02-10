@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Wifi</title>
+    <link rel="icon" type="image/png" href="../../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <img src="../../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
+            <h1>Dumpzilla</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de apuntes -->
+            <section class="notes-section">
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Información de Dumpzilla</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Dumpzilla es una herramienta de software que se utiliza para la gestión y análisis de datos
+                            de navegadores web. Permite a los usuarios exportar, visualizar y eliminar datos de
+                            navegación, como historial, cookies, contraseñas y otros datos almacenados por los
+                            navegadores. Es especialmente útil para aquellos que desean limpiar su historial de
+                            navegación o analizar la información almacenada en su navegador.
+                        </p>
+                        <p>
+                            Dumpzilla es compatible con varios navegadores y puede ayudar a los usuarios a mantener su
+                            privacidad y seguridad en línea al gestionar la información que se guarda durante la
+                            navegación. Sin embargo, es importante tener en cuenta que, como con cualquier herramienta
+                            de gestión de datos, se debe usar con precaución y asegurarse de que se comprende cómo
+                            funciona antes de realizar cambios en los datos del navegador.
+                        </p>
+                    </div>
+                </div>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Instalación de Dumpzilla</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Aunque podemos instalar Dumpzilla desde su <strong><a
+                                    href="https://github.com/Busindre/dumpzilla">repositorio de github</a></strong>, es
+                            recomendable
+                            hacerlo
+                            mediante <strong>apt</strong> ya que nos facilitaria el uso
+                        </p>
+                        <pre>sudo apt install dumpzilla</pre>
+                        <div class="image-card">
+                            <img src="../../../img/dumpzillaInstall.png" alt="Muestra de la instalación de dumpzilla" />
+                        </div>
+                    </div>
+                </div>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Utilización de Dumpzilla</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Dumpzilla tiene multiples parametros/opciones que poder utilizar para extraer diversa
+                            información, dependiendo de nuestras necesidades utilizaremos uno u otro, la mayoria de
+                            opciones que hay son:
+                        <ul>
+                            <li>
+                                <strong>--Addons</strong>
+                            </li>
+                            <li>
+                                <strong>--Search</strong>
+                            </li>
+                            <li>
+                                <strong>--Bookmarks</strong>: [-bm_create_range &lt;start&gt;
+                                &lt;end&gt;][-bm_last_range &lt;start&gt; &lt;end&gt;]
+                            </li>
+                            <li>
+                                <strong>--Certoverride</strong>
+                            </li>
+                            <li>
+                                <strong>--Cookies</strong>: [-showdom] [-domain &lt;string&gt;] [-name &lt;string&gt;]
+                                [-hostcookie &lt;string&gt;] [-access &lt;date&gt;] [-create &lt;date&gt;]
+                                [-secure &lt;0|1&gt;] [-httponly &lt;0|1&gt;] [-last_range &lt;start&gt; &lt;end&gt;]
+                                [-create_range &lt;start&gt; &lt;end&gt;]
+                            </li>
+                            <li>
+                                <strong>--Downloads</strong>: [-range &lt;start&gt; &lt;end&gt;]
+                            </li>
+                            <li>
+                                <strong>--Export</strong>: &lt;directory&gt; (export data as json)
+                            </li>
+                            <li>
+                                <strong>--Forms</strong>: [-value &lt;string&gt;] [-forms_range &lt;start&gt;
+                                &lt;end&gt;]
+                            </li>
+                            <li>
+                                <strong>--Help</strong>: (shows this help message and exit)
+                            </li>
+                            <li>
+                                <strong>--History</strong>: [-url &lt;string&gt;] [-title &lt;string&gt;] [-date
+                                &lt;date&gt;] [-history_range &lt;start&gt; &lt;end&gt;] [-frequency]
+                            </li>
+                            <li>
+                                <strong>--Keypinning</strong>: [-entry_type &lt;HPKP|HSTS&gt;]
+                            </li>
+                            <li>
+                                <strong>--OfflineCache</strong>: [-cache_range &lt;start&gt; &lt;end&gt; -extract
+                                &lt;directory&gt;]
+                            </li>
+                            <li>
+                                <strong>--Preferences</strong>
+                            </li>
+                            <li>
+                                <strong>--Passwords</strong>
+                            </li>
+                            <li>
+                                <strong>--Permissions</strong>: [-host &lt;string&gt;] [-modif &lt;date&gt;]
+                                [-modif_range &lt;start&gt; &lt;end&gt;]
+                            </li>
+                            <li>
+                                <strong>--RegExp</strong>: (use Regular Expressions for string type filters instead of
+                                Wildcards)
+                            </li>
+                            <li>
+                                <strong>--Session</strong>
+                            </li>
+                            <li>
+                                <strong>--Summary</strong>: (no data extraction, only summary report)
+                            </li>
+                            <li>
+                                <strong>--Thumbnails</strong>: [-extract_thumb &lt;directory&gt;]
+                            </li>
+                            <li>
+                                <strong>--Verbosity</strong>: (DEBUG|INFO|WARNING|ERROR|CRITICAL)
+                            </li>
+                            <li>
+                                <strong>--Watch</strong>: [-text &lt;string&gt;] (shows in daemon mode the URLs and text
+                                form in real time; Unix only)
+                            </li>
+                        </ul>
+                        Ademas de esto, para utilizar dumpzilla deberos sacar la ruta del navegador donde esta guardada
+                        la información de los perfiles:
+                        </p>
+                        <li><strong>WinXP profile</strong> -> 'C:\Documents and Settings\%USERNAME%\Application
+                            Data\Mozilla\Firefox\Profiles\xxxx.default'</li>
+                        <li><strong>Win7 profile</strong> ->
+                            'C:\Users\%USERNAME%\AppData\Roaming\Mozilla\Firefox\Profiles\xxxx.default'</li>
+                        <li><strong>MacOS profile</strong> -> '/Users/$USER/Library/Application\
+                            Support/Firefox/Profiles/xxxx.default'</li>
+                        <li><strong>Unix profile</strong> -> '/home/$USER/.mozilla/firefox/xxxx.default'</li>
+
+                        <p>Por lo que el comando sera:</p>
+                        <pre>dumpzilla RUTA OPCION</pre>
+                        <p>Los comandos utilizados son:</p>
+                        <pre>
+dumpzilla RUTA --Downloads
+dumpzilla RUTA --History</pre>
+                        <div class="image-card">
+                            <img src="../../../img/dumpzillaEjemplo.png"
+                                alt="Muestra de el resultado de dos comandos de dumpzilla" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
+        </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
+
+    <script>
+        // Función para expandir/colapsar las tarjetas
+        function toggleCard(header) {
+            const card = header.parentElement;
+            const content = card.querySelector(".card-content");
+            content.classList.toggle("expanded");
+        }
+    </script>
+    <script src="../../script.js"></script>
+</body>
+
+</html>

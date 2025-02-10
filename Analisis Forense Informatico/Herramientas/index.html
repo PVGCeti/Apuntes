@@ -1,176 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de Airmon-NG</title>
-        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice</a>
-                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Herramientas generales</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Sección de herramientas de análisis forense -->
-                <section class="commands-section">
-                    <h2>Análisis Forense</h2>
-                    <div class="command-list">
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Autopsy</b> -> Plataforma de análisis forense digital.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Volatility</b> -> Herramienta para el análisis de memoria RAM.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Magnet RAM</b> -> Herramienta para la adquisición y análisis de memoria RAM.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Lime</b> -> Herramienta para la adquisición de memoria en sistemas Windows.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Foremost</b> -> Herramienta para la recuperación de archivos borrados.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>Scalpel</b> -> Herramienta para la recuperación de archivos basada en patrones.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Dumpzilla</b> -> Herramienta para el análisis forense de navegadores.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Shellbagview</b> -> Herramienta para analizar los Shellbags de Windows.</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Airmon-NG</title>
+    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
 
-                <!-- Sección de herramientas de análisis de archivos -->
-                <section class="commands-section">
-                    <h2>Análisis de Archivos</h2>
-                    <div class="command-list">
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>Reglas Yara/Sigma</b> -> Herramientas para la detección de malware y análisis de
-                                    archivos.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Steghide</b> -> Herramienta para ocultar datos en archivos de imagen y audio.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>Binwalk</b> -> Herramienta para el análisis de firmware y extracción de archivos.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>HxD</b> -> Editor hexadecimal para la edición de archivos binarios.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>HexEditor</b> -> Herramienta para la edición de archivos en formato hexadecimal.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>Exiftool</b> -> Herramienta para leer y escribir metadatos en archivos
-                                    multimedia.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>String</b> -> Herramienta para extraer cadenas de texto de archivos binarios.</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
+            <h1>Herramientas generales</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
 
-                <!-- Sección de herramientas de pruebas de seguridad -->
-                <section class="commands-section">
-                    <h2>Pruebas de Seguridad</h2>
-                    <div class="command-list">
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>NotMyFault</b> -> Herramienta para pruebas de seguridad en sistemas Windows.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>FOCA</b> -> Herramienta para la recopilación de información y análisis de
-                                    metadatos.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>Fatcat</b> -> Herramienta para la recuperación de datos de sistemas de archivos
-                                    FAT.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-            </main>
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de herramientas de análisis forense -->
+            <section class="commands-section">
+                <h2>Extracción de evidencias</h2>
+                <div class="command-list">
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Autopsy</b> -> Plataforma de análisis forense digital.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Volatility</b> -> Herramienta para el análisis de memoria RAM.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Magnet RAM</b> -> Herramienta para la adquisición y análisis de memoria RAM.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Lime</b> -> Herramienta para la adquisición de memoria en sistemas Windows.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Foremost</b> -> Herramienta para la recuperación de archivos borrados.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>Scalpel</b> -> Herramienta para la recuperación de archivos basada en patrones.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="./Dumpzilla/index.html">
+                        <div class="command-card">
+                            <p><b>Dumpzilla</b> -> Herramienta para el análisis forense de navegadores.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Shellbagview</b> -> Herramienta para analizar los Shellbags de Windows.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+            <!-- Sección de herramientas de análisis de archivos -->
+            <section class="commands-section">
+                <h2>Análisis de evidencias</h2>
+                <div class="command-list">
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>Reglas Yara/Sigma</b> -> Herramientas para la detección de malware y análisis de
+                                archivos.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Steghide</b> -> Herramienta para ocultar datos en archivos de imagen y audio.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>Binwalk</b> -> Herramienta para el análisis de firmware y extracción de archivos.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>HxD</b> -> Editor hexadecimal para la edición de archivos binarios.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>HexEditor</b> -> Herramienta para la edición de archivos en formato hexadecimal.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>Exiftool</b> -> Herramienta para leer y escribir metadatos en archivos
+                                multimedia.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>String</b> -> Herramienta para extraer cadenas de texto de archivos binarios.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Sección de herramientas de pruebas de seguridad -->
+            <section class="commands-section">
+                <h2>Pruebas de Seguridad</h2>
+                <div class="command-list">
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>NotMyFault</b> -> Herramienta para pruebas de seguridad en sistemas Windows.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>FOCA</b> -> Herramienta para la recopilación de información y análisis de
+                                metadatos.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>Fatcat</b> -> Herramienta para la recuperación de datos de sistemas de archivos
+                                FAT.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script src="../../script.js"></script>
+</body>
 
-        <script src="../../script.js"></script>
-    </body>
 </html>
