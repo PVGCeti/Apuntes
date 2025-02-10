@@ -313,6 +313,24 @@ En wireshark buscaremos todas las peeticiones que tengan como destino puerto 80,
 
                 <div class="expandable-card">
                     <div class="card-header" onclick="toggleCard(this)">
+                        <h3>11. Is there client isolation in the wifi-mobile network?</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Los comandos utilizados han sido:</p>
+                        <p>
+                            <b>arp-scan -I wlan4 -l:</b> detecta dispositivos en la red
+                        </p>
+                        <p>
+                            <b>curl 192.168.2.7:</b> manda una petición get a dicha IP
+                        </p>
+                        <pre>
+arp-scan -I wlan4 -l
+curl 192.168.2.7</pre>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
                         <h3>En progreso...</h3>
                     </div>
                     <div class="card-content">
