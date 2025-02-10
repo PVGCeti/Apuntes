@@ -1,97 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de Airmon-NG</title>
-        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice</a>
-                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Apuntes de Airmon-NG</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Sección de comandos -->
-                <section class="commands-section">
-                    <h2>Comandos Airmon-NG</h2>
-                    <div class="command-list">
-                        <div class="command-card">
-                            <p><b>airmon-ng start wlan0</b> -> Pone la interfaz en modo monitor/promiscuo.</p>
-                            <p>El modo promiscuo recibe todos los paquetes que se envían en la red.</p>
-                        </div>
-                        <div class="command-card">
-                            <p>
-                                <b>airodump-ng wlan0mon -w . --manufacturer --wps --band abg</b> -> Escanea todas las
-                                redes.
-                            </p>
-                        </div>
-                        <div class="command-card">
-                            <p>
-                                <b>airodump-ng wlan0mon -w . --manufacturer --wps -c11</b> -> Escanea todas las redes en
-                                el canal 11.
-                            </p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>iwconfig wlan0mon channel11</b> -> Pone la interfaz en el canal 11.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>mdk4 wlan0mon p -t MAC -f ~/rockyoumodificado.txt</b> -> Ataque de fuerza bruta.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>wpa_supplicant -Dnl80211 -iwlan1 -c free.conf</b> -> Conectarse a la WiFi.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>dhclient wlan1 -v</b> -> Pide una IP en dicha WiFi.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>systemctl stop network-manager</b> -> Apaga el servicio de red.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>ip link set wlan2 down</b> -> Apaga la red.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>macchanger -m MAC wlan2</b> -> Cambia la dirección MAC.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>ip link set wlan2 up</b> -> Enciende la red.</p>
-                        </div>
-                        <div class="command-card">
-                            <p><b>besside-ng -b MAC interfaz</b> -> Crackea redes WEP.</p>
-                        </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Airmon-NG</title>
+    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <a href="../../index.html"><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Apuntes de Airmon-NG</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de comandos -->
+            <section class="commands-section">
+                <h2>Comandos Airmon-NG</h2>
+                <div class="command-list">
+                    <div class="command-card">
+                        <p><b>airmon-ng start wlan0</b> -> Pone la interfaz en modo monitor/promiscuo.</p>
+                        <p>El modo promiscuo recibe todos los paquetes que se envían en la red.</p>
                     </div>
-                </section>
-            </main>
+                    <div class="command-card">
+                        <p>
+                            <b>airodump-ng wlan0mon -w . --manufacturer --wps --band abg</b> -> Escanea todas las
+                            redes.
+                        </p>
+                    </div>
+                    <div class="command-card">
+                        <p>
+                            <b>airodump-ng wlan0mon -w . --manufacturer --wps -c11</b> -> Escanea todas las redes en
+                            el canal 11.
+                        </p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>iwconfig wlan0mon channel11</b> -> Pone la interfaz en el canal 11.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>mdk4 wlan0mon p -t MAC -f ~/rockyoumodificado.txt</b> -> Ataque de fuerza bruta.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>wpa_supplicant -Dnl80211 -iwlan1 -c free.conf</b> -> Conectarse a la WiFi.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>dhclient wlan1 -v</b> -> Pide una IP en dicha WiFi.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>systemctl stop network-manager</b> -> Apaga el servicio de red.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>ip link set wlan2 down</b> -> Apaga la red.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>macchanger -m MAC wlan2</b> -> Cambia la dirección MAC.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>ip link set wlan2 up</b> -> Enciende la red.</p>
+                    </div>
+                    <div class="command-card">
+                        <p><b>besside-ng -b MAC interfaz</b> -> Crackea redes WEP.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script src="../../script.js"></script>
+</body>
 
-        <script src="../../script.js"></script>
-    </body>
 </html>

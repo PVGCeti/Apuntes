@@ -1,261 +1,249 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de Wifi</title>
-        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice</a>
-                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Apuntes de Wifi</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Sección de apuntes -->
-                <section class="notes-section">
-                    <h2>Despliegue con AWS</h2>
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Configuración de una instancia en AWS para montar un SOC ELK.</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Debido a los requisitos de este SOC ELK, necesitaremos tener al menos 2 cores lógicos, 6
-                                GB RAM y 30 GB disco. Por lo que en nuestro caso utilizaremos una instancia de tipo
-                                <b>t3.large.</b>
-                            </p>
-                            <p>
-                                Aunque va a actuar como un servicio web no vamos a activar la opción de permitir HTTP,
-                                ya que nosotros vamos a entrar a traves del puerto <b>5601</b> en vez del 80. Para
-                                conectarnos a la maquina y hacer las modificaciones correspondientes utilizaremos el
-                                protocolo SSH con llaves, para tener una mayor seguridad.
-                            </p>
-                            <div class="image-card">
-                                <img src="../../img/InstanciaSIEM.png" alt="Resumen general de la instancia creada" />
-                            </div>
-                            <p>
-                                Una vez tenemos creada la instancia, tendremos que realizar dos cosas más antes de
-                                empezar a montar el SOC, configurar el firewall (o reglas de entradas) y asignarle una
-                                IP estatica (o IP elastica).
-                            </p>
-                            <p>
-                                Iremos al grupo de seguridad y cambiaremos las reglas de entradas, debido a que vamos a
-                                utilizar un <b>Stack ELK</b>, tendremos que crear 3 reglas de entradas para los puertos:
-                                <b>5601, 5044, 9200</b> estos puertos tendran que tener permitido la conexión desde
-                                cualquier IP, ya que puede haber más de un dispositivo el cual este enviandonos datos
-                                para la monitorización.
-                            </p>
-                            <div class="image-card">
-                                <img src="../../img/ReglasDeEntrada.png" alt="Reglas de entradas creadas y definidas" />
-                            </div>
-                            <p>
-                                Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de
-                                una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera
-                                una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más
-                                complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y
-                                pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la
-                                asignaremos a la instancia ya creada.
-                            </p>
-                            <div class="image-card">
-                                <img src="../../img/AsociarIP.png" alt="Muestra del menu de asociacion de IPs en AWS" />
-                            </div>
-                            <p>
-                                Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún
-                                tipo de problema.
-                            </p>
-                        </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Wifi</title>
+    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <a href="../../index.html"><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Apuntes de Wifi</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de apuntes -->
+            <section class="notes-section">
+                <h2>Despliegue con AWS</h2>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Configuración de una instancia en AWS para montar un SOC ELK.</h3>
                     </div>
-
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Despliegue de un SOC ELK en una instancia de AWS.</h3>
+                    <div class="card-content">
+                        <p>
+                            Debido a los requisitos de este SOC ELK, necesitaremos tener al menos 2 cores lógicos, 6
+                            GB RAM y 30 GB disco. Por lo que en nuestro caso utilizaremos una instancia de tipo
+                            <b>t3.large.</b>
+                        </p>
+                        <p>
+                            Aunque va a actuar como un servicio web no vamos a activar la opción de permitir HTTP,
+                            ya que nosotros vamos a entrar a traves del puerto <b>5601</b> en vez del 80. Para
+                            conectarnos a la maquina y hacer las modificaciones correspondientes utilizaremos el
+                            protocolo SSH con llaves, para tener una mayor seguridad.
+                        </p>
+                        <div class="image-card">
+                            <img src="../../img/InstanciaSIEM.png" alt="Resumen general de la instancia creada" />
                         </div>
-                        <div class="card-content">
-                            <p>
-                                Una vez ya tenemos una instancia de AWS preparada para el montaje de un SOC ELK, es
-                                decir, los requisitos de hardware correspondientes y las reglas de entradas e IP
-                                configuradas correctamente. Deberemos de entrar a la maquina a traves del protocolo
-                                <b>SSH</b> con el siguiente comando:
-                            </p>
-                            <pre>ssh -i ./Key.pem ec2-user@IP</pre>
-                            <p>Una vez estemos conectados veremos una paloma dibujada en ASCII</p>
-                            .
-                            <div class="image-card">
-                                <img
-                                    src="../../img/ConexionMaquina.png"
-                                    alt="Muestra de la conexión realizada mediante SSH"
-                                />
-                            </div>
-                            <p>
-                                Cuando estemos conectados a dicha maquina, deberemos de instalar
-                                <b>docker y docker compose</b> para facilitar la creación del SOC ELK, para instarlalo
-                                utilizaremos los siguientes comandos:
-                            </p>
-                            <pre>
+                        <p>
+                            Una vez tenemos creada la instancia, tendremos que realizar dos cosas más antes de
+                            empezar a montar el SOC, configurar el firewall (o reglas de entradas) y asignarle una
+                            IP estatica (o IP elastica).
+                        </p>
+                        <p>
+                            Iremos al grupo de seguridad y cambiaremos las reglas de entradas, debido a que vamos a
+                            utilizar un <b>Stack ELK</b>, tendremos que crear 3 reglas de entradas para los puertos:
+                            <b>5601, 5044, 9200</b> estos puertos tendran que tener permitido la conexión desde
+                            cualquier IP, ya que puede haber más de un dispositivo el cual este enviandonos datos
+                            para la monitorización.
+                        </p>
+                        <div class="image-card">
+                            <img src="../../img/ReglasDeEntrada.png" alt="Reglas de entradas creadas y definidas" />
+                        </div>
+                        <p>
+                            Con el grupo de seguridad ya creado y configurado, solamente nos falta la asignación de
+                            una IP peremanente, para que nunca cambie, haciendo posible el uso, ya que si tuviera
+                            una IP dinamica no sera posible tener el SOC montado (o seria extremadamente más
+                            complicado). Para ello iremos al apartado de <b>"Direcciones IP elásticas"</b> y
+                            pulsaremos en "Asignar dirección IP elástica" y la crearemos, una vez este creada la
+                            asignaremos a la instancia ya creada.
+                        </p>
+                        <div class="image-card">
+                            <img src="../../img/AsociarIP.png" alt="Muestra del menu de asociacion de IPs en AWS" />
+                        </div>
+                        <p>
+                            Con esto ya tendriamos prepara la instancia para poder utilizar ELK en ella sin ningún
+                            tipo de problema.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Despliegue de un SOC ELK en una instancia de AWS.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Una vez ya tenemos una instancia de AWS preparada para el montaje de un SOC ELK, es
+                            decir, los requisitos de hardware correspondientes y las reglas de entradas e IP
+                            configuradas correctamente. Deberemos de entrar a la maquina a traves del protocolo
+                            <b>SSH</b> con el siguiente comando:
+                        </p>
+                        <pre>ssh -i ./Key.pem ec2-user@IP</pre>
+                        <p>Una vez estemos conectados veremos una paloma dibujada en ASCII</p>
+                        .
+                        <div class="image-card">
+                            <img src="../../img/ConexionMaquina.png"
+                                alt="Muestra de la conexión realizada mediante SSH" />
+                        </div>
+                        <p>
+                            Cuando estemos conectados a dicha maquina, deberemos de instalar
+                            <b>docker y docker compose</b> para facilitar la creación del SOC ELK, para instarlalo
+                            utilizaremos los siguientes comandos:
+                        </p>
+                        <pre>
 sudo dnf install docker
 
 sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
-</pre
-                            >
-                            <p>
-                                Ademas de lo anterior, deberemos de habilitar docker con
-                                <b>systemctl start docker y systemctl enable docker</b>.
-                            </p>
-                            <p>
-                                Una vez hemos hechos estos comandos, veremos que el resultado final debera ser algo
-                                similar a "Docker Compose version v2.32.4". Si esto ha sido correcto podremos pasar a la
-                                creación del docker compose, este docker compose sera bastante sencillo.
-                                <b>(Asegurar la correcta indentación)</b>.
-                            </p>
-                            <pre>
+</pre>
+                        <p>
+                            Ademas de lo anterior, deberemos de habilitar docker con
+                            <b>systemctl start docker y systemctl enable docker</b>.
+                        </p>
+                        <p>
+                            Una vez hemos hechos estos comandos, veremos que el resultado final debera ser algo
+                            similar a "Docker Compose version v2.32.4". Si esto ha sido correcto podremos pasar a la
+                            creación del docker compose, este docker compose sera bastante sencillo.
+                            <b>(Asegurar la correcta indentación)</b>.
+                        </p>
+                        <pre>
 services:
   elk:
     image: sebp/elk:7.16.3
     ports:
       - "5601:5601"
       - "9200:9200"
-      - "5044:5044"</pre
-                            >
-                            <p>
-                                Antes de crear el contenedor debereos de usar este comando
-                                <b>sysctl -w vm.max_map_count=262145</b> para aumentar la RAM que puede usar docker, ya
-                                que esto es necesario para dicho contenedor, ademas para que afecte siempre, lo
-                                tendremos que añadir a <b>/etc/sysctl.d/99-sysctl.conf</b>, pero solamente la parte
-                                final, es decir: vm.max_map_count=262145
-                            </p>
-                            <p>
-                                Con la configuración anteriormente creada, ya podremos desplegar el contenedor con el
-                                comando <b>docker-compose up -d</b>, una vez hecho eso, si hacemos
-                                <b>docker ps</b> podremos ver el contenedor correctamente creado con los puertos
-                                activos, si entramos a la IP:5601 debereiamos poder ver la interefaz de Kibana
-                                <b>(Importante que entremos por HTTP y no HTTPS)</b>.
-                            </p>
-                            <p>
-                                Para hacer que el contenedor se inicie automaticamente cada vez que encendamos la
-                                instancia deberemos de poner el siguiente comando (el contenedor debera estar creado):
-                            </p>
-                            <pre>docker update --restart always ec2-user-elk-1</pre>
-                            <div class="image-card">
-                                <img
-                                    src="../../img/TerminalFinal.png"
-                                    alt="Muestra del resultado final de los comandos realizados para desplegar el servicio"
-                                />
-                            </div>
-                            <p>Hecho esto, si entramos a la dirección IP, veremos la interfaz</p>
-                            <div class="image-card">
-                                <img
-                                    src="../../img/InterfazKibana.png"
-                                    alt="Muestra de la interfaz de Kibana en el servidor desplegado"
-                                />
-                            </div>
+      - "5044:5044"</pre>
+                        <p>
+                            Antes de crear el contenedor debereos de usar este comando
+                            <b>sysctl -w vm.max_map_count=262145</b> para aumentar la RAM que puede usar docker, ya
+                            que esto es necesario para dicho contenedor, ademas para que afecte siempre, lo
+                            tendremos que añadir a <b>/etc/sysctl.d/99-sysctl.conf</b>, pero solamente la parte
+                            final, es decir: vm.max_map_count=262145
+                        </p>
+                        <p>
+                            Con la configuración anteriormente creada, ya podremos desplegar el contenedor con el
+                            comando <b>docker-compose up -d</b>, una vez hecho eso, si hacemos
+                            <b>docker ps</b> podremos ver el contenedor correctamente creado con los puertos
+                            activos, si entramos a la IP:5601 debereiamos poder ver la interefaz de Kibana
+                            <b>(Importante que entremos por HTTP y no HTTPS)</b>.
+                        </p>
+                        <p>
+                            Para hacer que el contenedor se inicie automaticamente cada vez que encendamos la
+                            instancia deberemos de poner el siguiente comando (el contenedor debera estar creado):
+                        </p>
+                        <pre>docker update --restart always ec2-user-elk-1</pre>
+                        <div class="image-card">
+                            <img src="../../img/TerminalFinal.png"
+                                alt="Muestra del resultado final de los comandos realizados para desplegar el servicio" />
+                        </div>
+                        <p>Hecho esto, si entramos a la dirección IP, veremos la interfaz</p>
+                        <div class="image-card">
+                            <img src="../../img/InterfazKibana.png"
+                                alt="Muestra de la interfaz de Kibana en el servidor desplegado" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Configuración y despliegue de una instancia con Nginx.</h3>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Configuración y despliegue de una instancia con Nginx.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Debido a que esta instancia lo unica que va a alojar va a ser un servidor
+                            <b>nginx</b> sin ningún tipo de complemento o contenido adicional, no sera necesario la
+                            implementación de muchos recursos, por lo que utilizaremos una instancia de tipo:
+                            <b>t3.small.</b>
+                        </p>
+                        <p>
+                            Ya que esta instancia si que va a actuar como un servicio web normal y corriente al cual
+                            se accedera mediante un navegador por el puerto 80, por el protocolo de http, podremos
+                            activar el trafico http en las configuraciones de la instancia.
+                        </p>
+                        <div class="image-card">
+                            <img src="../../img/InstanciaNginx.png"
+                                alt="Resumen general de la instancia creada para el servicio de Nginx" />
                         </div>
-                        <div class="card-content">
-                            <p>
-                                Debido a que esta instancia lo unica que va a alojar va a ser un servidor
-                                <b>nginx</b> sin ningún tipo de complemento o contenido adicional, no sera necesario la
-                                implementación de muchos recursos, por lo que utilizaremos una instancia de tipo:
-                                <b>t3.small.</b>
-                            </p>
-                            <p>
-                                Ya que esta instancia si que va a actuar como un servicio web normal y corriente al cual
-                                se accedera mediante un navegador por el puerto 80, por el protocolo de http, podremos
-                                activar el trafico http en las configuraciones de la instancia.
-                            </p>
-                            <div class="image-card">
-                                <img
-                                    src="../../img/InstanciaNginx.png"
-                                    alt="Resumen general de la instancia creada para el servicio de Nginx"
-                                />
-                            </div>
-                            <p>
-                                Una vez con dicha instancia creada, debido a que funcionara como un servidor más, no
-                                necesitaremos configurarle nada más, ya que el trafico <b>HTTP</b> esta habilitado y no
-                                nos importa la IP que este tenga, por lo que nos conectaremos a ella a traves de
-                                <b>SSH</b> con nuestro par de claves, gracias al siguiente comando:
-                            </p>
-                            <pre>ssh -i ./Key.pem ubuntu@IP</pre>
-                            <p>
-                                En este caso, en vez de ver una paloma, simplemente habra texto explicandonos algunas
-                                cosas que realmente, para nuestro objetivo, no nos interesan, por lo que lo obviaremos y
-                                continuaremos con la instalación de <b>nginx</b>, la cual es bastante sencilla.
-                            </p>
-                            <p>
-                                Una vez dentro de la maquina, actualizaremos la lista/repositorio de paquetes con un
-                                <b>sudo apt update</b> y posteriormente pasaremos a la instalación y despliegue de
-                                <b>nginx</b> con los comandos siguientes comandos:
-                            </p>
-                            <pre>
+                        <p>
+                            Una vez con dicha instancia creada, debido a que funcionara como un servidor más, no
+                            necesitaremos configurarle nada más, ya que el trafico <b>HTTP</b> esta habilitado y no
+                            nos importa la IP que este tenga, por lo que nos conectaremos a ella a traves de
+                            <b>SSH</b> con nuestro par de claves, gracias al siguiente comando:
+                        </p>
+                        <pre>ssh -i ./Key.pem ubuntu@IP</pre>
+                        <p>
+                            En este caso, en vez de ver una paloma, simplemente habra texto explicandonos algunas
+                            cosas que realmente, para nuestro objetivo, no nos interesan, por lo que lo obviaremos y
+                            continuaremos con la instalación de <b>nginx</b>, la cual es bastante sencilla.
+                        </p>
+                        <p>
+                            Una vez dentro de la maquina, actualizaremos la lista/repositorio de paquetes con un
+                            <b>sudo apt update</b> y posteriormente pasaremos a la instalación y despliegue de
+                            <b>nginx</b> con los comandos siguientes comandos:
+                        </p>
+                        <pre>
 sudo apt update
 
 sudo apt install nginx -y
 sudo systemctl start nginx
-sudo systemctl enable nginx</pre
-                            >
-                            <p>
-                                Con esto el servidor <b>nginx</b> ya estaria desplegado y operativo, para comprobarlo
-                                solamente tendriamos que introducir la IP de la instancia en el navegador web, mostrando
-                                algo similar a esto:
-                            </p>
-                            <div class="image-card">
-                                <img
-                                    src="../../img/Nginx.png"
-                                    alt="Muestra de la pagina principal del servicio de Nginx"
-                                />
-                            </div>
+sudo systemctl enable nginx</pre>
+                        <p>
+                            Con esto el servidor <b>nginx</b> ya estaria desplegado y operativo, para comprobarlo
+                            solamente tendriamos que introducir la IP de la instancia en el navegador web, mostrando
+                            algo similar a esto:
+                        </p>
+                        <div class="image-card">
+                            <img src="../../img/Nginx.png" alt="Muestra de la pagina principal del servicio de Nginx" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Instalación y configuración de filebeat en el servidor de Nginx.</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Filebeat, es una herramienta de Elastic que recolecta y envía logs a Elasticsearch o
-                                Logstash. Filebeat solo sera necesario instarlo en el servidor de <b>Nginx</b>, no
-                                necesitaremos tocar el servidor del SIEM para nada, ya que de eso se trata, que por
-                                muchos servidores que añadas, solamente te tengas que centrar en el servidor añadido.
-                            </p>
-                            <p>
-                                Para instalar filebeat, en nuestro caso la version 7.16.3, deberemos de ir a la pagina
-                                principal de filebeat y copiar el enlace de descargar del paquete <b>.deb</b> de
-                                arquitectura x64, una vez tengamos dicho enlace, para poder descargarlo en la maquina
-                                podremos utilizar tanto <b>wget</b> como <b>curl</b>, en nuestro caso usaremos wget por
-                                costumbre personal. Con el paquete ya descargado solamente tendremos que instalarlo con
-                                <b>sudo apt install</b>.
-                            </p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Instalación y configuración de filebeat en el servidor de Nginx.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Filebeat, es una herramienta de Elastic que recolecta y envía logs a Elasticsearch o
+                            Logstash. Filebeat solo sera necesario instarlo en el servidor de <b>Nginx</b>, no
+                            necesitaremos tocar el servidor del SIEM para nada, ya que de eso se trata, que por
+                            muchos servidores que añadas, solamente te tengas que centrar en el servidor añadido.
+                        </p>
+                        <p>
+                            Para instalar filebeat, en nuestro caso la version 7.16.3, deberemos de ir a la pagina
+                            principal de filebeat y copiar el enlace de descargar del paquete <b>.deb</b> de
+                            arquitectura x64, una vez tengamos dicho enlace, para poder descargarlo en la maquina
+                            podremos utilizar tanto <b>wget</b> como <b>curl</b>, en nuestro caso usaremos wget por
+                            costumbre personal. Con el paquete ya descargado solamente tendremos que instalarlo con
+                            <b>sudo apt install</b>.
+                        </p>
+                        <pre>
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.16.3-amd64.deb
-sudo apt isntall ./filebeat-7.16.3-amd64.deb                               </pre
-                            >
-                            <p>
-                                Con filebeat ya instalado, deberemos de cambiar un archivo de configuración, el cual es
-                                <b>/etc/filebeat/filebeat.yml</b>, dicho archivo de configuración tiene muchos datos,
-                                los cuales para nuestro proyecto no son estrictamente necesarios por lo que los
-                                eliminarios y escribiremos el siguiente contenido (es importante no eliminar el archivo,
-                                ya que si lo eliminas y lo vuelves a crear puede darte problemas, por lo que se
-                                recomienda eliminar el contenido y añadir este, en vez de eliminar y añadir el archivo).
-                            </p>
-                            <pre>
+sudo apt isntall ./filebeat-7.16.3-amd64.deb                               </pre>
+                        <p>
+                            Con filebeat ya instalado, deberemos de cambiar un archivo de configuración, el cual es
+                            <b>/etc/filebeat/filebeat.yml</b>, dicho archivo de configuración tiene muchos datos,
+                            los cuales para nuestro proyecto no son estrictamente necesarios por lo que los
+                            eliminarios y escribiremos el siguiente contenido (es importante no eliminar el archivo,
+                            ya que si lo eliminas y lo vuelves a crear puede darte problemas, por lo que se
+                            recomienda eliminar el contenido y añadir este, en vez de eliminar y añadir el archivo).
+                        </p>
+                        <pre>
 # Archivo de configuración simple de ejemplo de filebeat
 # Guardar en: /etc/filebeat/filebeat.yml
 
@@ -285,85 +273,82 @@ filebeat:
 
 # Pequeño cambio de seguridad que he añadido
 seccomp:
-  default_action: allow</pre
-                            >
-                            <p>
-                                Aunque no es el archivo de configuración más seguro del mundo, ni el más optimizado o
-                                completo, tiene la cantidad de elementos suficientes para que nos recopile los logs de
-                                nuestro nginx y funcione correctamente. Este archivo de configuración deberia ser
-                                modificado y adaptado a las necesidades del proyecto/cliente. Para comprobar el
-                                funcionamiento de la configuración, tendremos que usar el siguiente comando:
-                            </p>
-                            <pre>filebeat  test config --path.config /etc/filebeat</pre>
-                            <p>
-                                En caso de recibir un <b>Config OK</b>, significara que nuestro archivo de configuración
-                                esta correctamente creado. Aunque si entramos al servidor y luego vamos a nuestro SIEM,
-                                no recebiremos ningún tipo de log, ya que esta activado el <b>SSL/TLS</b>, por lo que
-                                necesitaremos tener un certificado en el path correspondiente según la configuración, en
-                                nuestro caso <b>/etc/pki/tls/certs/logstash-beats.crt</b>, para dicho certificado
-                                usaremos cualquier certificado que tengamos. (Es probableme que no tengas esa ruta, por
-                                lo que deberas crear las carpetas que necesitas o cambiar la ruta, según prefieras).
-                            </p>
-                            <p>
-                                Con el certificado ya añadido en su sitio, si usamos el siguiente comando
-                                <b>filebeat test output --path.config /etc/filebeat</b> deberemos de ver que envia los
-                                datos, aunque en mi caso aparece un <b>WARN</b>, esto es debido al que el certificado
-                                que he usado no esta comprobado.
-                            </p>
-                            <pre>filebeat test output --path.config /etc/filebeat</pre>
-                            <div class="image-card">
-                                <img src="../../img/FilebeatOutput.png" alt="Muestra del output correcto del comando" />
-                            </div>
-                            <p>
-                                Con filebeat ya configurado adecuadamente (y reiniciado para que se apliquen los cambios
-                                en la configuración) solamente nos faltaria comprobar que dichos datos se mandan
-                                correctamente, aunque nos haya puesto OK y que habla con el servidor, es necesario
-                                asegurarse de que funciona correctamente. Para esto tendremos que ir desde el navegador
-                                al servicio web de <b>nginx</b> y recargar la pagina unas pocas veces para que lleguen
-                                varias peticiones, hecho esto a los pocos segundos (como maximo 30), si entramos a
-                                nuestro SIEM, como se menciono previamente por el puerto <b>5601</b>, y vamos a
-                                <b>"Discover"</b> en el menu desplegable de la izquierda, nos mostrara un mensaje de que
-                                tenemos datos. (En caso de que no nos haya llegado ningún dato, nos motrara un mensaje
-                                de que no tenemos datos y si queremos añadir datos de prueba, lo cual es mala señal).
-                            </p>
-                            <div class="image-card">
-                                <img
-                                    src="../../img/SIEMDatos.png"
-                                    alt="Muestra de la interfaz del SIEM diciendo que tiene datos"
-                                />
-                            </div>
+  default_action: allow</pre>
+                        <p>
+                            Aunque no es el archivo de configuración más seguro del mundo, ni el más optimizado o
+                            completo, tiene la cantidad de elementos suficientes para que nos recopile los logs de
+                            nuestro nginx y funcione correctamente. Este archivo de configuración deberia ser
+                            modificado y adaptado a las necesidades del proyecto/cliente. Para comprobar el
+                            funcionamiento de la configuración, tendremos que usar el siguiente comando:
+                        </p>
+                        <pre>filebeat  test config --path.config /etc/filebeat</pre>
+                        <p>
+                            En caso de recibir un <b>Config OK</b>, significara que nuestro archivo de configuración
+                            esta correctamente creado. Aunque si entramos al servidor y luego vamos a nuestro SIEM,
+                            no recebiremos ningún tipo de log, ya que esta activado el <b>SSL/TLS</b>, por lo que
+                            necesitaremos tener un certificado en el path correspondiente según la configuración, en
+                            nuestro caso <b>/etc/pki/tls/certs/logstash-beats.crt</b>, para dicho certificado
+                            usaremos cualquier certificado que tengamos. (Es probableme que no tengas esa ruta, por
+                            lo que deberas crear las carpetas que necesitas o cambiar la ruta, según prefieras).
+                        </p>
+                        <p>
+                            Con el certificado ya añadido en su sitio, si usamos el siguiente comando
+                            <b>filebeat test output --path.config /etc/filebeat</b> deberemos de ver que envia los
+                            datos, aunque en mi caso aparece un <b>WARN</b>, esto es debido al que el certificado
+                            que he usado no esta comprobado.
+                        </p>
+                        <pre>filebeat test output --path.config /etc/filebeat</pre>
+                        <div class="image-card">
+                            <img src="../../img/FilebeatOutput.png" alt="Muestra del output correcto del comando" />
+                        </div>
+                        <p>
+                            Con filebeat ya configurado adecuadamente (y reiniciado para que se apliquen los cambios
+                            en la configuración) solamente nos faltaria comprobar que dichos datos se mandan
+                            correctamente, aunque nos haya puesto OK y que habla con el servidor, es necesario
+                            asegurarse de que funciona correctamente. Para esto tendremos que ir desde el navegador
+                            al servicio web de <b>nginx</b> y recargar la pagina unas pocas veces para que lleguen
+                            varias peticiones, hecho esto a los pocos segundos (como maximo 30), si entramos a
+                            nuestro SIEM, como se menciono previamente por el puerto <b>5601</b>, y vamos a
+                            <b>"Discover"</b> en el menu desplegable de la izquierda, nos mostrara un mensaje de que
+                            tenemos datos. (En caso de que no nos haya llegado ningún dato, nos motrara un mensaje
+                            de que no tenemos datos y si queremos añadir datos de prueba, lo cual es mala señal).
+                        </p>
+                        <div class="image-card">
+                            <img src="../../img/SIEMDatos.png"
+                                alt="Muestra de la interfaz del SIEM diciendo que tiene datos" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Instalación y configuración de metricbeat y heartbeat en el servidor de Nginx</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Al ser igual que filebeat las explicaciones estaran más "escuetas" ya que se ha
-                                explicado en el punto anterior. <b>Metricbeat</b> y <b></b> son herramientas de Elastic
-                                que recolecta y envía logs a Elasticsearch o Logstash. Como previamente se comento en el
-                                paso de filebeat, los pasos seran los mismo, descargar mediante el uso de
-                                <b>winget</b> el <b>paquete .deb</b> correspondiente de la version 7.16.3, al igual que
-                                todo lo anterior, y modificación del archivo de configuración.
-                            </p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Instalación y configuración de metricbeat y heartbeat en el servidor de Nginx</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Al ser igual que filebeat las explicaciones estaran más "escuetas" ya que se ha
+                            explicado en el punto anterior. <b>Metricbeat</b> y <b></b> son herramientas de Elastic
+                            que recolecta y envía logs a Elasticsearch o Logstash. Como previamente se comento en el
+                            paso de filebeat, los pasos seran los mismo, descargar mediante el uso de
+                            <b>winget</b> el <b>paquete .deb</b> correspondiente de la version 7.16.3, al igual que
+                            todo lo anterior, y modificación del archivo de configuración.
+                        </p>
+                        <pre>
 wget https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.16.3-amd64.deb
 sudo apt install ./heartbeat-7.16.3-amd64.deb
 
 wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.16.3-amd64.deb
 sudo apt install ./metricbeat-7.16.3-amd64.deb
                             </pre>
-                            <p>
-                                Con metricbeat y heartbeat ya instalado, tocara configurar dichos servicios para que
-                                función de manera correcta, para ello deberemos de cambiar los archivos
-                                <b>/etc/servicio/servicio.yml</b>, siendo /etc/heartbeat/heartbeat.yml el servicio de
-                                hearbt y /etc/metrcibeat/metricbeat.yml el servicio de metricbeat. Los archivos de
-                                configuración que usaremos serás los siguientes:
-                            </p>
-                            <b>heartbeat</b>
-                            <pre>
+                        <p>
+                            Con metricbeat y heartbeat ya instalado, tocara configurar dichos servicios para que
+                            función de manera correcta, para ello deberemos de cambiar los archivos
+                            <b>/etc/servicio/servicio.yml</b>, siendo /etc/heartbeat/heartbeat.yml el servicio de
+                            hearbt y /etc/metrcibeat/metricbeat.yml el servicio de metricbeat. Los archivos de
+                            configuración que usaremos serás los siguientes:
+                        </p>
+                        <b>heartbeat</b>
+                        <pre>
 # Este archivo es la configuración de heartbeat
 # Su ruta es: /etc/heartbeat/heartbeat.yml
 
@@ -394,10 +379,9 @@ processors:
 
 # Pequeño cambio de seguridad que he añadido
 seccomp:
-  default_action: allow</pre
-                            >
-                            <b>metricbeat</b>
-                            <pre>
+  default_action: allow</pre>
+                        <b>metricbeat</b>
+                        <pre>
 metricbeat.config.modules:
   path: ${path.config}/modules.d/*.yml
   reload.enabled: false
@@ -425,14 +409,14 @@ processors:
 seccomp:
   default_action: allow
                             </pre>
-                            <p>
-                                Con los archivos de configuración ya configurados, lo unico que nos faltaria por hacer
-                                es reiniciar los servicios y probar su funcionalidad para ello, utilizaremos los
-                                siguientes comandos, en caso de que nos dieran algún tipo de respuesta incompleta o
-                                incorrecta tocaria mirar los logs del servicio en cuestión, aunque a priori no deberia
-                                de haber ningún problema con la configuracón que hemos usado:
-                            </p>
-                            <pre>
+                        <p>
+                            Con los archivos de configuración ya configurados, lo unico que nos faltaria por hacer
+                            es reiniciar los servicios y probar su funcionalidad para ello, utilizaremos los
+                            siguientes comandos, en caso de que nos dieran algún tipo de respuesta incompleta o
+                            incorrecta tocaria mirar los logs del servicio en cuestión, aunque a priori no deberia
+                            de haber ningún problema con la configuracón que hemos usado:
+                        </p>
+                        <pre>
 sudo systemctl restart metricbeat
 sudo systemctl restart heartbeat-elastic
 
@@ -442,16 +426,16 @@ metricbeat  test output --path.config /etc/metricbeat
 heartbeat  test config --path.config /etc/heartbeat
 heartbeat  test output --path.config /etc/heartbeat
                             </pre>
-                        </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>En progreso...</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>Agradecemos su espera</p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>En progreso...</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Agradecemos su espera</p>
+                        <pre>
  # Archivo de configuración simple de ejemplo de packetbeat
 # Guardar en: /etc/packetbeat/packetbeat.yml
 
@@ -482,40 +466,41 @@ processors:
 seccomp:
   default_action: allow
                             </pre>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Más tarjetas aquí -->
-                </section>
-            </main>
+                <!-- Más tarjetas aquí -->
+            </section>
+        </main>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script>
+        // Función para expandir/colapsar las tarjetas
+        function toggleCard(header) {
+            const card = header.parentElement;
+            const content = card.querySelector(".card-content");
+            content.classList.toggle("expanded");
+        }
+    </script>
+    <script src="../../script.js"></script>
+</body>
 
-        <script>
-            // Función para expandir/colapsar las tarjetas
-            function toggleCard(header) {
-                const card = header.parentElement;
-                const content = card.querySelector(".card-content");
-                content.classList.toggle("expanded");
-            }
-        </script>
-        <script src="../../script.js"></script>
-    </body>
 </html>

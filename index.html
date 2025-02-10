@@ -1,76 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de CETI</title>
-        <link rel="icon" type="image/png" href="./img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <img src="./img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Apuntes de CETI</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Índice de enlaces -->
-                <section class="index-section">
-                    <h2>Índice Principal</h2>
-                    <div class="grid-links">
-                        <a href="./Hacking Etico/index.html" class="card">
-                            <h3>Hacking Ético.</h3>
-                            <p>Con contenido</p>
-                        </a>
-                        <a href="./Indicedentes de Ciberseguridad/index.html" class="card">
-                            <h3>Incidentes de cibereseguridad.</h3>
-                            <p>Con contenido</p>
-                        </a>
-                        <a href="#" class="card">
-                            <h3>Puesta en producción segura.</h3>
-                            <p>Vacio, en progreso...</p>
-                        </a>
-                        <a href="#" class="card">
-                            <h3>Bastionado de redes y sistemas</h3>
-                            <p>Vacio, en progreso...</p>
-                        </a>
-                        <a href="#" class="card">
-                            <h3>Normativa de Ciberseguridad</h3>
-                            <p>Vacio, en progreso...</p>
-                        </a>
-                        <a href="./Analisis Forense Informatico/index.html" class="card">
-                            <h3>Análisis Forense Informático</h3>
-                            <p>Con contenido</p>
-                        </a>
-                    </div>
-                </section>
-            </main>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de CETI</title>
+    <link rel="icon" type="image/png" href="./img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <a href="./index.html"><img src="./img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Apuntes de CETI</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Índice de enlaces -->
+            <section class="index-section">
+                <h2>Índice Principal</h2>
+                <div class="grid-links">
+                    <a href="./Hacking Etico/index.html" class="card">
+                        <h3>Hacking Ético.</h3>
+                        <p>Con contenido</p>
+                    </a>
+                    <a href="./Indicedentes de Ciberseguridad/index.html" class="card">
+                        <h3>Incidentes de cibereseguridad.</h3>
+                        <p>Con contenido</p>
+                    </a>
+                    <a href="#" class="card">
+                        <h3>Puesta en producción segura.</h3>
+                        <p>Vacio, en progreso...</p>
+                    </a>
+                    <a href="#" class="card">
+                        <h3>Bastionado de redes y sistemas</h3>
+                        <p>Vacio, en progreso...</p>
+                    </a>
+                    <a href="#" class="card">
+                        <h3>Normativa de Ciberseguridad</h3>
+                        <p>Vacio, en progreso...</p>
+                    </a>
+                    <a href="./Analisis Forense Informatico/index.html" class="card">
+                        <h3>Análisis Forense Informático</h3>
+                        <p>Con contenido</p>
+                    </a>
+                </div>
+            </section>
+            <section class="index-section">
+                <h2>Acceso Rapido a Herramientas</h2>
+                <div class="grid-links">
+                    <a href="./Hacking Etico/Herramientas/index.html" class="card">
+                        <h3>Herramientas de Hacking Ético.</h3>
+                    </a>
+                    <a href="./Indicedentes de Ciberseguridad/Herramientas/index.html" class="card">
+                        <h3>Herrameintas de Incidentes de cibereseguridad.</h3>
+                    </a>
+                    <a href="./Analisis Forense Informatico/Herramientas/index.html" class="card">
+                        <h3>Herramientas de Análisis Forense Informático</h3>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script src="script.js"></script>
+</body>
 
-        <script src="script.js"></script>
-    </body>
 </html>

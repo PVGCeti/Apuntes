@@ -1,288 +1,292 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de Airmon-NG</title>
-        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice</a>
-                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Herramientas generales</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Sección de herramientas de reconocimiento -->
-                <section class="commands-section">
-                    <h2>Reconocimiento</h2>
-                    <div class="command-list">
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>nmap</b> -> Escaneo de redes y puertos.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>masscan</b> -> Escaneo de puertos a gran velocidad.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>arp-scan</b> -> Escaneo de redes locales utilizando ARP.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>netdiscover</b> -> Descubrimiento de hosts en redes locales.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>hunter</b> -> Herramienta para la búsqueda de información sobre personas.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>intelligence</b> -> Herramientas de inteligencia de fuentes abiertas.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>phonebook</b> -> Búsqueda de información de contacto.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>clearbit connect</b> -> Herramienta para encontrar información sobre empresas y
-                                    contactos.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>PimEyes</b> -> Búsqueda de imágenes en línea.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>wfuzz</b> -> Fuzzing de aplicaciones web.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>gobuster</b> -> Fuerza bruta de directorios y archivos en servidores web.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>CTFR</b> -> Herramienta para buscar subdominios y archivos expuestos.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Sublist3r</b> -> Enumeración de subdominios.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>whatweb</b> -> Identificación de tecnologías web.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>wappalyzer</b> -> Identificación de tecnologías web.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>builtwith</b> -> Análisis de tecnologías utilizadas en sitios web.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>google dorks</b> -> Búsqueda avanzada en Google para encontrar información
-                                    sensible.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>openssl</b> -> Herramienta para trabajar con SSL/TLS.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>sslyze</b> -> Análisis de configuraciones SSL/TLS.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>sslscan</b> -> Escaneo de configuraciones SSL/TLS.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>netcat</b> -> Herramienta de red para leer y escribir datos a través de
-                                    conexiones de red.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p></p>
-                                <p><b>telnet</b> -> Protocolo de red para acceder a dispositivos de red.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>dig (AXFR)</b> -> Consulta DNS, incluyendo transferencias de zona.</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Airmon-NG</title>
+    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
 
-                <!-- Sección de herramientas de explotación -->
-                <section class="commands-section">
-                    <h2>Explotación</h2>
-                    <div class="command-list">
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>hydra</b> -> Ataques de fuerza bruta a servicios de red.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>smbclient</b> -> Cliente para acceder a recursos compartidos de SMB.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>smbmap</b> -> Enumeración de recursos compartidos en redes SMB.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>CME (CrackMapExec)</b> -> Herramienta para la explotación de redes Windows.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>searchsploit</b> -> Búsqueda de exploits en la base de datos de Exploit-DB.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>wpscan</b> -> Escaneo de vulnerabilidades en sitios de WordPress.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>droopescan</b> -> Escaneo de vulnerabilidades en sitios de Drupal.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>magescan</b> -> Escaneo de vulnerabilidades en sitios de Magento.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>msfvenom</b> -> Generación de payloads para Metasploit.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>sqlmap</b> -> Automatización de pruebas de inyección SQL.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>procnom</b> -> Enumeración de procesos en sistemas Windows.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Tipos de shell</b> -> Diferentes tipos de shells utilizados en explotación.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>Tipos de Payloads</b> -> Diferentes tipos de payloads utilizados en explotación.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>metasploit</b> -> Framework para pruebas de penetración y explotación.</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <a href="../../index.html"><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Herramientas generales</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
 
-                <!-- Sección de herramientas de post-explotación -->
-                <section class="commands-section">
-                    <h2>Post-explotación</h2>
-                    <div class="command-list">
-                        <a href="">
-                            <div class="command-card">
-                                <p>
-                                    <b>LSE (Linux Smart Enumeration)</b> -> Enumeración de información en sistemas
-                                    Linux.
-                                </p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Linpeas</b> -> Herramienta para la enumeración de privilegios en Linux.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Winpeas</b> -> Herramienta para la enumeración de privilegios en Windows.</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="command-card">
-                                <p><b>Empire</b> -> Framework de post-explotación para PowerShell.</p>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-            </main>
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de herramientas de reconocimiento -->
+            <section class="commands-section">
+                <h2>Reconocimiento</h2>
+                <div class="command-list">
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>nmap</b> -> Escaneo de redes y puertos.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>masscan</b> -> Escaneo de puertos a gran velocidad.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>arp-scan</b> -> Escaneo de redes locales utilizando ARP.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>netdiscover</b> -> Descubrimiento de hosts en redes locales.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>hunter</b> -> Herramienta para la búsqueda de información sobre personas.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>intelligence</b> -> Herramientas de inteligencia de fuentes abiertas.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>phonebook</b> -> Búsqueda de información de contacto.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>clearbit connect</b> -> Herramienta para encontrar información sobre empresas y
+                                contactos.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>PimEyes</b> -> Búsqueda de imágenes en línea.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>wfuzz</b> -> Fuzzing de aplicaciones web.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>gobuster</b> -> Fuerza bruta de directorios y archivos en servidores web.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>CTFR</b> -> Herramienta para buscar subdominios y archivos expuestos.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Sublist3r</b> -> Enumeración de subdominios.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>whatweb</b> -> Identificación de tecnologías web.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>wappalyzer</b> -> Identificación de tecnologías web.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>builtwith</b> -> Análisis de tecnologías utilizadas en sitios web.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>google dorks</b> -> Búsqueda avanzada en Google para encontrar información
+                                sensible.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>openssl</b> -> Herramienta para trabajar con SSL/TLS.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>sslyze</b> -> Análisis de configuraciones SSL/TLS.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>sslscan</b> -> Escaneo de configuraciones SSL/TLS.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>netcat</b> -> Herramienta de red para leer y escribir datos a través de
+                                conexiones de red.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p></p>
+                            <p><b>telnet</b> -> Protocolo de red para acceder a dispositivos de red.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>dig (AXFR)</b> -> Consulta DNS, incluyendo transferencias de zona.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+            <!-- Sección de herramientas de explotación -->
+            <section class="commands-section">
+                <h2>Explotación</h2>
+                <div class="command-list">
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>hydra</b> -> Ataques de fuerza bruta a servicios de red.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>smbclient</b> -> Cliente para acceder a recursos compartidos de SMB.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>smbmap</b> -> Enumeración de recursos compartidos en redes SMB.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>CME (CrackMapExec)</b> -> Herramienta para la explotación de redes Windows.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>searchsploit</b> -> Búsqueda de exploits en la base de datos de Exploit-DB.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>wpscan</b> -> Escaneo de vulnerabilidades en sitios de WordPress.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>droopescan</b> -> Escaneo de vulnerabilidades en sitios de Drupal.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>magescan</b> -> Escaneo de vulnerabilidades en sitios de Magento.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>msfvenom</b> -> Generación de payloads para Metasploit.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>sqlmap</b> -> Automatización de pruebas de inyección SQL.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>procnom</b> -> Enumeración de procesos en sistemas Windows.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Tipos de shell</b> -> Diferentes tipos de shells utilizados en explotación.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>Tipos de Payloads</b> -> Diferentes tipos de payloads utilizados en explotación.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>metasploit</b> -> Framework para pruebas de penetración y explotación.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Sección de herramientas de post-explotación -->
+            <section class="commands-section">
+                <h2>Post-explotación</h2>
+                <div class="command-list">
+                    <a href="">
+                        <div class="command-card">
+                            <p>
+                                <b>LSE (Linux Smart Enumeration)</b> -> Enumeración de información en sistemas
+                                Linux.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Linpeas</b> -> Herramienta para la enumeración de privilegios en Linux.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Winpeas</b> -> Herramienta para la enumeración de privilegios en Windows.</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="command-card">
+                            <p><b>Empire</b> -> Framework de post-explotación para PowerShell.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script src="../../script.js"></script>
+</body>
 
-        <script src="../../script.js"></script>
-    </body>
 </html>

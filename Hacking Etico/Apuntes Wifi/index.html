@@ -1,118 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de Wifi</title>
-        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice</a>
-                <img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Apuntes de Wifi</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Sección de apuntes -->
-                <section class="notes-section">
-                    <h2>Cifrado de Información Wifi</h2>
-                    <div class="note-card">
-                        <p><b>Sin cifrar:</b> No usa contraseña.</p>
-                        <p><b>WEP:</b> Usa la misma contraseña para cifrar que para conectarse.</p>
-                        <p><b>WPA1:</b> Usa una contraseña diferente para cifrar que para conectarse.</p>
-                        <p><b>WPA2:</b> La contraseña es aún más larga que antes.</p>
-                    </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Wifi</title>
+    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
 
-                    <div class="note-card">
-                        <h3>WPA-PSK</h3>
-                        <p><b>Descripción:</b> Todos con la misma contraseña (ejemplo: tu casa).</p>
-                        <p><b>PROS:</b> Es más sencillo ya que todos tienen la misma contraseña.</p>
-                        <p><b>CONTRAS:</b> Si cambias la contraseña, afecta a todo el mundo.</p>
-                    </div>
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <a href="../../index.html"><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Apuntes de Wifi</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
 
-                    <div class="note-card">
-                        <h3>WPA-Enterprise</h3>
-                        <p><b>Descripción:</b> Cada dispositivo tiene una contraseña y usuario diferente.</p>
-                        <p><b>PROS:</b> Cada dispositivo tiene un usuario y contraseña diferentes.</p>
-                        <p><b>CONTRAS:</b> Usa RADIUS.</p>
-                    </div>
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de apuntes -->
+            <section class="notes-section">
+                <h2>Cifrado de Información Wifi</h2>
+                <div class="note-card">
+                    <p><b>Sin cifrar:</b> No usa contraseña.</p>
+                    <p><b>WEP:</b> Usa la misma contraseña para cifrar que para conectarse.</p>
+                    <p><b>WPA1:</b> Usa una contraseña diferente para cifrar que para conectarse.</p>
+                    <p><b>WPA2:</b> La contraseña es aún más larga que antes.</p>
+                </div>
 
-                    <div class="note-card">
-                        <h3>WPS</h3>
-                        <p><b>Descripción:</b> Te conectas sin necesidad de contraseña (es inseguro).</p>
-                        <p><b>Conexiones por WPS:</b> 1. Botón, 2. Pin/QR, 3. NFC, 4. USB.</p>
-                    </div>
+                <div class="note-card">
+                    <h3>WPA-PSK</h3>
+                    <p><b>Descripción:</b> Todos con la misma contraseña (ejemplo: tu casa).</p>
+                    <p><b>PROS:</b> Es más sencillo ya que todos tienen la misma contraseña.</p>
+                    <p><b>CONTRAS:</b> Si cambias la contraseña, afecta a todo el mundo.</p>
+                </div>
 
-                    <div class="note-card">
-                        <h3>Canales de Wifi</h3>
-                        <p>Diferentes frecuencias en las que operan.</p>
-                    </div>
+                <div class="note-card">
+                    <h3>WPA-Enterprise</h3>
+                    <p><b>Descripción:</b> Cada dispositivo tiene una contraseña y usuario diferente.</p>
+                    <p><b>PROS:</b> Cada dispositivo tiene un usuario y contraseña diferentes.</p>
+                    <p><b>CONTRAS:</b> Usa RADIUS.</p>
+                </div>
 
-                    <div class="note-card">
-                        <h3>SSID, ESSID y BSSID</h3>
-                        <p><b>SSID:</b> Nombre del Wifi -> Canal.</p>
-                        <p><b>ESSID:</b> Un SSID con múltiples puntos de acceso.</p>
-                        <p><b>BSSID:</b> Un punto de acceso mediante la MAC.</p>
-                    </div>
+                <div class="note-card">
+                    <h3>WPS</h3>
+                    <p><b>Descripción:</b> Te conectas sin necesidad de contraseña (es inseguro).</p>
+                    <p><b>Conexiones por WPS:</b> 1. Botón, 2. Pin/QR, 3. NFC, 4. USB.</p>
+                </div>
 
-                    <div class="note-card">
-                        <h3>MAC</h3>
-                        <p><b>Descripción:</b> Dirección física del dispositivo -> A1:B2:C3:D4:E5:F6.</p>
-                        <p><b>Primera mitad (A1:B2:C3):</b> Fabricante.</p>
-                        <p><b>Segunda mitad (D4:E5:F6):</b> Dispositivo.</p>
-                    </div>
+                <div class="note-card">
+                    <h3>Canales de Wifi</h3>
+                    <p>Diferentes frecuencias en las que operan.</p>
+                </div>
 
-                    <!-- Imagen -->
-                    <div class="image-card">
-                        <img src="./Pizarra wifi.png" alt="Pizarra de apuntes sobre Wifi" />
-                    </div>
+                <div class="note-card">
+                    <h3>SSID, ESSID y BSSID</h3>
+                    <p><b>SSID:</b> Nombre del Wifi -> Canal.</p>
+                    <p><b>ESSID:</b> Un SSID con múltiples puntos de acceso.</p>
+                    <p><b>BSSID:</b> Un punto de acceso mediante la MAC.</p>
+                </div>
 
-                    <!-- Suite Airmon-ng -->
-                    <div class="note-card">
-                        <h3>Suite Airmon-ng</h3>
-                        <p><b>Aircrack-ng:</b> Suite de herramientas para el hackeo wifi.</p>
-                        <p><b>airmon-ng:</b> Pone la interfaz red/tarjeta de red en modo monitor/promiscuo.</p>
-                        <p><b>airodump-ng:</b> Escanea/Captura todas las redes.</p>
-                    </div>
+                <div class="note-card">
+                    <h3>MAC</h3>
+                    <p><b>Descripción:</b> Dirección física del dispositivo -> A1:B2:C3:D4:E5:F6.</p>
+                    <p><b>Primera mitad (A1:B2:C3):</b> Fabricante.</p>
+                    <p><b>Segunda mitad (D4:E5:F6):</b> Dispositivo.</p>
+                </div>
 
-                    <!-- Pasos para cambiar la MAC -->
-                    <div class="note-card">
-                        <h3>Pasos para Cambiar la MAC</h3>
-                        <p><b>ip link set wlan0 down:</b> Apaga/cierra la interfaz red.</p>
-                        <p><b>macchanger -m MAC wlan0:</b> Cambia la MAC a la proporcionada.</p>
-                        <p><b>ip link set wlan0 up:</b> Enciende/abre la interfaz red.</p>
-                    </div>
-                </section>
-            </main>
+                <!-- Imagen -->
+                <div class="image-card">
+                    <img src="./Pizarra wifi.png" alt="Pizarra de apuntes sobre Wifi" />
+                </div>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+                <!-- Suite Airmon-ng -->
+                <div class="note-card">
+                    <h3>Suite Airmon-ng</h3>
+                    <p><b>Aircrack-ng:</b> Suite de herramientas para el hackeo wifi.</p>
+                    <p><b>airmon-ng:</b> Pone la interfaz red/tarjeta de red en modo monitor/promiscuo.</p>
+                    <p><b>airodump-ng:</b> Escanea/Captura todas las redes.</p>
+                </div>
+
+                <!-- Pasos para cambiar la MAC -->
+                <div class="note-card">
+                    <h3>Pasos para Cambiar la MAC</h3>
+                    <p><b>ip link set wlan0 down:</b> Apaga/cierra la interfaz red.</p>
+                    <p><b>macchanger -m MAC wlan0:</b> Cambia la MAC a la proporcionada.</p>
+                    <p><b>ip link set wlan0 up:</b> Enciende/abre la interfaz red.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script src="../../script.js"></script>
+</body>
 
-        <script src="../../script.js"></script>
-    </body>
 </html>

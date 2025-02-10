@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de CETI</title>
-        <link rel="icon" type="image/png" href="../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="../styles.css" />
-    </head>
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice principal</a>
-                <img src="../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image" />
-                <h1>Apuntes de Incidentes de Ciberseguridad</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Índice de enlaces -->
-                <section class="index-section">
-                    <h2>Temarios y conceptos importantes</h2>
-                    <div class="grid-links">
-                        <a href="./Herramientas/index.html" class="card">
-                            <h3>Herramientas generales</h3>
-                            <p>Conocimientos basicos</p>
-                        </a>
-                        <a href="./Despliegue/index.html" class="card">
-                            <h3>Despliegue seguro</h3>
-                            <p>Uso de AWS</p>
-                        </a>
-                        <a href="./Docker/index.html" class="card">
-                            <h3>Docker</h3>
-                            <p>Despliegue de Aplicaciones</p>
-                        </a>
-                    </div>
-                </section>
-            </main>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de CETI</title>
+    <link rel="icon" type="image/png" href="../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="../styles.css" />
+</head>
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice principal</a>
+            <a href="../index.html"><img src="../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Apuntes de Incidentes de Ciberseguridad</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Índice de enlaces -->
+            <section class="index-section">
+                <h2>Temarios y conceptos importantes</h2>
+                <div class="grid-links">
+                    <a href="./Herramientas/index.html" class="card">
+                        <h3>Herramientas generales</h3>
+                        <p>Conocimientos basicos</p>
+                    </a>
+                    <a href="./Despliegue/index.html" class="card">
+                        <h3>Despliegue seguro</h3>
+                        <p>Uso de AWS</p>
+                    </a>
+                    <a href="./Docker/index.html" class="card">
+                        <h3>Docker</h3>
+                        <p>Despliegue de Aplicaciones</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script src="../script.js"></script>
+</body>
 
-        <script src="../script.js"></script>
-    </body>
 </html>
