@@ -202,13 +202,248 @@ if( array_key_exists(&quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &apos;name&apos
                         </div>
                         <div class="card-content">
                             <p>
-                                Para dar como superado el ejercicio deberemos de haber sido capaz de introducir una
-                                etiqueta
-                                <b>script</b> y ejecutar algún tipo de codigo js como podria ser <b>alert()</b> o
+                                Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
+                                de codigo js como podria ser <b>alert()</b> o
                                 <b>document.cookie.</b>
                             </p>
                             <h4>Dificultad baja</h4>
                             <p>Codigo fuente en php:</p>
+                            <pre>
+&lt;?php
+
+if( isset( $_POST[ 'btnSign' ] ) ) {
+    // Get input
+    $message = trim( $_POST[ 'mtxMessage' ] );
+    $name    = trim( $_POST[ 'txtName' ] );
+
+    // Sanitize message input
+    $message = stripslashes( $message );
+    $message = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($["___mysqli_ston"],  $message ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not workE_USER_ERROR)) ? "" : ""));
+
+    // Sanitize name input
+    $name = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],$name ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+
+    // Update database
+    $query  = "INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? ($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+
+    //mysql_close();
+}
+
+?&gt;</pre
+                            >
+                            <p>
+                                Aunque es más dificil de ver en este codigo debido a que tiene mucho más contenido de
+                                "relleno", no hay sanitización alguna respecto a XSS por lo que podremos introducir el
+                                codigo &lt;Script&gt;alert(document.cookie)&lt;/Script&gt; donde queramos, por facilidad
+                                lo introduciremos en el campo del mensaje en vez del de nombre, ya que este tiene una
+                                pequeña sanitización pero de momento no es importante.
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/storedLow.gif" alt="GIF de como resolver la dificultad baja" />
+                            </div>
+                            <br /><br />
+                            <h4>Dificultad media</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
+&lt;?php
+
+if( isset( $_POST[ 'btnSign' ] ) ) {
+    // Get input
+    $message = trim( $_POST[ 'mtxMessage' ] );
+    $name    = trim( $_POST[ 'txtName' ] );
+
+    // Sanitize message input
+    $message = strip_tags( addslashes( $message ) );
+    $message = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($["___mysqli_ston"],  $message ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not workE_USER_ERROR)) ? "" : ""));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = str_replace( '&lt;script&gt;', '', $name );
+    $name = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],$name ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+
+    // Update database
+    $query  = "INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? ($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+
+    //mysql_close();
+}
+
+?&gt;</pre
+                            >
+                            <p>
+                                Esta vez se puede apreciar que hay una mayor sanitización en el campo de mensaje que en
+                                la de name, por lo que nos centraremos en como hacer la <b>inyección XSS</b> en ese
+                                campo, como pudimos ver en las actividades de <b>XSS Reflejado</b> str_replace es
+                                case-sensitive a diferencia de HTML, por lo que podemos añadir la etiqueta con una
+                                mayusucla y bypasariamos esa sanitización. Si lo intentamos veremos que no podemos
+                                introducir más de 10 caracteres en el campo de nombre, pero debido a como esta validado
+                                dicha cantidad de caracteres podemos modificarlo directamente en la pagina web para
+                                introducir la cantidad de caracteres que queramos. Una vez hemos cambiado la cantidad de
+                                caracteres ahora si podemos introducir el codigo:
+                                <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>.
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/sotredMedium.gif" alt="GIF de como resolver la dificultad media" />
+                            </div>
+                            <br /><br />
+                            <h4>Dificultad alta</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
+&lt;?php
+
+if( isset( $_POST[ 'btnSign' ] ) ) {
+    // Get input
+    $message = trim( $_POST[ 'mtxMessage' ] );
+    $name    = trim( $_POST[ 'txtName' ] );
+
+    // Sanitize message input
+    $message = strip_tags( addslashes( $message ) );
+    $message = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($["___mysqli_ston"],  $message ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not workE_USER_ERROR)) ? "" : ""));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = preg_replace( '/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i', '', $name );
+    $name = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],$name ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+
+    // Update database
+    $query  = "INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? ($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+
+    //mysql_close();
+}
+
+?&gt;</pre
+                            >
+                            <p>
+                                Al igual que en el ejercicio de <b>XSS Reflejado</b> de dificultad alta, la sanitización
+                                esta hecha con una expresión regular, que en nuestro caso vamos a saltarnosla utilizando
+                                una etiqueta <b>img</b> con el atributo <b>onerror</b>. Como en el ejercicio anterior es
+                                necesario modificar el html para poder introducir más de 10 caracteres. Por lo que
+                                introduciremos: <b>&lt;img src=/ onerror=alert(document.cookie)&gt;</b>.
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/storedHigh.gif" alt="GIF de como resolver la dificultad alta" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Inyecciones de XSS DOM-based</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
+                                de codigo js como podria ser <b>alert()</b> o
+                                <b>document.cookie.</b>
+                            </p>
+                            <h4>Dificultad baja</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
+&lt;?php
+
+# No protections, anything goes
+
+?&gt;</pre
+                            >
+                            <p>
+                                Tal y como pone en el codigo, no hay ningún tipo de proteción pero a diferencia de los
+                                otros dos tipos de ataque, esta vez no tenemos un <b>"formulario"</b> por el cual
+                                introducir datos. Si modificamos el select, veremos que esto cambia en la URL por lo que
+                                podemos realizar la <b>inyección XSS</b> mediante la URL, al no tener ningún tipo de
+                                sanitización podremos introducir directamente el codigo:
+                                <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/domLow.gif" alt="GIF de como resolver la dificultad baja" />
+                            </div>
+                            <br /><br />
+                            <h4>Dificultad media</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
+&lt;?php
+
+// Is there any input?
+if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
+    $default = $_GET['default'];
+    
+    # Do not allow script tags
+    if (stripos ($default, "&lt;script") !== false) {
+        header ("location: ?default=English");
+        exit;
+    }
+}
+
+?&gt;</pre
+                            >
+                            <p>
+                                En este caso podemos ver que no se permite utilizar la etiqueta script, si miramos en la
+                                documentación de <b>PHP</b> sobre la función <b>stripos</b> podremos ver que esta no es
+                                case-sensitive, por lo que nuestro truco realizado en los anteriores ejercicio de poner
+                                la S en mayuscula no funcionara.
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/stripos.png" alt="Imagen de la documentaciónde PHP" />
+                            </div>
+                            <p>
+                                Tal y como vimos en los anteriores ejercicios, aunque no se nos permite el uso de la
+                                etiqueta <b>&lt;script&gt;</b>, podremos ejecutar codigo JS mediante el uso del atributo
+                                <b>onerror</b> en una etiqueta <b>&lt;img&gt;</b>, pero si lo ponemos dicho codigo en la
+                                URL no funciona, si miramos el codigo fuente podemos observar que se esta escribiendo
+                                correctamente pero todo esta dentro de la etiqueta option, que a su vez esta dentro de
+                                la etiqueta select.
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/formularoDom.png" alt="Imagen del codigo JS de la pagina web" />
+                            </div>
+                            <p>
+                                Para solucionar este problema, lo que deberemos de hacer es cerrar dicha etiqueta select
+                                antes de poner nuestro codigo, dando como resultado el codigo:
+                                <b>&lt;/select&gt;&lt;img src=/ onerror=alert(document.cookie)&gt;</b>
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/domMedium.gif" alt="GIF de como resolver la dificultad media" />
+                            </div>
+                            <br /><br />
+                            <h4>Dificultad alta</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
+&lt;?php
+
+// Is there any input?
+if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
+
+    # White list the allowable languages
+    switch ($_GET['default']) {
+        case "French":
+        case "English":
+        case "German":
+        case "Spanish":
+            # ok
+            break;
+        default:
+            header ("location: ?default=English");
+            exit;
+    }
+}
+
+?&gt;</pre
+                            >
+                            <p>
+                                En este caso vemos que la sanitización anterior ha sido cambiada por otra diferente,
+                                esto nos permitira usar &lt;script&gt; sin la necesidad de utilizar &lt;img src=/
+                                onerror=alert(document.cookie)&gt; por lo que aunque es lo mismo, para mi es más comodo.
+                                Tal y como dice el codigo fuente esta vez esta utilizando una <b>"White list"</b> la
+                                cual en caso de que lo que introduzcamos no estre dentro de ese switch acabara en el
+                                default poniendonos <b>"English"</b>. Teniendo en cuenta que es un parametro de
+                                <b>URL</b> podremos dejar English y añadirle un <b>&</b> con la inyección XSS de la
+                                siguiente manera:
+                                <b>&&lt;/select&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b>
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/domHigh.gif" alt="GIF de como resolver la dificultad alta" />
+                            </div>
                         </div>
                     </div>
 
