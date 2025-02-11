@@ -1,0 +1,465 @@
+/* Estilos generales */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modo claro */
+body.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Contenedor de la página */
+.page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabecera */
+header {
+    background-color: #1e1e1e;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 3px solid #64b5f6;
+    position: relative;
+}
+
+body.light-mode header {
+    background-color: #ffffff;
+    border-bottom: 3px solid #42a5f5;
+}
+
+header h1 {
+    color: #64b5f6;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    /* Título responsive */
+    margin: 0;
+}
+
+body.light-mode header h1 {
+    color: #42a5f5;
+}
+
+header p {
+    color: #b0b0b0;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    /* Subtítulo responsive */
+    margin: 10px 0 0;
+}
+
+body.light-mode header p {
+    color: #666;
+}
+
+/* Botón para volver al índice principal */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #64b5f6;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #42a5f5;
+}
+
+body.light-mode .back-button {
+    background-color: #42a5f5;
+    color: #fff;
+}
+
+body.light-mode .back-button:hover {
+    background-color: #64b5f6;
+}
+
+/* Botón de cambio de modo */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el ancho total */
+}
+
+/* Sección de apuntes */
+.notes-section {
+    margin-top: 20px;
+    width: 100%;
+    /* Asegura que no exceda el ancho del contenedor */
+}
+
+.notes-section h2 {
+    color: #64b5f6;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    /* Título responsive */
+    margin-bottom: 20px;
+}
+
+body.light-mode .notes-section h2 {
+    color: #42a5f5;
+}
+
+/* Tarjetas expandibles */
+.expandable-card {
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    /* Asegura que la tarjeta no exceda el ancho del contenedor */
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el ancho total */
+}
+
+body.light-mode .expandable-card {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.expandable-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.card-header h3 {
+    color: #64b5f6;
+    margin: 0;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    /* Título de tarjeta responsive */
+}
+
+body.light-mode .card-header h3 {
+    color: #42a5f5;
+}
+
+.card-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el ancho total */
+}
+
+.card-content.expanded {
+    padding: 15px;
+    max-height: 5000px;
+    /* Ajusta este valor según el contenido */
+}
+
+.card-content p {
+    margin: 0 0 10px;
+    color: #b0b0b0;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    /* Texto responsive */
+}
+
+.card-content h3 {
+    color: #64b5f6;
+}
+
+body.light-mode .card-content p {
+    color: #666;
+}
+
+.card-content pre {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    /* Permite desplazamiento horizontal en bloques de código */
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    /* Código responsive */
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el ancho total */
+}
+
+body.light-mode .card-content pre {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Pie de página */
+footer {
+    background-color: #1e1e1e;
+    padding: 15px;
+    text-align: center;
+    border-top: 2px solid #64b5f6;
+    margin-top: auto;
+}
+
+body.light-mode footer {
+    background-color: #ffffff;
+    border-top: 2px solid #42a5f5;
+}
+
+footer p {
+    margin: 0;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+body.light-mode footer p {
+    color: #666;
+}
+
+/* Imágenes de la cabecera */
+.header-image {
+    height: 100px;
+    /* Altura fija para las imágenes */
+    width: auto;
+    /* Ancho automático para mantener la proporción */
+    border-radius: 10px;
+    /* Bordes redondeados */
+}
+
+/* Estilos para el disclaimer */
+.disclaimer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2d2d2d;
+    /* Fondo grisáceo */
+    color: #e0e0e0;
+    /* Texto claro */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 300px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+    /* Asegura que esté por encima de otros elementos */
+}
+
+body.light-mode .disclaimer {
+    background-color: #ffffff;
+    /* Fondo blanco en modo claro */
+    color: #333;
+    /* Texto oscuro */
+    border: 1px solid #ddd;
+    /* Borde sutil */
+}
+
+.disclaimer.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.disclaimer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.disclaimer-header h3 {
+    color: #64b5f6;
+    /* Tonalidad azul */
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+body.light-mode .disclaimer-header h3 {
+    color: #42a5f5;
+    /* Tonalidad azul más clara */
+}
+
+.disclaimer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #64b5f6;
+    /* Línea azul */
+    margin-bottom: 10px;
+}
+
+body.light-mode .disclaimer-line {
+    background-color: #42a5f5;
+    /* Línea azul más clara */
+}
+
+.disclaimer p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    /* Texto claro */
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+body.light-mode .close-button {
+    color: #333;
+    /* Texto oscuro en modo claro */
+}
+
+.close-button:hover {
+    color: #64b5f6;
+    /* Color azul al pasar el mouse */
+}
+
+body.light-mode .close-button:hover {
+    color: #42a5f5;
+    /* Color azul más claro al pasar el mouse */
+}
+
+/* Imagen */
+.image-card {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.image-card img {
+    max-width: 100%;
+    /* Imágenes responsive */
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Tarjetas de apuntes */
+.note-card {
+    background-color: #2d2d2d;
+    /* Fondo grisáceo */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .note-card {
+    background-color: #ffffff;
+    /* Fondo blanco en modo claro */
+    color: #333;
+    /* Texto oscuro */
+    border: 1px solid #ddd;
+    /* Borde sutil */
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    /* Efecto de elevación */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.note-card h3 {
+    color: #64b5f6;
+    /* Tonalidad azul */
+    margin: 0 0 10px;
+}
+
+body.light-mode .note-card h3 {
+    color: #42a5f5;
+    /* Tonalidad azul más clara */
+}
+
+.note-card p {
+    margin: 0;
+    color: #b0b0b0;
+    /* Texto gris claro */
+}
+
+/* Media Queries para diseño responsive */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 10px;
+    }
+
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    #theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .card-content pre {
+        font-size: 0.8rem;
+        /* Tamaño de fuente más pequeño para bloques de código */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 5px;
+    }
+
+    .back-button {
+        top: 5px;
+        left: 5px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    #theme-toggle {
+        top: 5px;
+        right: 5px;
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    .card-content pre {
+        font-size: 0.7rem;
+        /* Tamaño de fuente aún más pequeño para móviles */
+    }
+}

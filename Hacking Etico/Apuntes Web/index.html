@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Wifi</title>
+    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <a href="../../index.html"><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>Apuntes de Wifi</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de apuntes -->
+            <section class="notes-section">
+                <h2>OWASP TOP 10</h2>
+                <div class="note-card">
+                    <p><b>Inyección SQL:</b> Inserción de código SQL malicioso en consultas.</p>
+                    <p><b>Perdida de autenticación y gestión de sesiones:</b> Manejo inadecuado de credenciales y
+                        sesiones.</p>
+                    <p><b>Exposición de datos sensibles:</b> Falta de cifrado de datos críticos.</p>
+                    <p><b>XML External Entities (XXE):</b> Inclusión de entidades externas en XML.</p>
+                    <p><b>Control de acceso roto:</b> Acceso no autorizado a recursos restringidos.</p>
+                    <p><b>Configuración de seguridad incorrecta:</b> Configuraciones inseguras o desactualizadas.</p>
+                    <p><b>Cross-Site Scripting (XSS):</b> Inyección de scripts maliciosos en páginas web.</p>
+                    <p><b>Inseguridad en la deserialización:</b> Procesamiento inseguro de datos deserializados.</p>
+                    <p><b>Uso de componentes con vulnerabilidades conocidas:</b> Uso de bibliotecas con fallos
+                        conocidos.</p>
+                    <p><b>Insuficiente registro y monitoreo:</b> Falta de registros y monitoreo de actividades.</p>
+                </div>
+
+                <!-- Imagen -->
+                <div class="image-card">
+                    <img src="./Pizarra web.png" alt="Pizarra de apuntes sobre Hacking Web" />
+                </div>
+
+                <h2>Tipos de XSS</h2>
+                <div class="note-card">
+                    <p><b>Reflejado:</b> Se muestra en la pagina web pero no se almacena.</p>
+                    <p><b>Almacenado:</b> Se mantiene dentro de la pagina web.</p>
+                    <p><b>DOM:</b> Modifica el HTML de la pagina web.</p>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
+        </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
