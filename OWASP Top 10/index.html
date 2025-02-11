@@ -1,101 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Apuntes de Wifi</title>
+        <link rel="icon" type="image/png" href="../img/pezEjecutivo.png" />
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apuntes de Wifi</title>
-    <link rel="icon" type="image/png" href="../img/pezEjecutivo.png" />
-    <link rel="stylesheet" href="./styles.css" />
-</head>
+    <body>
+        <!-- Contenedor principal -->
+        <div class="page-container">
+            <!-- Cabecera -->
+            <header>
+                <!-- Botón para volver al índice principal -->
+                <a href="../index.html" class="back-button">← Volver al índice</a>
+                <a href="../index.html"
+                    ><img src="../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image"
+                /></a>
+                <h1>OWASP TOP 10</h1>
+                <p>Apuntes creados por Pablo Valladares González.</p>
+                <button id="theme-toggle">🌙</button>
+            </header>
 
-<body>
-    <!-- Contenedor principal -->
-    <div class="page-container">
-        <!-- Cabecera -->
-        <header>
-            <!-- Botón para volver al índice principal -->
-            <a href="../index.html" class="back-button">← Volver al índice</a>
-            <a href="../index.html"><img src="../img/pezEjecutivo.png" alt="Pez Ejecutivo"
-                    class="header-image left-image" /></a>
-            <h1>OWASP TOP 10</h1>
-            <p>Apuntes creados por Pablo Valladares González.</p>
-            <button id="theme-toggle">🌙</button>
-        </header>
-
-        <!-- Contenido principal -->
-        <main class="container">
-            <!-- Sección de apuntes -->
-            <section class="notes-section">
-
-                <div class="note-card">
-                    <p>
-                        <b>OWASP TOP 10</b> es una lista de las diez vulnerabilidades de seguridad más críticas en
-                        aplicaciones web, publicada por el <b>Proyecto Abierto de Seguridad en Aplicaciones Web</b>
-                        (OWASP,
-                        por sus siglas en inglés). Esta lista se actualiza periódicamente y tiene como objetivo
-                        concienciar a desarrolladores, arquitectos y organizaciones sobre los riesgos de seguridad
-                        más comunes, así como proporcionar recomendaciones para mitigarlos. Las vulnerabilidades
-                        incluyen problemas como la inyección de código, la autenticación rota y la exposición de
-                        datos sensibles, entre otros.
-                        <br><br>
-                        <b>Todas las actividades/ejercicios realizados</b> en los siguientes apartados son de la maquina
-                        virtual <b>DVWA</b>
-                    </p>
-                </div>
-
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>Inyección XSS.</h3>
-                    </div>
-                    <div class="card-content">
+            <!-- Contenido principal -->
+            <main class="container">
+                <!-- Sección de apuntes -->
+                <section class="notes-section">
+                    <div class="note-card">
                         <p>
-                            La inyección XSS (Cross-Site Scripting) es una vulnerabilidad de seguridad en aplicaciones
-                            web que permite a un atacante inyectar scripts maliciosos en páginas web vistas por otros
-                            usuarios. Esto ocurre cuando una aplicación web no valida o escapa adecuadamente los datos
-                            de entrada proporcionados por el usuario, permitiendo que el código JavaScript o HTML
-                            malicioso se ejecute en el navegador de la víctima.
-                        </p>
-                        <p>
-                            Existen tres tipos principales de XSS:
-                        </p>
-                        <ul>
-                            <li><b>XSS Reflejado:</b> El script malicioso se envía como parte de una solicitud (por
-                                ejemplo, a
-                                través de un enlace) y se refleja en la respuesta del servidor. Este tipo de ataque
-                                suele requerir que la víctima haga clic en un enlace malicioso.
-                            </li>
-                            <li><b>XSS Almacenado:</b> El script malicioso se almacena en el servidor (por ejemplo, en
-                                una base
-                                de datos) y se entrega a los usuarios cuando acceden a la página afectada. Este tipo es
-                                más peligroso, ya que puede afectar a múltiples usuarios sin necesidad de interacción
-                                adicional.</li>
-                            <li><b>XSS DOM-based:</b> El ataque se produce cuando el script malicioso se ejecuta en el
-                                navegador del usuario a través de la manipulación del Document Object Model (DOM) de la
-                                página, sin necesidad de interacción con el servidor.</li>
-                        </ul>
-                        <p>
-                            Las consecuencias de un ataque XSS pueden incluir el robo de cookies de sesión, la
-                            suplantación de identidad, la redirección a sitios maliciosos y la ejecución de acciones no
-                            autorizadas en nombre de la víctima. Para prevenir XSS, es fundamental validar y escapar
-                            adecuadamente todos los datos de entrada y salida en las aplicaciones web.
+                            <b>OWASP TOP 10</b> es una lista de las diez vulnerabilidades de seguridad más críticas en
+                            aplicaciones web, publicada por el <b>Proyecto Abierto de Seguridad en Aplicaciones Web</b>
+                            (OWASP, por sus siglas en inglés). Esta lista se actualiza periódicamente y tiene como
+                            objetivo concienciar a desarrolladores, arquitectos y organizaciones sobre los riesgos de
+                            seguridad más comunes, así como proporcionar recomendaciones para mitigarlos. Las
+                            vulnerabilidades incluyen problemas como la inyección de código, la autenticación rota y la
+                            exposición de datos sensibles, entre otros.
+                            <br /><br />
+                            <b>Todas las actividades/ejercicios realizados</b> en los siguientes apartados son de la
+                            maquina virtual <b>DVWA</b>
                         </p>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>Inyecciones de XSS Reflejado</h3>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Inyección XSS.</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                La inyección XSS (Cross-Site Scripting) es una vulnerabilidad de seguridad en
+                                aplicaciones web que permite a un atacante inyectar scripts maliciosos en páginas web
+                                vistas por otros usuarios. Esto ocurre cuando una aplicación web no valida o escapa
+                                adecuadamente los datos de entrada proporcionados por el usuario, permitiendo que el
+                                código JavaScript o HTML malicioso se ejecute en el navegador de la víctima.
+                            </p>
+                            <p>Existen tres tipos principales de XSS:</p>
+                            <ul>
+                                <li>
+                                    <b>XSS Reflejado:</b> El script malicioso se envía como parte de una solicitud (por
+                                    ejemplo, a través de un enlace) y se refleja en la respuesta del servidor. Este tipo
+                                    de ataque suele requerir que la víctima haga clic en un enlace malicioso.
+                                </li>
+                                <li>
+                                    <b>XSS Almacenado:</b> El script malicioso se almacena en el servidor (por ejemplo,
+                                    en una base de datos) y se entrega a los usuarios cuando acceden a la página
+                                    afectada. Este tipo es más peligroso, ya que puede afectar a múltiples usuarios sin
+                                    necesidad de interacción adicional.
+                                </li>
+                                <li>
+                                    <b>XSS DOM-based:</b> El ataque se produce cuando el script malicioso se ejecuta en
+                                    el navegador del usuario a través de la manipulación del Document Object Model (DOM)
+                                    de la página, sin necesidad de interacción con el servidor.
+                                </li>
+                            </ul>
+                            <p>
+                                Las consecuencias de un ataque XSS pueden incluir el robo de cookies de sesión, la
+                                suplantación de identidad, la redirección a sitios maliciosos y la ejecución de acciones
+                                no autorizadas en nombre de la víctima. Para prevenir XSS, es fundamental validar y
+                                escapar adecuadamente todos los datos de entrada y salida en las aplicaciones web.
+                            </p>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>
-                            Para dar como superado el ejercicio deberemos de haber sido capaz de introducir una etiqueta
-                            <b>script</b> y ejecutar algún tipo de codigo js como podria ser <b>alert()</b> o
-                            <b>document.cookie.</b>
-                        </p>
-                        <h4>Dificultad baja</h4>
-                        <p>Codigo fuente en php:</p>
-                        <pre>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Inyecciones de XSS Reflejado</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
+                                de codigo js como podria ser <b>alert()</b> o
+                                <b>document.cookie.</b>
+                            </p>
+                            <h4>Dificultad baja</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
 &lt;?php
 header(&quot;X-XSS-Protection: 0&quot;);
 
@@ -104,19 +103,20 @@ if (array_key_exists(&quot;name&quot;, $_GET) &amp;&amp; $_GET[&apos;name&apos;]
     // Feedback for end user
     echo &apos;&lt;pre&gt;Hello &apos; . $_GET[ &apos;name&apos; ] . &apos;&lt;/pre&gt;&apos;;
 }
-?&gt;</pre>
-                        <p>
-                            Como se puede ver en el codigo fuente, no hay ningún tipo de validación en el codigo, por lo
-                            que si introducimos directamente el codigo:
-                            <b>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b> funcionara.
-                        </p>
-                        <div class="image-card">
-                            <img src="../img/wip.png" alt="Añadir GIF del resultado" />
-                        </div>
-                        <br><br>
-                        <h4>Dificultad media</h4>
-                        <p>Codigo fuente en php:</p>
-                        <pre>
+?&gt;</pre
+                            >
+                            <p>
+                                Como se puede ver en el codigo fuente, no hay ningún tipo de validación en el codigo,
+                                por lo que si introducimos directamente el codigo:
+                                <b>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b> funcionara.
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/reflectedlow.gif" alt="GIF de como resolver la dificultad baja" />
+                            </div>
+                            <br /><br />
+                            <h4>Dificultad media</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
 &lt;?php
 header(&quot;X-XSS-Protection: 0&quot;);
 
@@ -128,31 +128,34 @@ if( array_key_exists(&quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &apos;name&apos
     // Feedback for end user
     echo &quot;&lt;pre&gt;Hello {&dollar;name}&lt;/pre&gt;&quot;;
 }
-?&gt;</pre>
-                        <p>
-                            Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual
-                            aplica
-                            un <b>str_replace() de &lt;/script&gt;</b> a todo la cadena que introducimos, por lo que si
-                            volvemos a utilizar el input anterior esta vez no funcionara. Si vamos a la documentación de
-                            <b>PHP</b> y buscamos por str_replace() podremos ver la siguiente nota:
-                        </p>
-                        <div class="image-card">
-                            <img src="../img/nota_str_replace.png"
-                                alt="Nota de la documentación de PHP sobre str_replace" />
-                        </div>
-                        <p>
-                            Por lo que teniendo la siguiente información, podemos saber que si ponemos &lt;/script&gt;
-                            pero con alguna letra mayuscula funcionara adecuadamente, ya que a diferencia de la función
-                            <b>str_replace()</b> html no es <b>case-sensitive</b> por lo que el codigo sera:
-                            <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
-                        </p>
-                        <div class="image-card">
-                            <img src="../img/wip.png" alt="Añadir GIF del resultado" />
-                        </div>
-                        <br><br>
-                        <h4>Dificultad alta</h4>
-                        <p>Codigo fuente en php:</p>
-                        <pre>
+?&gt;</pre
+                            >
+                            <p>
+                                Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual
+                                aplica un <b>str_replace() de &lt;/script&gt;</b> a todo la cadena que introducimos, por
+                                lo que si volvemos a utilizar el input anterior esta vez no funcionara. Si vamos a la
+                                documentación de <b>PHP</b> y buscamos por str_replace() podremos ver la siguiente nota:
+                            </p>
+                            <div class="image-card">
+                                <img
+                                    src="../img/nota_str_replace.png"
+                                    alt="Nota de la documentación de PHP sobre str_replace"
+                                />
+                            </div>
+                            <p>
+                                Por lo que teniendo la siguiente información, podemos saber que si ponemos
+                                &lt;/script&gt; pero con alguna letra mayuscula funcionara adecuadamente, ya que a
+                                diferencia de la función
+                                <b>str_replace()</b> html no es <b>case-sensitive</b> por lo que el codigo sera:
+                                <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/reflectedmedium.gif" alt="GIF de como resolver la dificultad media" />
+                            </div>
+                            <br /><br />
+                            <h4>Dificultad alta</h4>
+                            <p>Codigo fuente en php:</p>
+                            <pre>
 &lt;?php
 header(&quot;X-XSS-Protection: 0&quot;);
 
@@ -164,65 +167,82 @@ if( array_key_exists(&quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &apos;name&apos
     // Feedback for end user
     echo &quot;&lt;pre&gt;Hello {&dollar;name}&lt;/pre&gt;&quot;;
 }
-?&gt;</pre>
-                        <p>
-                            Esta vez en el codigo fuente se esta sanitizando mediante una expresión regular, la cual
-                            podemos ver que tiene <b>/i</b> al final, lo cual hace que no sea <b>case-sensitive</b> por
-                            lo que por mucho que intentemos poner <b>&lt;/script&gt;</b> siempre sera remplazado por lo
-                            que no vamos a poder ejecutar codigo JS utilizando dicha etiqueta. Por suerte para nosotros
-                            esta no es la unica manera de ejecutar codigo JS, ya que el atributo <b>onerror</b> ejecuta
-                            codigo JS cuando no puede cargar un enlace externo
-                        </p>
-                        <div class="image-card">
-                            <img src="../img/onerrorEvent.png"
-                                alt="Muestra de W3school donde se explica el evento onerror" />
+?&gt;</pre
+                            >
+                            <p>
+                                Esta vez en el codigo fuente se esta sanitizando mediante una expresión regular, la cual
+                                podemos ver que tiene <b>/i</b> al final, lo cual hace que no sea
+                                <b>case-sensitive</b> por lo que por mucho que intentemos poner
+                                <b>&lt;/script&gt;</b> siempre sera remplazado por lo que no vamos a poder ejecutar
+                                codigo JS utilizando dicha etiqueta. Por suerte para nosotros esta no es la unica manera
+                                de ejecutar codigo JS, ya que el atributo <b>onerror</b> ejecuta codigo JS cuando no
+                                puede cargar un enlace externo
+                            </p>
+                            <div class="image-card">
+                                <img
+                                    src="../img/onerrorEvent.png"
+                                    alt="Muestra de W3school donde se explica el evento onerror"
+                                />
+                            </div>
+                            <p>
+                                Teniendo esta información, podemos ver que onerror no esta siendo sanitizado por lo que
+                                podriamos utilizarlo, usando el siguiente codigo
+                                <b>&lt;img src=x onerror=alert(document.cookie)&gt;</b>
+                            </p>
+                            <div class="image-card">
+                                <img src="../img/reflectedhigh.gif" alt="GIF de como resolver la dificultad alta" />
+                            </div>
+                            <br /><br />
                         </div>
-                        <p>
-                            Teniendo esta información, podemos ver que onerror no esta siendo sanitizado por lo que
-                            podriamos utilizarlo, usando el siguiente codigo <b>&lt;img src=x
-                                onerror=alert(document.cookie)&gt;</b>
-                        </p>
-                        <div class="image-card">
-                            <img src="../img/wip.png" alt="Añadir GIF del resultado" />
-                        </div>
-                        <br><br>
-
                     </div>
-                </div>
 
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>Inyecciones de XSS Almacenado</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Para dar como superado el ejercicio deberemos de haber sido capaz de introducir una
+                                etiqueta
+                                <b>script</b> y ejecutar algún tipo de codigo js como podria ser <b>alert()</b> o
+                                <b>document.cookie.</b>
+                            </p>
+                            <h4>Dificultad baja</h4>
+                            <p>Codigo fuente en php:</p>
+                        </div>
+                    </div>
 
-                <!-- Más tarjetas aquí -->
-            </section>
-        </main>
+                    <!-- Más tarjetas aquí -->
+                </section>
+            </main>
 
-        <!-- Pie de página -->
-        <footer>
-            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- Disclaimer -->
-    <div id="disclaimer" class="disclaimer">
-        <div class="disclaimer-header">
-            <h3>Advertencia</h3>
-            <button id="close-disclaimer" class="close-button">×</button>
+            <!-- Pie de página -->
+            <footer>
+                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+            </footer>
         </div>
-        <div class="disclaimer-line"></div>
-        <p>
-            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-            diseñado para ser solamente educativo.
-        </p>
-    </div>
 
-    <script>
-        // Función para expandir/colapsar las tarjetas
-        function toggleCard(header) {
-            const card = header.parentElement;
-            const content = card.querySelector(".card-content");
-            content.classList.toggle("expanded");
-        }
-    </script>
-    <script src="../../script.js"></script>
-</body>
+        <!-- Disclaimer -->
+        <div id="disclaimer" class="disclaimer">
+            <div class="disclaimer-header">
+                <h3>Advertencia</h3>
+                <button id="close-disclaimer" class="close-button">×</button>
+            </div>
+            <div class="disclaimer-line"></div>
+            <p>
+                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+                diseñado para ser solamente educativo.
+            </p>
+        </div>
 
+        <script>
+            // Función para expandir/colapsar las tarjetas
+            function toggleCard(header) {
+                const card = header.parentElement;
+                const content = card.querySelector(".card-content");
+                content.classList.toggle("expanded");
+            }
+        </script>
+        <script src="../../script.js"></script>
+    </body>
 </html>
