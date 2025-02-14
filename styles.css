@@ -215,6 +215,7 @@ body.light-mode footer p {
 /* Botón para volver al índice principal */
 .back-button {
     position: fixed;
+    z-index: +999;
     top: 20px;
     left: 20px;
     background-color: #64b5f6;
