@@ -44,7 +44,7 @@
 
                 <div class="expandable-card">
                     <div class="card-header" onclick="toggleCard(this)">
-                        <h3>Inyección XSS.</h3>
+                        <h3>Inyección XSS - Conceptos.</h3>
                     </div>
                     <div class="card-content">
                         <p>
@@ -440,6 +440,371 @@ if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
                         <div class="image-card">
                             <img src="../img/domHigh.gif" alt="GIF de como resolver la dificultad alta" />
                         </div>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección SQL - Conceptos.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            La inyección SQL (SQL Injection) es una vulnerabilidad de seguridad en aplicaciones web que
+                            permite a un atacante interferir en las consultas que una aplicación realiza a su base de
+                            datos. Esto ocurre cuando una aplicación web no valida o escapa adecuadamente los datos de
+                            entrada proporcionados por el usuario, permitiendo que un atacante ejecute comandos SQL
+                            maliciosos que pueden manipular o acceder a datos sensibles.
+                        </p>
+                        <p>Existen varios tipos de inyección SQL, entre los que se destacan:</p>
+                        <ul>
+                            <li>
+                                <b>Inyección SQL Clásica:</b> El atacante inserta código SQL malicioso en un campo de
+                                entrada, como un formulario de inicio de sesión, que se ejecuta en la base de datos.
+                                Este tipo de ataque puede permitir al atacante obtener acceso no autorizado a datos o
+                                incluso modificar la base de datos.
+                            </li>
+                            <li>
+                                <b>Inyección SQL Basada en Tiempo:</b> Este tipo de inyección se utiliza para determinar
+                                la estructura de la base de datos mediante la introducción de consultas que causan
+                                retrasos en la respuesta del servidor. El atacante puede inferir información sobre la
+                                base de datos basándose en el tiempo que tarda en responder.
+                            </li>
+                            <li>
+                                <b>Inyección SQL Ciega:</b> En este caso, el atacante no recibe mensajes de error que
+                                revelen información sobre la base de datos, pero puede hacer preguntas que devuelvan
+                                respuestas verdaderas o falsas. A través de este método, el atacante puede deducir
+                                información sobre la base de datos sin ver los resultados directamente.
+                            </li>
+                        </ul>
+                        <p>
+                            Las consecuencias de un ataque de inyección SQL pueden incluir el acceso no autorizado a
+                            datos sensibles, la modificación o eliminación de datos, y la posibilidad de comprometer la
+                            integridad de la base de datos. Para prevenir la inyección SQL, es fundamental utilizar
+                            consultas parametrizadas, validar y escapar adecuadamente todos los datos de entrada y
+                            aplicar principios de seguridad en el diseño de la base de datos.
+                        </p>
+                        <h4>Extra</h4>
+                        <p>A modo de información adicional, estas son algunas de las formas para sacar información
+                            sensible del cuerpo de una base de datos en MySQL o cualquier base de datos SQL</p>
+                        <ul>
+                            <li><b>Numero de columnas:</b> order by X</li>
+                            <li><b>Nombre de la base de datos:</b> database()</li>
+                            <li><b>Todas las bases de datos:</b> schema_name from information_schema.schemata</li>
+                            <li><b>Todas las tablas de la base de datos:</b> table_name from information_schema.tables
+                            </li>
+                            <li><b>Todas las columnas:</b> column:name from information_schema.column</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección SQL Clasica.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Para dar como superado el ejercicio deberemos de haber sido capaz de obtener información
+                            privada/sensible que el servidor no quiera mostrar, como podria ser el nombre de las base
+                            de datos o el nombre de las tablas</p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+if( isset( $_REQUEST[ 'Submit' ] ) ) {
+    // Get input
+    $id = $_REQUEST[ 'id' ];
+
+    switch ($_DVWA['SQLI_DB']) {
+        case MYSQL:
+            // Check database
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+            $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+
+            // Get results
+            while( $row = mysqli_fetch_assoc( $result ) ) {
+                // Get values
+                $first = $row["first_name"];
+                $last  = $row["last_name"];
+
+                // Feedback for end user
+                echo "&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;";
+            }
+
+            mysqli_close($GLOBALS["___mysqli_ston"]);
+            break;
+        case SQLITE:
+            global $sqlite_db_connection;
+
+            #$sqlite_db_connection = new SQLite3($_DVWA['SQLITE_DB']);
+            #$sqlite_db_connection->enableExceptions(true);
+
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+            #print $query;
+            try {
+                $results = $sqlite_db_connection->query($query);
+            } catch (Exception $e) {
+                echo 'Caught exception: ' . $e->getMessage();
+                exit();
+            }
+
+            if ($results) {
+                while ($row = $results->fetchArray()) {
+                    // Get values
+                    $first = $row["first_name"];
+                    $last  = $row["last_name"];
+
+                    // Feedback for end user
+                    echo "&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;";
+                }
+            } else {
+                echo "Error in fetch ".$sqlite_db->lastErrorMsg();
+            }
+            break;
+    } 
+}
+
+?&gt;</pre>
+                        <p>Como se puede apreciar en el codigo, si sabemos un poco de <b>PHP/SQL</b> el codigo no trae
+                            ningún tipo de proteción y esta utilizando comillas simples en la query, por lo que si
+                            introducimos una consulta simple como podria ser <b>' or
+                                '1'='1</b>, obtendremos todos los datos que se muestran, pero para nosotros esto no es
+                            suficiente por lo que obtendremos el nombre de todas las tablas con la query <b>' or '1'='1'
+                                UNION SELECT database(),table_name from information_schema.tables; -- -</b> funcionara
+                        </p>
+                        <pre>' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+if( isset( $_POST[ 'Submit' ] ) ) {
+    // Get input
+    $id = $_POST[ 'id' ];
+
+    $id = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id);
+
+    switch ($_DVWA['SQLI_DB']) {
+        case MYSQL:
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = $id;";
+            $result = mysqli_query($GLOBALS["___mysqli_ston"], $query) or die( '&lt;pre&gt;' . mysqli_error($GLOBALS["___mysqli_ston"]) . '&lt;/pre&gt;' );
+
+            // Get results
+            while( $row = mysqli_fetch_assoc( $result ) ) {
+                // Display values
+                $first = $row["first_name"];
+                $last  = $row["last_name"];
+
+                // Feedback for end user
+                echo "&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;";
+            }
+            break;
+        case SQLITE:
+            global $sqlite_db_connection;
+
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = $id;";
+            #print $query;
+            try {
+                $results = $sqlite_db_connection->query($query);
+            } catch (Exception $e) {
+                echo 'Caught exception: ' . $e->getMessage();
+                exit();
+            }
+
+            if ($results) {
+                while ($row = $results->fetchArray()) {
+                    // Get values
+                    $first = $row["first_name"];
+                    $last  = $row["last_name"];
+
+                    // Feedback for end user
+                    echo "&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;";
+                }
+            } else {
+                echo "Error in fetch ".$sqlite_db->lastErrorMsg();
+            }
+            break;
+    }
+}
+
+// This is used later on in the index.php page
+// Setting it here so we can close the database connection in here like in the rest of the source scripts
+$query  = "SELECT COUNT(*) FROM users;";
+$result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+$number_of_rows = mysqli_fetch_row( $result )[0];
+
+mysqli_close($GLOBALS["___mysqli_ston"]);
+?&gt;                            
+                        </pre>
+                        <p>Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual aplica
+                            <b>mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id)</b> a los datos que estamos
+                            introduciendo, ademas de esto, no tenemos un campo donde podamos escribir directamente, por
+                            lo que necesitaremos modificar el HTML para introducir lo que queramos, por lo que si
+                            volvemos a utilizar el input anterior esta vez nos dara un
+                            error.
+                            Si vamos a la documentación de <b>PHP</b> y buscamos por mysqli_real_escape_string()
+                            podremos ver lo que hace la función
+                        </p>
+                        <div class="image-card">
+                            <img src="../img/mysqliRealScapeDefinition.png"
+                                alt="Muestra el funcionamiento en la documentación de php de mysqli_real_escape_string" />
+                        </div>
+                        <p>Por lo que si ponemos una comilla, esta sera escapada por la función, pero para nuestra
+                            suerte si miramos la consulta, no hay comillas, esta puesto tal cual. Gracias a esto
+                            solamente tendremos que hacer la consulta sin poner ninguna comilla <b>1 UNION SELECT
+                                database(),table_name from information_schema.tables; -- -</b> y funcionara
+                            correctamente</p>
+                        <pre>1 UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+if( isset( $_SESSION [ 'id' ] ) ) {
+    // Get input
+    $id = $_SESSION[ 'id' ];
+
+    switch ($_DVWA['SQLI_DB']) {
+        case MYSQL:
+            // Check database
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
+            $result = mysqli_query( $GLOBALS["___mysqli_ston"], $query ) or die( '&lt;pre&gt;Something went wrong.&lt;/pre&gt;' );
+
+            // Get results
+            while( $row = mysqli_fetch_assoc( $result ) ) {
+                // Get values
+                $first = $row["first_name"];
+                $last  = $row["last_name"];
+
+                // Feedback for end user
+                echo '&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;';
+            }
+
+            ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);        
+            break;
+        case SQLITE:
+            global $sqlite_db_connection;
+
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
+            #print $query;
+            try {
+                $results = $sqlite_db_connection->query($query);
+            } catch (Exception $e) {
+                echo 'Caught exception: ' . $e->getMessage();
+                exit();
+            }
+
+            if ($results) {
+                while ($row = $results->fetchArray()) {
+                    // Get values
+                    $first = $row["first_name"];
+                    $last  = $row["last_name"];
+
+                    // Feedback for end user
+                    echo '&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;';
+                }
+            } else {
+                echo "Error in fetch " . $sqlite_db->lastErrorMsg();
+            }
+            break;
+    }
+}
+
+?&gt;</pre>
+                        <p>Como se puede apreciar en el codigo, esta vez la sanitización es incluso menor que en el
+                            ejercicio anterior, siendo que la sanitización se fundamente en un <b>LIMIT 1</b>, haciendo
+                            que aunque introduzcas <b>' or '1'='1</b> de manera efectiva, este solo mostrara un
+                            elemento, para contrasrestar esta medida, solamente tendremos que añadirle un comentario a
+                            nuestro codigo, haciendo que no interprete el LIMIT 1. Por lo que introduciremos <b>' or
+                                '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</b> y
+                            esto funcionara perfectamente</p>
+                        <pre>' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección SQL Ciegas.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Al ser inyecciones SQL Ciegas para dar como superado el ejercicio deberemos de haber sido
+                            capaz de demostrar la existencia de información que la base de datos no nos proporciona,
+                            como podria ser el nombre de una tabla y que el servidor nos diga que existe</p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+if( isset( $_GET[ 'Submit' ] ) ) {
+    // Get input
+    $id = $_GET[ 'id' ];
+    $exists = false;
+
+    switch ($_DVWA['SQLI_DB']) {
+        case MYSQL:
+            // Check database
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+            try {
+                $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ); // Removed 'or die' to suppress mysql errors
+            } catch (Exception $e) {
+                print "There was an error.";
+                exit;
+            }
+
+            $exists = false;
+            if ($result !== false) {
+                try {
+                    $exists = (mysqli_num_rows( $result ) > 0);
+                } catch(Exception $e) {
+                    $exists = false;
+                }
+            }
+            ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+            break;
+        case SQLITE:
+            global $sqlite_db_connection;
+
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+            try {
+                $results = $sqlite_db_connection->query($query);
+                $row = $results->fetchArray();
+                $exists = $row !== false;
+            } catch(Exception $e) {
+                $exists = false;
+            }
+
+            break;
+    }
+
+    if ($exists) {
+        // Feedback for end user
+        echo '&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;';
+    } else {
+        // User wasn't found, so the page wasn't!
+        header( $_SERVER[ 'SERVER_PROTOCOL' ] . ' 404 Not Found' );
+
+        // Feedback for end user
+        echo '&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;';
+    }
+
+}
+
+?&gt;</pre>
+                        <p>Al igual que en la inyección SQL Basica, no hay ninguna sanitización en el codigo, pero por
+                            desgracia, lo unico que nos mostrara es que existe, por lo que si introducimos <b>' or
+                                '1'='1</b>, no veremos nada, ademas del existe.</p>
+
+
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
                     </div>
                 </div>
 
