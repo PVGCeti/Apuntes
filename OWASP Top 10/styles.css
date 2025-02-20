@@ -184,7 +184,7 @@ body.light-mode .card-header h3 {
 
 .card-content.expanded {
     padding: 15px;
-    max-height: 5000px;
+    max-height: 50000px;
     /* Ajusta este valor según el contenido */
 }
 
