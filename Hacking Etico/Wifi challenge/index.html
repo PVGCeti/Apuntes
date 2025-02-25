@@ -418,14 +418,16 @@ network={
                         <div class="card-content">
                             <p>Crearemos otro archivo host.conf</p>
                             <pre>
-network={
-    ssid="wifi-IT"
-    bssid=F0:9F:C2:1A:CA:25
-    psk="bubblegum"
-    key_mgmt=SAE
-    scan_ssid=1
-    ieee80211w=0
-}</pre
+interface=wlan1
+driver=nl80211
+hw_mode=g
+channel=11
+ssid=wifi-IT
+mana_wpaout=hostapd-it.hccapx
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+wpa_passphrase=12345678</pre
                             >
                             <p>
                                 Importante hacer el hostapd-mana y el aireplay-ng a la vez, ya que si no, no funcionara
