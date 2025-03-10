@@ -1068,7 +1068,13 @@ if( isset( $_GET[ 'Change' ] ) ) {
 }
 
 ?&gt;</pre>
-                        <p>Como podemos ver en el codigo, en este caso se le añade una sanitización especial, la cual es que la cabecera <b>referer</b>, lo cual si mandamos una url a cualquier persona y no estaba antes en la pagina, no funcionara, ya que detectara que el referer no es correcto. para solucionar dicho problema, tendremos que utilizar la burpsuite y añadir la cabecera referrer a dicha petición, siendo una cabecera de ejemeplo <b>Referer: http://192.168.179.1:4280/vulnerabilities/csrf/?password_new=password&password_conf=password&Change=Change</b>, por lo que nosotros podremos añadir la siguiente cabecera para que funcione.</p>
+                        <p>Como podemos ver en el codigo, en este caso se le añade una sanitización especial, la cual es
+                            que la cabecera <b>referer</b>, lo cual si mandamos una url a cualquier persona y no estaba
+                            antes en la pagina, no funcionara, ya que detectara que el referer no es correcto. para
+                            solucionar dicho problema, tendremos que utilizar la burpsuite y añadir la cabecera referrer
+                            a dicha petición, siendo una cabecera de ejemeplo <b>Referer:
+                                http://192.168.179.1:4280/vulnerabilities/csrf/?password_new=password&password_conf=password&Change=Change</b>,
+                            por lo que nosotros podremos añadir la siguiente cabecera para que funcione.</p>
                         <pre>referer: http:192.168.179.1:4280/vulnerabilities/csrf</pre>
                         <div class="image-card">
                             <img src="../img/csrfmedium.gif" alt="En progreso..." />
@@ -1327,22 +1333,42 @@ $file = str_replace( array( "../", "..\\" ), "", $file );
                     </div>
                     <div class="card-content">
                         <p>
-                            La carga de archivos (File Upload) es una funcionalidad común en muchas aplicaciones web que permite a los usuarios subir archivos al servidor. Sin embargo, si no se implementa correctamente, puede convertirse en una vulnerabilidad de seguridad que los atacantes pueden explotar para comprometer el sistema. Esto ocurre cuando una aplicación no valida adecuadamente el tipo, tamaño o contenido de los archivos que se suben, permitiendo que un atacante cargue archivos maliciosos que pueden ejecutar código en el servidor o acceder a datos sensibles.
+                            La carga de archivos (File Upload) es una funcionalidad común en muchas aplicaciones web que
+                            permite a los usuarios subir archivos al servidor. Sin embargo, si no se implementa
+                            correctamente, puede convertirse en una vulnerabilidad de seguridad que los atacantes pueden
+                            explotar para comprometer el sistema. Esto ocurre cuando una aplicación no valida
+                            adecuadamente el tipo, tamaño o contenido de los archivos que se suben, permitiendo que un
+                            atacante cargue archivos maliciosos que pueden ejecutar código en el servidor o acceder a
+                            datos sensibles.
                         </p>
-                        <p>Existen varios tipos de ataques relacionados con la carga de archivos, entre los que se destacan:</p>
+                        <p>Existen varios tipos de ataques relacionados con la carga de archivos, entre los que se
+                            destacan:</p>
                         <ul>
                             <li>
-                                <b>Carga de Archivos Maliciosos:</b> El atacante sube un archivo que contiene código malicioso, como un script PHP o un archivo ejecutable. Si la aplicación no valida el tipo de archivo, este puede ser ejecutado en el servidor, permitiendo al atacante tomar control del sistema.
+                                <b>Carga de Archivos Maliciosos:</b> El atacante sube un archivo que contiene código
+                                malicioso, como un script PHP o un archivo ejecutable. Si la aplicación no valida el
+                                tipo de archivo, este puede ser ejecutado en el servidor, permitiendo al atacante tomar
+                                control del sistema.
                             </li>
                             <li>
-                                <b>Inyección de Archivos:</b> Este tipo de ataque se produce cuando un atacante sube un archivo que puede ser utilizado para inyectar código en la aplicación. Por ejemplo, un archivo de imagen que contiene código malicioso puede ser procesado por la aplicación, lo que resulta en la ejecución de ese código.
+                                <b>Inyección de Archivos:</b> Este tipo de ataque se produce cuando un atacante sube un
+                                archivo que puede ser utilizado para inyectar código en la aplicación. Por ejemplo, un
+                                archivo de imagen que contiene código malicioso puede ser procesado por la aplicación,
+                                lo que resulta en la ejecución de ese código.
                             </li>
                             <li>
-                                <b>Denegación de Servicio (DoS):</b> Un atacante puede intentar cargar archivos extremadamente grandes o en gran cantidad, lo que puede agotar los recursos del servidor y provocar que la aplicación se vuelva lenta o se caiga.
+                                <b>Denegación de Servicio (DoS):</b> Un atacante puede intentar cargar archivos
+                                extremadamente grandes o en gran cantidad, lo que puede agotar los recursos del servidor
+                                y provocar que la aplicación se vuelva lenta o se caiga.
                             </li>
                         </ul>
                         <p>
-                            Las consecuencias de un ataque de carga de archivos pueden incluir la ejecución de código malicioso, el acceso no autorizado a datos sensibles, la interrupción del servicio y la posibilidad de comprometer la seguridad del servidor. Para prevenir estos ataques, es fundamental validar y sanitizar todos los archivos subidos, restringir los tipos de archivos permitidos, limitar el tamaño de los archivos y almacenar los archivos en un directorio seguro fuera del alcance del servidor web.
+                            Las consecuencias de un ataque de carga de archivos pueden incluir la ejecución de código
+                            malicioso, el acceso no autorizado a datos sensibles, la interrupción del servicio y la
+                            posibilidad de comprometer la seguridad del servidor. Para prevenir estos ataques, es
+                            fundamental validar y sanitizar todos los archivos subidos, restringir los tipos de archivos
+                            permitidos, limitar el tamaño de los archivos y almacenar los archivos en un directorio
+                            seguro fuera del alcance del servidor web.
                         </p>
                     </div>
                 </div>
@@ -1352,7 +1378,9 @@ $file = str_replace( array( "../", "..\\" ), "", $file );
                         <h3>File Upload Ejercicios.</h3>
                     </div>
                     <div class="card-content">
-                        <p>Para dar como superado este apartado, deberemos de haber sido capaz de subir una webshell y usar algun comando que proporcione información sensible/privada del servidor, como podria ser <b>cat /etc/passwd</b></p>
+                        <p>Para dar como superado este apartado, deberemos de haber sido capaz de subir una webshell y
+                            usar algun comando que proporcione información sensible/privada del servidor, como podria
+                            ser <b>cat /etc/passwd</b></p>
                         <h4>Dificultad baja.</h4>
                         <p>Codigo fuente en php:</p>
                         <pre>
@@ -1375,7 +1403,9 @@ if( isset( $_POST[ 'Upload' ] ) ) {
 }
 
 ?&gt;</pre>
-<p>Tal y como se puede apreciar en el codigo fuente, no hay ningún tipo de sanitización, por lo que si subimos un archivo <b>.php</b>, si vamos a donde se almacena, podremos ejecutarlo, dando asi uso a la web shell que hemos subido.</p>
+                        <p>Tal y como se puede apreciar en el codigo fuente, no hay ningún tipo de sanitización, por lo
+                            que si subimos un archivo <b>.php</b>, si vamos a donde se almacena, podremos ejecutarlo,
+                            dando asi uso a la web shell que hemos subido.</p>
 
                         <div class="image-card">
                             <img src="../img/fileuploadlow.gif" alt="En progreso..." />
@@ -1417,7 +1447,11 @@ if( isset( $_POST[ 'Upload' ] ) ) {
 }
 
 ?&gt;</pre>
-                        <p>Como podemos apreciar en el codigo fuente, esta vez hay una sanitización del <b>content/type</b> del archivo, debiendo ser esta image/jpeg o image/png. Para modificar el content/type, deberemos de utilizar herramientas tales, como en mi caso, burpsuite para modificarlo. Por lo que interceptaremos la petición y cambiaremos el content type</p>
+                        <p>Como podemos apreciar en el codigo fuente, esta vez hay una sanitización del
+                            <b>content/type</b> del archivo, debiendo ser esta image/jpeg o image/png. Para modificar el
+                            content/type, deberemos de utilizar herramientas tales, como en mi caso, burpsuite para
+                            modificarlo. Por lo que interceptaremos la petición y cambiaremos el content type
+                        </p>
                         <div class="image-card">
                             <img src="../img/fileuploadmedium.gif" alt="En progreso..." />
                         </div>
@@ -1460,8 +1494,13 @@ if( isset( $_POST[ 'Upload' ] ) ) {
 }
 
 ?&gt;</pre>
-                        <p>Ademas de la sanitización anterior, se le añade un pequeño resize y que acabe en png o jpg, por lo que ademas de interceptar la petición para cambiarle el content type, le añadiremos .jpeg al final y le añadiremso GIF89a; para evitar el resize, por lo que se subira el archivo sin hacer dicha comprobación.</p>
-                        <p>Una vez hecho lo anterior, deberemos de usar una vulnerabilidad previamente explotada, como seria esta misma en una dificultad más facil o command injection, para poder cambiar el nombre del archivo y quitarle el .jpeg, para que se quede solo el .php y funcione</p>
+                        <p>Ademas de la sanitización anterior, se le añade un pequeño resize y que acabe en png o jpg,
+                            por lo que ademas de interceptar la petición para cambiarle el content type, le añadiremos
+                            .jpeg al final y le añadiremso GIF89a; para evitar el resize, por lo que se subira el
+                            archivo sin hacer dicha comprobación.</p>
+                        <p>Una vez hecho lo anterior, deberemos de usar una vulnerabilidad previamente explotada, como
+                            seria esta misma en una dificultad más facil o command injection, para poder cambiar el
+                            nombre del archivo y quitarle el .jpeg, para que se quede solo el .php y funcione</p>
                         <div class="image-card">
                             <img src="../img/optimized.gif" alt="En progreso..." />
                         </div>
@@ -1474,22 +1513,43 @@ if( isset( $_POST[ 'Upload' ] ) ) {
                     </div>
                     <div class="card-content">
                         <p>
-                            La inyección de comandos es una vulnerabilidad de seguridad que permite a un atacante ejecutar comandos arbitrarios en el sistema operativo del servidor a través de una aplicación web. Esto ocurre cuando una aplicación no valida adecuadamente las entradas del usuario y permite que se inserten comandos del sistema en las solicitudes. Si un atacante puede manipular estas entradas, puede ejecutar comandos que comprometan la seguridad del sistema.
+                            La inyección de comandos es una vulnerabilidad de seguridad que permite a un atacante
+                            ejecutar comandos arbitrarios en el sistema operativo del servidor a través de una
+                            aplicación web. Esto ocurre cuando una aplicación no valida adecuadamente las entradas del
+                            usuario y permite que se inserten comandos del sistema en las solicitudes. Si un atacante
+                            puede manipular estas entradas, puede ejecutar comandos que comprometan la seguridad del
+                            sistema.
                         </p>
-                        <p>Existen varios tipos de ataques relacionados con la inyección de comandos, entre los que se destacan:</p>
+                        <p>Existen varios tipos de ataques relacionados con la inyección de comandos, entre los que se
+                            destacan:</p>
                         <ul>
                             <li>
-                                <b>Inyección de Comandos del Sistema:</b> El atacante inserta comandos del sistema operativo en una entrada que la aplicación ejecuta sin validación. Por ejemplo, si una aplicación permite a los usuarios ingresar un nombre de host para hacer un ping, un atacante podría ingresar un comando como `; rm -rf /` para eliminar archivos del servidor.
+                                <b>Inyección de Comandos del Sistema:</b> El atacante inserta comandos del sistema
+                                operativo en una entrada que la aplicación ejecuta sin validación. Por ejemplo, si una
+                                aplicación permite a los usuarios ingresar un nombre de host para hacer un ping, un
+                                atacante podría ingresar un comando como `; rm -rf /` para eliminar archivos del
+                                servidor.
                             </li>
                             <li>
-                                <b>Inyección de Comandos en Aplicaciones Web:</b> Este tipo de ataque se produce cuando un atacante puede inyectar comandos en aplicaciones que utilizan sistemas de gestión de bases de datos o servicios de red. Por ejemplo, un atacante podría manipular una consulta SQL para ejecutar comandos del sistema.
+                                <b>Inyección de Comandos en Aplicaciones Web:</b> Este tipo de ataque se produce cuando
+                                un atacante puede inyectar comandos en aplicaciones que utilizan sistemas de gestión de
+                                bases de datos o servicios de red. Por ejemplo, un atacante podría manipular una
+                                consulta SQL para ejecutar comandos del sistema.
                             </li>
                             <li>
-                                <b>Escalación de Privilegios:</b> Un atacante puede utilizar la inyección de comandos para ejecutar acciones que normalmente estarían restringidas, como acceder a archivos sensibles o ejecutar programas con privilegios elevados, lo que puede comprometer la integridad del sistema.
+                                <b>Escalación de Privilegios:</b> Un atacante puede utilizar la inyección de comandos
+                                para ejecutar acciones que normalmente estarían restringidas, como acceder a archivos
+                                sensibles o ejecutar programas con privilegios elevados, lo que puede comprometer la
+                                integridad del sistema.
                             </li>
                         </ul>
                         <p>
-                            Las consecuencias de un ataque de inyección de comandos pueden incluir la ejecución de código malicioso, el acceso no autorizado a datos sensibles, la interrupción del servicio y la posibilidad de comprometer la seguridad del servidor. Para prevenir estos ataques, es fundamental validar y sanitizar todas las entradas del usuario, utilizar funciones de escape adecuadas y aplicar el principio de menor privilegio en la ejecución de comandos del sistema.
+                            Las consecuencias de un ataque de inyección de comandos pueden incluir la ejecución de
+                            código malicioso, el acceso no autorizado a datos sensibles, la interrupción del servicio y
+                            la posibilidad de comprometer la seguridad del servidor. Para prevenir estos ataques, es
+                            fundamental validar y sanitizar todas las entradas del usuario, utilizar funciones de escape
+                            adecuadas y aplicar el principio de menor privilegio en la ejecución de comandos del
+                            sistema.
                         </p>
                     </div>
                 </div>
@@ -1499,7 +1559,9 @@ if( isset( $_POST[ 'Upload' ] ) ) {
                         <h3>Command Injection Ejercicios.</h3>
                     </div>
                     <div class="card-content">
-                        <p>Para dar como superado este apartado, deberemos de haber sido capaz de subir una webshell y usar algun comando que proporcione información sensible/privada del servidor, como podria ser <b>cat /etc/passwd</b></p>
+                        <p>Para dar como superado este apartado, deberemos de haber sido capaz de subir una webshell y
+                            usar algun comando que proporcione información sensible/privada del servidor, como podria
+                            ser <b>cat /etc/passwd</b></p>
                         <h4>Dificultad baja.</h4>
                         <p>Codigo fuente en php:</p>
                         <pre>
@@ -1524,7 +1586,10 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 }
 
 ?&gt;</pre>
-                        <p>Siendo en este codigo fuente, el no haber ningún tipo de sanitización, por lo que solamente necesitaremos uno de los muchos caracteres de concatenación u operaciones logicas para utilizar dos comandos en una sola linea en vez de en dos. Por lo que solamente tendremos que añadir <b>& cat /etc/passwd</b> y deberia funcionar</p>
+                        <p>Siendo en este codigo fuente, el no haber ningún tipo de sanitización, por lo que solamente
+                            necesitaremos uno de los muchos caracteres de concatenación u operaciones logicas para
+                            utilizar dos comandos en una sola linea en vez de en dos. Por lo que solamente tendremos que
+                            añadir <b>& cat /etc/passwd</b> y deberia funcionar</p>
                         <pre>1 & cat /etc/passwd</pre>
                         <div class="image-card">
                             <img src="../img/commandlow.gif" alt="En progreso..." />
@@ -1563,12 +1628,73 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 }
 
 ?&gt;</pre>
-                        <p>En este codigo fuente, podemos ver que hay substituciones como <b>& y ;</b>, por lo que podemos </p>
+                        <p>En este codigo fuente, podemos ver que hay substituciones como <b>& y ;</b>, por lo que no
+                            podemos utilizarlos, asi que si realizamos una breve busqueda para encontrar concatenadores
+                            de comandos, veremos que hay más aparte de esos dos </p>
+                        <div class="image-card">
+                            <img src="../img/concatenadores.png" alt="En progreso..." />
+                        </div>
+                        <p>Por lo que podriamos usar otros concatenadores como podria ser |, poniendo como entrada 8 |
+                            cat /etc/passwd</p>
+                        <pre>8 | cat /etcc/passwd</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
+                        <br /><br />
+                        <h4>Dificultad alta.</h4>
+                        <p>Codigo fuente en php:</p>
+                        <pre>
+&lt;?php
+
+if( isset( $_POST[ 'Submit' ]  ) ) {
+    // Get input
+    $target = trim($_REQUEST[ 'ip' ]);
+
+    // Set blacklist
+    $substitutions = array(
+        '||' => '',
+        '&'  => '',
+        ';'  => '',
+        '| ' => '',
+        '-'  => '',
+        '$'  => '',
+        '('  => '',
+        ')'  => '',
+        '`'  => '',
+    );
+
+    // Remove any of the characters in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
+        // Windows
+        $cmd = shell_exec( 'ping  ' . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( 'ping  -c 4 ' . $target );
+    }
+
+    // Feedback for the end user
+    echo "&lt;pre&gt;{$cmd}&lt;/pre&gt;";
+}
+
+?&gt;</pre>
+                        <p>En este caso, si miramos el codigo fuente, veremos que están todos o al menos la mayoria de
+                            concatenadores de comandos, pero si nos fijamos atentamente, se esta haciendo el remplace a
+                            "| ", es decir, al concatenador | pero con un espacio, por lo que si usamos la misma
+                            inyección anterior pero sin un espacio despues del |, deberia funcionar, siendo <b>8 |cat
+                                /etc/passwd</b> el comando ha introducir para realizar la inyección</p>
+                        <pre>8 |cat /etc/passwd</pre>
+                        <div class="image-card">
+                            <img src="../img/wip.png" alt="En progreso..." />
+                        </div>
 
                     </div>
                 </div>
-                
-                
+
+
 
 
                 <!-- Más tarjetas aquí -->
